@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--color-header: #fefbf1;
+	--color-one: #f9d574;
+	--color-two: #f3c067;
+	--color-three: #db9035;
+	--color-four: #5d310e;
+	--color-five: #25190d;
+}
+
+body {
+	margin: 0;
+	font-family: 'Nunito', sans-serif;
+}
