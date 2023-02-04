@@ -2,6 +2,10 @@
 module.exports = {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
+		fontFamily: {
+			nunito: ['Nunito', 'sans-serif'],
+			calibre: ['Calibre', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				colorHeader: 'var(--color-header)',
