@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Carousel } from './components/Carousel/Carousel';
 import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
@@ -7,9 +9,11 @@ function App() {
 	return (
 		<React.Fragment>
 			<Header setOpen={setOpen} open={open} />
-			<div className={`sm:block ${!open && `hidden`}`}>
+			<section className={`sm:block ${!open && 'hidden'}`}>
 				<Navbar />
-			</div>
+			</section>
+			<Hero />
+			<Carousel />
 		</React.Fragment>
 	);
 }
