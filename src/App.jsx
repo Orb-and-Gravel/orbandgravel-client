@@ -7,14 +7,21 @@ import Navbar from './components/Navbar/Navbar';
 function App() {
 	const [open, setOpen] = useState(false);
 	return (
-		<React.Fragment>
+		<div className='font-nunito'>
 			<Header setOpen={setOpen} open={open} />
 			<section className={`sm:block ${!open && 'hidden'}`}>
 				<Navbar />
 			</section>
 			<Hero />
-			<Carousel />
-		</React.Fragment>
+			<div className='mx-10'>
+				<section className='mt-4'>
+					<h3 className='text-5xl font-black font-oswald mb-2 text-colorFour tracking-tight'>
+						BEST SELLER
+					</h3>
+					<Carousel />
+				</section>
+			</div>
+		</div>
 	);
 }
 

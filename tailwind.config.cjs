@@ -4,7 +4,8 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			nunito: ['Nunito', 'sans-serif'],
-			calibre: ['Calibre', 'sans-serif'],
+			oswald: ['Oswald', 'sans-serif'],
+			roboto: ['Roboto', 'sans-serif'],
 		},
 		extend: {
 			colors: {

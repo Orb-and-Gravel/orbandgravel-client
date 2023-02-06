@@ -10,8 +10,8 @@ const Hero = () => {
 			</picture>
 			<div className='md:w-2/4 bg-gradient-to-br from-colorHeader to-colorOne flex justify-center items-center pb-10'>
 				<div>
-					<p className='xl:text-[5.8rem] lg:text-[5rem] md:text-[4rem] sm:text-[5rem] text-[3rem] font-bold text-colorFour font-calibre'>
-						Orb & Gravel
+					<p className='xl:text-[5.8rem] lg:text-[5rem] md:text-[4rem] sm:text-[5rem] text-[3rem] font-bold text-colorFour font-oswald tracking-tight'>
+						Orb.&.Gravel
 					</p>
 					<p className='lg:text-2xl md:text-xl sm:text-2xl text-lg font-medium text-center text-colorFive'>
 						Lorem ipsum lorem ipsum lorem
