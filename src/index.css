@@ -36,3 +36,35 @@ body {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--color-five);
 }
+
+.fade-enter {
+	opacity: 0;
+}
+.fade-exit {
+	opacity: 1;
+}
+.fade-enter-active {
+	opacity: 1;
+}
+.fade-exit-active {
+	opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active {
+	transition: opacity 150ms;
+}
+
+.my-node-enter {
+	opacity: 0;
+}
+.my-node-enter-active {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+.my-node-exit {
+	opacity: 1;
+}
+.my-node-exit-active {
+	opacity: 0;
+	transition: opacity 200ms;
+}
