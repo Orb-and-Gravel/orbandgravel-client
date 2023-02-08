@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { useSwipeable } from 'react-swipeable';
 
 export function CarouselPics({ children }) {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -13,8 +14,14 @@ export function CarouselPics({ children }) {
 		}
 		setActiveIndex(newIndex);
 	}
+
+	const swipe = useSwipeable({
+		onSwipedLeft: () => updateIndex(activeIndex + 1),
+		onSwipedRight: () => updateIndex(activeIndex - 1),
+	});
+
 	return (
-		<section className='flex justify-between items-center'>
+		<section {...swipe} className='flex justify-between items-center'>
 			<button
 				onClick={() => updateIndex(activeIndex - 1)}
 				className='h-fit md:block hidden'

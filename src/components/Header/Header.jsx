@@ -6,8 +6,11 @@ import {
 	XMarkIcon,
 	Bars3Icon,
 } from '@heroicons/react/24/outline';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import { useRef } from 'react';
 
 const Header = ({ setOpen, open }) => {
+	const iconRef = useRef(null);
 	return (
 		<div className='bg-colorHeader min-w-full h-28 flex items-center justify-between'>
 			<div className=' flex-[1_0_0%] sm:flex justify-center hidden'>
@@ -29,16 +32,28 @@ const Header = ({ setOpen, open }) => {
 				<span className='mr-5 cursor-pointer'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
 				</span>
-				<span
-					className='sm:hidden cursor-pointer'
-					onClick={() => setOpen(!open)}
-				>
-					{open ? (
-						<XMarkIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
-					) : (
-						<Bars3Icon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
-					)}
-				</span>
+				<SwitchTransition>
+					<CSSTransition
+						key={open}
+						classNames='fade'
+						nodeRef={iconRef}
+						addEndListener={(done) =>
+							iconRef.current.addEventListener('transitionend', done, false)
+						}
+					>
+						<span
+							className='sm:hidden cursor-pointer'
+							onClick={() => setOpen(!open)}
+							ref={iconRef}
+						>
+							{open ? (
+								<XMarkIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
+							) : (
+								<Bars3Icon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
+							)}
+						</span>
+					</CSSTransition>
+				</SwitchTransition>
 			</div>
 		</div>
 	);
