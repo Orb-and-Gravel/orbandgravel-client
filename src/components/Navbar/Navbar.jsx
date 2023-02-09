@@ -10,7 +10,7 @@ const Navbar = () => {
 					FINE JEWELRY
 				</li>
 				<li className='text-sm transition-all tracking-widest cursor-pointer text-colorFour hover:text-colorThree sm:mb-0 mb-3'>
-					COLLECTIONS
+					COLLECTION
 				</li>
 				<li className='text-sm transition-all tracking-widest cursor-pointer text-colorFour hover:text-colorThree sm:mb-0 mb-3'>
 					MEN'S
