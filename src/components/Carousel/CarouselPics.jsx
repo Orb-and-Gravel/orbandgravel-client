@@ -1,10 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useSwipeable } from 'react-swipeable';
 
 export function CarouselPics({ children }) {
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [dragWidth, setDragWidth] = useState(0);
 	const carouselContainerRef = useRef(null);
+
+	useLayoutEffect(() => {
+		setDragWidth(carouselContainerRef.current.offsetWidth);
+	}, []);
 
 	function updateIndex(newIndex) {
 		if (newIndex < 0) {
@@ -21,7 +26,10 @@ export function CarouselPics({ children }) {
 	});
 
 	return (
-		<section {...swipe} className='flex justify-between items-center'>
+		<section
+			{...swipe}
+			className='grid grid-flow-col justify-between items-center'
+		>
 			<button
 				onClick={() => updateIndex(activeIndex - 1)}
 				className='h-fit md:block hidden'
@@ -34,7 +42,7 @@ export function CarouselPics({ children }) {
 			>
 				<div
 					className='whitespace-nowrap transition-transform duration-300'
-					style={{ transform: `translateX(-${activeIndex * 312}px)` }}
+					style={{ transform: `translateX(-${activeIndex * dragWidth}px)` }}
 				>
 					{React.Children.map(children, (child, index) => {
 						return React.cloneElement(child, { width: '300px' });
