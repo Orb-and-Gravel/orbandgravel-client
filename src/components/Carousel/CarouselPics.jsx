@@ -4,9 +4,9 @@ import { useSwipeable } from 'react-swipeable';
 
 export function CarouselPics({ children }) {
 	const [activeIndex, setActiveIndex] = useState(0);
-	const container = document.querySelector('.container');
 
 	const swipeCarousel = (updatedIndex) => {
+		const container = document.querySelector('.container');
 		const allItems = getComputedStyle(container);
 		const itemsDisplayed = allItems.getPropertyValue('--img-count');
 
