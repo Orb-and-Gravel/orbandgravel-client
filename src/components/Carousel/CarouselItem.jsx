@@ -1,12 +1,5 @@
 import React from 'react';
 
-export default function CarouselItem({ width, children }) {
-	return (
-		<div
-			className='inline-flex items-center mr-3 justify-center h-[350px] bg-green-500 text-white shadow-md'
-			style={{ width: width }}
-		>
-			{children}
-		</div>
-	);
+export default function CarouselItem({ children, imgLink }) {
+	return <img className='item aspect-4/5 p-1' src={imgLink} />;
 }

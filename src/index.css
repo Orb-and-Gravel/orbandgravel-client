@@ -68,3 +68,30 @@ body {
 	opacity: 0;
 	transition: opacity 200ms;
 }
+
+.container {
+	--img-count: 4;
+}
+
+.item {
+	flex: 0 0 calc(100% / var(--img-count));
+	width: calc(100% / var(--img-count));
+}
+
+@media (max-width: 1838px) {
+	.container {
+		--img-count: 4;
+	}
+}
+
+@media (max-width: 1000px) {
+	.container {
+		--img-count: 3;
+	}
+}
+
+@media (max-width: 640px) {
+	.container {
+		--img-count: 2;
+	}
+}

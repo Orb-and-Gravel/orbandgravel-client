@@ -5,13 +5,15 @@ import { CarouselPics } from './CarouselPics';
 export function Carousel() {
 	return (
 		<CarouselPics>
-			<CarouselItem>item 1</CarouselItem>
-			<CarouselItem>item 2</CarouselItem>
-			<CarouselItem>item 3</CarouselItem>
-			<CarouselItem>item 4</CarouselItem>
-			<CarouselItem>item 5</CarouselItem>
-			<CarouselItem>item 6</CarouselItem>
-			<CarouselItem>item 7</CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/210?text=1'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/220?text=2'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/230?text=3'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/240?text=4'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/250?text=5'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/260?text=6'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/270?text=7'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/280?text=8'></CarouselItem>
+			<CarouselItem imgLink='https://via.placeholder.com/290?text=9'></CarouselItem>
 		</CarouselPics>
 	);
 }

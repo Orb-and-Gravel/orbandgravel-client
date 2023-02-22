@@ -22,7 +22,7 @@ function App() {
 				</section>
 			</CSSTransition>
 			<Hero />
-			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2'>
+			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center'>
 				<section className='mt-4'>
 					<h3 className='text-5xl font-black font-oswald mb-2 text-colorFour tracking-tight text-center sm:text-left'>
 						BEST SELLER

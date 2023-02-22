@@ -1,57 +1,57 @@
-import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useSwipeable } from 'react-swipeable';
 
 export function CarouselPics({ children }) {
 	const [activeIndex, setActiveIndex] = useState(0);
-	const [dragWidth, setDragWidth] = useState(0);
-	const carouselContainerRef = useRef(null);
+	const container = document.querySelector('.container');
 
-	useLayoutEffect(() => {
-		setDragWidth(carouselContainerRef.current.offsetWidth);
-	}, []);
+	const swipeCarousel = (updatedIndex) => {
+		const allItems = getComputedStyle(container);
+		const itemsDisplayed = allItems.getPropertyValue('--img-count');
 
-	function updateIndex(newIndex) {
-		if (newIndex < 0) {
-			newIndex = React.Children.count(children) - 1;
-		} else if (newIndex >= React.Children.count(children)) {
-			newIndex = 0;
+		let totalIndex = Math.floor(
+			(children.length - 1) / parseInt(itemsDisplayed)
+		);
+		if (updatedIndex < 0) {
+			setActiveIndex(0);
+		} else if (updatedIndex > totalIndex) {
+			setActiveIndex(totalIndex);
+		} else {
+			setActiveIndex(updatedIndex);
 		}
-		setActiveIndex(newIndex);
-	}
+	};
 
 	const swipe = useSwipeable({
-		onSwipedLeft: () => updateIndex(activeIndex + 1),
-		onSwipedRight: () => updateIndex(activeIndex - 1),
+		onSwipedLeft: () => swipeCarousel(activeIndex + 1),
+		onSwipedRight: () => swipeCarousel(activeIndex - 1),
 	});
 
 	return (
-		<section
-			{...swipe}
-			className='grid grid-flow-col justify-between items-center'
-		>
+		<section {...swipe} className='flex overflow-hidden w-fit'>
 			<button
-				onClick={() => updateIndex(activeIndex - 1)}
-				className='h-fit md:block hidden'
+				onClick={() => swipeCarousel(activeIndex - 1)}
+				className='md:block hidden bg-white z-10 px-8'
 			>
 				<ArrowLeftIcon className='w-12 h-12 transition-all text-colorThree hover:text-colorOne' />
 			</button>
-			<div
-				className='overflow-hidden xl:mx-20 lg:mx-14 md:mx-6 sm:mx-2 w-full'
-				ref={carouselContainerRef}
-			>
+			<div className='container flex w-full'>
 				<div
-					className='whitespace-nowrap transition-transform duration-300'
-					style={{ transform: `translateX(-${activeIndex * dragWidth}px)` }}
+					style={{
+						transform: `translateX(${activeIndex * -100}%)`,
+						transition: 'transform 0.5s ease-in-out',
+						width: '100%',
+						display: 'flex',
+					}}
 				>
 					{React.Children.map(children, (child, index) => {
-						return React.cloneElement(child, { width: '300px' });
+						return React.cloneElement(child);
 					})}
 				</div>
 			</div>
 			<button
-				onClick={() => updateIndex(activeIndex + 1)}
-				className='h-fit md:block hidden'
+				onClick={() => swipeCarousel(activeIndex + 1)}
+				className='md:block hidden bg-white z-10 px-8'
 			>
 				<ArrowRightIcon className='w-12 h-12 transition-all text-colorThree hover:text-colorOne' />
 			</button>

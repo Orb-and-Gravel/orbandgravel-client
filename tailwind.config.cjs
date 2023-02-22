@@ -16,6 +16,12 @@ module.exports = {
 				colorFour: 'var(--color-four)',
 				colorFive: 'var(--color-five)',
 			},
+			gridTemplateColumns: {
+				fluid: 'repeat(auto-fit, minmax(15rem, 1fr))',
+			},
+			aspectRatio: {
+				'4/5': '4 / 5',
+			},
 		},
 	},
 	plugins: [],
