@@ -12,11 +12,35 @@ import { useRef } from 'react';
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
 	return (
-		<div className='bg-colorHeader min-w-full h-28 flex items-center justify-between'>
-			<div className=' flex-[1_0_0%] sm:flex justify-center hidden'>
+		<div className='bg-colorHeader min-w-full h-20 sm:h-28 flex items-center justify-between'>
+			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
 				<Searchbar />
 			</div>
-			<div className='flex-[1_0_0%] flex sm:justify-center ml-4 object-contain'>
+			<div className='sm:hidden flex flex-[1_0_0%]'>
+				<SwitchTransition>
+					<CSSTransition
+						key={open}
+						classNames='fade'
+						nodeRef={iconRef}
+						addEndListener={(done) =>
+							iconRef.current.addEventListener('transitionend', done, false)
+						}
+					>
+						<span
+							className='sm:hidden cursor-pointer pl-4'
+							onClick={() => setOpen(!open)}
+							ref={iconRef}
+						>
+							{open ? (
+								<XMarkIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
+							) : (
+								<Bars3Icon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
+							)}
+						</span>
+					</CSSTransition>
+				</SwitchTransition>
+			</div>
+			<div className='flex-[1_0_0%] flex sm:justify-center object-contain'>
 				<img
 					src={logo}
 					alt='Orb & Gravel'
@@ -32,28 +56,6 @@ const Header = ({ setOpen, open }) => {
 				<span className='mr-5 cursor-pointer'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
 				</span>
-				<SwitchTransition>
-					<CSSTransition
-						key={open}
-						classNames='fade'
-						nodeRef={iconRef}
-						addEndListener={(done) =>
-							iconRef.current.addEventListener('transitionend', done, false)
-						}
-					>
-						<span
-							className='sm:hidden cursor-pointer'
-							onClick={() => setOpen(!open)}
-							ref={iconRef}
-						>
-							{open ? (
-								<XMarkIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
-							) : (
-								<Bars3Icon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
-							)}
-						</span>
-					</CSSTransition>
-				</SwitchTransition>
 			</div>
 		</div>
 	);
