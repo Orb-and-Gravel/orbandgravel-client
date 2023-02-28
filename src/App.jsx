@@ -31,7 +31,7 @@ function App() {
 					<Carousel />
 				</section>
 			</div>
-			<section className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 '>
+			<section className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center'>
 				<CategoriesSection />
 			</section>
 		</div>
