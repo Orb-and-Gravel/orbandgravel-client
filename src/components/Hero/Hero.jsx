@@ -1,14 +1,14 @@
 const Hero = () => {
 	return (
-		<section className='md:flex'>
-			<picture className='md:w-2/4 '>
+		<section className='h-[32rem]'>
+			<picture>
 				<img
-					src='https://images.unsplash.com/photo-1531995811006-35cb42e1a022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGpld2Vscnl8ZW58MHx8MHx8&w=1000&q=80'
+					src='https://images.unsplash.com/photo-1620656798579-1984d9e87df7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
 					alt='Orb & Gravel'
 					className='object-cover w-full sm:h-72 md:h-full'
 				/>
 			</picture>
-			<div className='md:w-2/4 bg-gradient-to-br from-colorHeader to-colorOne flex justify-center items-center pb-10'>
+			{/* <div className='md:w-2/4 bg-gradient-to-br from-colorHeader to-colorOne flex justify-center items-center pb-10'>
 				<div>
 					<h1 className='xl:text-[5.8rem] lg:text-[5rem] md:text-[4rem] sm:text-[5rem] text-[3rem] font-bold text-colorFour font-oswald tracking-tight text-center'>
 						Orb & Gravel
@@ -20,7 +20,7 @@ const Hero = () => {
 						SHOP NOW
 					</button>
 				</div>
-			</div>
+			</div> */}
 		</section>
 	);
 };

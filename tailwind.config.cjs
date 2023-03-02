@@ -6,6 +6,7 @@ module.exports = {
 			nunito: ['Nunito', 'sans-serif'],
 			oswald: ['Oswald', 'sans-serif'],
 			roboto: ['Roboto', 'sans-serif'],
+			poiret: ['Poiret One', 'cursive'],
 		},
 		extend: {
 			colors: {
