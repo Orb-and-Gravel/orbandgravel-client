@@ -8,7 +8,7 @@ const Searchbar = () => {
 				className='focus:outline-none xl:w-80 lg:w-72 sm:w-28'
 				placeholder='Search'
 			/>
-			<MagnifyingGlassIcon className='h-6 w-6 hover:text-colorOne text-colorThree transition-all' />
+			<MagnifyingGlassIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
 		</div>
 	);
 };
