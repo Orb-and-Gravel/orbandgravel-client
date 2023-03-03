@@ -31,9 +31,9 @@ export function CarouselPics({ children }) {
 		<section {...swipe} className='flex overflow-hidden w-fit'>
 			<button
 				onClick={() => swipeCarousel(activeIndex - 1)}
-				className='md:block hidden bg-white z-10 px-8'
+				className='md:block hidden z-10 bg-colorFive px-8 hover:bg-colorFour transition-all'
 			>
-				<ArrowLeftIcon className='w-12 h-12 transition-all text-colorThree hover:text-colorOne' />
+				<ArrowLeftIcon className='w-12 h-12 transition-all text-colorOne' />
 			</button>
 			<div className='container flex w-full'>
 				<div
@@ -51,9 +51,9 @@ export function CarouselPics({ children }) {
 			</div>
 			<button
 				onClick={() => swipeCarousel(activeIndex + 1)}
-				className='md:block hidden bg-white z-10 px-8'
+				className='md:block hidden bg-colorFive z-10 px-8 transition-all hover:bg-colorFour'
 			>
-				<ArrowRightIcon className='w-12 h-12 transition-all text-colorThree hover:text-colorOne' />
+				<ArrowRightIcon className='w-12 h-12 transition-all text-colorOne' />
 			</button>
 		</section>
 	);
