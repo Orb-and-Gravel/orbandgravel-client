@@ -11,7 +11,7 @@ const Hero = () => {
 			<div className='absolute max-h-fit inset-0 top-1/3'>
 				<h1
 					className='font-poiret xl:text-[7rem] lg:text-[6rem] sm:text-[5rem] text-[3rem] text-colorOne tracking-tight text-center'
-					style={{ textShadow: '2px 2px 1px #1B1610' }}
+					style={{ textShadow: '2px 2px 2px #8d7943' }}
 				>
 					Orb & Gravel
 				</h1>
