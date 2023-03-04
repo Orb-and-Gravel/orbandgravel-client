@@ -25,7 +25,7 @@ function App() {
 			<Hero />
 			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center'>
 				<section className='mt-4'>
-					<h3 className='text-5xl font-black font-oswald mb-2 text-colorFive tracking-tight text-center sm:text-left'>
+					<h3 className='text-5xl font-black font-poiret mb-2 text-colorFive tracking-tight text-center sm:text-left'>
 						BEST SELLERS
 					</h3>
 					<Carousel />
