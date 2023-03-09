@@ -47,9 +47,9 @@ const Header = ({ setOpen, open }) => {
 							ref={iconRef}
 						>
 							{open ? (
-								<XMarkIcon className='h-6 w-6 hover:text-colorThree text-colorFive transition-all' />
+								<XMarkIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
 							) : (
-								<Bars3Icon className='h-6 w-6 hover:text-colorThree text-colorFive transition-all' />
+								<Bars3Icon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
 							)}
 						</span>
 					</CSSTransition>
