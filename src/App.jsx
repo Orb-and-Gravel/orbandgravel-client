@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Bar } from './components/Bar/Bar';
 import { Carousel } from './components/Carousel/Carousel';
-import { CategoriesSection } from './components/CategoriesSection/CategoriesSection';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
@@ -32,12 +30,6 @@ function App() {
 					<Carousel />
 				</section>
 			</div>
-			<section className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center'>
-				<CategoriesSection />
-			</section>
-			<section className='mt-10'>
-				<Bar />
-			</section>
 		</div>
 	);
 }
