@@ -4,6 +4,7 @@ import { Carousel } from './components/Carousel/Carousel';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
+import { VerticalAlternateList } from './components/VerticalAlternateList/VerticalAlternateList';
 
 function App() {
 	const [open, setOpen] = useState(false);
@@ -29,6 +30,9 @@ function App() {
 					</h3>
 					<Carousel />
 				</section>
+			</div>
+			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2'>
+				<VerticalAlternateList />
 			</div>
 		</div>
 	);
