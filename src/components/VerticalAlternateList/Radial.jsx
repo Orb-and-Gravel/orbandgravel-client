@@ -3,13 +3,24 @@ import React from 'react';
 export function Radial() {
 	return (
 		<div className='relative'>
-			<div className='absolute top-[37%] left-[55%]'>
-				<p>category 1</p>
-				<p className='ml-1'>category 2</p>
-				<p className='ml-2'>category 3</p>
-				<p className='ml-1'>category 4</p>
-				<p>category 5</p>
+			<div className='absolute top-[28%] left-[49%]'>
+				<p className='opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
+					category 1
+				</p>
+				<p className='ml-5 mt-5 opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
+					category 2
+				</p>
+				<p className='ml-7 mt-5 opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
+					category 3
+				</p>
+				<p className='ml-5 mt-5 opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
+					category 4
+				</p>
+				<p className='mt-5 opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
+					category 5
+				</p>
 			</div>
+			<div className='box'></div>
 			<div className='bg-blue-400 h-[28rem] w-60 rounded-r-full flex items-center'>
 				<div className='bg-white h-[27.5rem] w-[14.7rem] rounded-r-full flex items-center'>
 					<div className='bg-green-400 h-64 w-32 rounded-r-full flex items-center'>
