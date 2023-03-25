@@ -20,7 +20,7 @@ export function Radial() {
 					category 5
 				</p>
 			</div>
-			<div></div>
+			<img src='/concealer.svg' className='-z-10 bg-red-900 fill-black' />
 			<div className='bg-blue-400 h-[28rem] w-60 rounded-r-full flex items-center'>
 				<div className='bg-zinc-400 w-36 h-10 absolute top-0'></div>
 				<div className='bg-white h-[27.5rem] w-[14.7rem] rounded-r-full flex items-center z-10'>
