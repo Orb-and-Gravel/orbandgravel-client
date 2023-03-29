@@ -3,6 +3,7 @@ import React from 'react';
 export function Radial() {
 	return (
 		<div className='relative'>
+			<img src='/con-01.svg' className='z-10 bg-red-200' />
 			<div className='absolute top-[28%] left-[49%] z-20'>
 				<p className='opacity-50 cursor-pointer hover:scale-110 hover:opacity-100 transition-all'>
 					category 1
@@ -20,7 +21,6 @@ export function Radial() {
 					category 5
 				</p>
 			</div>
-			<img src='/concealer.svg' className='-z-10 bg-red-900 fill-black' />
 			<div className='bg-blue-400 h-[28rem] w-60 rounded-r-full flex items-center'>
 				<div className='bg-zinc-400 w-36 h-10 absolute top-0'></div>
 				<div className='bg-white h-[27.5rem] w-[14.7rem] rounded-r-full flex items-center z-10'>
