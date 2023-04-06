@@ -4,11 +4,11 @@ import { VerticalListWrapper } from './VerticalListWrapper';
 
 export function VerticalAlternateList() {
 	return (
-		<div className='grid grid-cols-2'>
+		<div className='md:grid md:grid-cols-2'>
 			<aside>
 				<RadialControllerWrapper />
 			</aside>
-			<aside>
+			<aside className='block'>
 				<VerticalListWrapper />
 			</aside>
 		</div>
