@@ -2,13 +2,20 @@ import React from 'react';
 import { CategoryPictureListItem } from './CategoryPictureListItem';
 import { PictureCategoryListItem } from './PictureCategoryListItem';
 
-export function VerticalListItems() {
+export function VerticalListItems({ childRef, categoriesIndex, offsetHeight }) {
 	return (
-		<div className='w-11/12 block mx-auto mt-5 border-x-2'>
+		<div
+			className='w-11/12 block mx-auto border-x-2 bg-white'
+			style={{
+				transform: `translateY(${categoriesIndex * -offsetHeight}px)`,
+				transition: 'transform 0.5s ease-in-out',
+			}}
+		>
 			<CategoryPictureListItem
 				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
 				categoryName='category'
 				categoryNumber='1'
+				childRef={childRef}
 			/>
 			<PictureCategoryListItem
 				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
@@ -24,6 +31,86 @@ export function VerticalListItems() {
 				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
 				categoryName='category'
 				categoryNumber='4'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='5'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='6'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='7'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='8'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='9'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='10'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='11'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='12'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='13'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='14'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='15'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='16'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='17'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='18'
+			/>
+			<CategoryPictureListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='19'
+			/>
+			<PictureCategoryListItem
+				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+				categoryName='category'
+				categoryNumber='20'
 			/>
 		</div>
 	);

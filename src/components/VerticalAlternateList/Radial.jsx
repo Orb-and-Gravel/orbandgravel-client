@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-export function Radial() {
-	const [catIndex, setCatIndex] = useState(0);
-
+export function Radial({ catIndex, setCatIndex }) {
 	const handleCatClick = (i) => {
 		setCatIndex(i);
 	};
