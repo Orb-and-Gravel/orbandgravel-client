@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RadialControllerWrapper } from './RadialControllerWrapper';
 import { VerticalListWrapper } from './VerticalListWrapper';
 
 export function VerticalAlternateList() {
+	const [categoriesIndex, setCategoriesIndex] = useState(0);
 	return (
 		<div className='md:grid md:grid-cols-2'>
 			<aside>
-				<RadialControllerWrapper />
+				<RadialControllerWrapper
+					categoriesIndex={categoriesIndex}
+					setCategoriesIndex={setCategoriesIndex}
+				/>
 			</aside>
 			<aside className='block'>
-				<VerticalListWrapper />
+				<VerticalListWrapper categoriesIndex={categoriesIndex} />
 			</aside>
 		</div>
 	);
