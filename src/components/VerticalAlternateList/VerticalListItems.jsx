@@ -2,12 +2,12 @@ import React from 'react';
 import { CategoryPictureListItem } from './CategoryPictureListItem';
 import { PictureCategoryListItem } from './PictureCategoryListItem';
 
-export function VerticalListItems({ childRef, categoriesIndex, offsetHeight }) {
+export function VerticalListItems({ categoriesIndex }) {
 	return (
 		<div
-			className='w-11/12 block mx-auto border-x-2 bg-white'
+			className='w-11/12 mx-auto border-x-2 h-full'
 			style={{
-				transform: `translateY(${categoriesIndex * -offsetHeight}px)`,
+				transform: `translateY(${categoriesIndex * -100}%)`,
 				transition: 'transform 0.5s ease-in-out',
 			}}
 		>
@@ -15,7 +15,6 @@ export function VerticalListItems({ childRef, categoriesIndex, offsetHeight }) {
 				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
 				categoryName='category'
 				categoryNumber='1'
-				childRef={childRef}
 			/>
 			<PictureCategoryListItem
 				imageSrc='https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
