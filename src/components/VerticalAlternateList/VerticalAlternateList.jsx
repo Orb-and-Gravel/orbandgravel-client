@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { RadialControllerWrapper } from './RadialControllerWrapper';
 import { VerticalListWrapper } from './VerticalListWrapper';
 
@@ -7,7 +7,8 @@ export function VerticalAlternateList() {
 
 	return (
 		<div
-			className={`md:grid md:grid-cols-2 mt-10 overflow-hidden max-h-[1000px]`}
+			className='md:grid md:grid-cols-2 mt-10 overflow-hidden'
+			style={{ height: '20%' }}
 		>
 			<aside>
 				<RadialControllerWrapper
