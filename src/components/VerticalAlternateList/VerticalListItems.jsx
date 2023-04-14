@@ -5,7 +5,7 @@ import { PictureCategoryListItem } from './PictureCategoryListItem';
 export function VerticalListItems({ categoriesIndex }) {
 	return (
 		<div
-			className='w-11/12 mx-auto border-x-2'
+			className='w-fit mx-auto border-x-2'
 			style={{
 				transform: `translateY(${categoriesIndex * -20}%)`,
 				transition: 'transform 0.5s ease-in-out',

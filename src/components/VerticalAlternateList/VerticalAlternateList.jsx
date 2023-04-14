@@ -6,17 +6,14 @@ export function VerticalAlternateList() {
 	const [categoriesIndex, setCategoriesIndex] = useState(0);
 
 	return (
-		<div
-			className='md:grid md:grid-cols-2 mt-10 overflow-hidden'
-			style={{ height: '20%' }}
-		>
+		<div className='md:grid md:grid-cols-2 mt-10'>
 			<aside>
 				<RadialControllerWrapper
 					categoriesIndex={categoriesIndex}
 					setCategoriesIndex={setCategoriesIndex}
 				/>
 			</aside>
-			<aside className='block h-1/5 overflow-hidden'>
+			<aside className='h-[1000px] overflow-hidden'>
 				<VerticalListWrapper categoriesIndex={categoriesIndex} />
 			</aside>
 		</div>
