@@ -6,7 +6,7 @@ export function PictureCategoryListItem({
 	categoryNumber,
 }) {
 	return (
-		<div className='grid grid-cols-2 h-[250px] w-[700px]'>
+		<div className='grid grid-cols-2'>
 			<img src={imageSrc} alt='' className='object-cover h-[250px]' />
 			<div className='flex justify-between items-end p-4 h-[250px]'>
 				<p>{categoryName}</p>
