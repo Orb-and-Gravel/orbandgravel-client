@@ -6,11 +6,11 @@ export function RadialControllerWrapper({
 	setCategoriesIndex,
 }) {
 	return (
-		<div className='flex md:mt-10 md:justify-between justify-center mt-7'>
+		<div className='flex md:mt-10 md:justify-between justify-center mt-7 relative'>
 			<section className='md:block hidden'>
 				<Radial catIndex={categoriesIndex} setCatIndex={setCategoriesIndex} />
 			</section>
-			<h3 className='xl:text-[6rem] min-[860px]:text-[4rem] md:text-4xl md:font-black md:font-oswald text-colorFive min-[860px]:mt-20 2xl:mr-24 xl:mr-20 md:mr-10 whitespace-nowrap text-5xl font-black font-poiret tracking-tight'>
+			<h3 className='md:text-4xl lg:text-6xl md:font-black md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight h-fit md:absolute z-50 left-[140px] lg:left-[150px] xl:left-[200px] 2xl:left-80'>
 				NEW IN.
 			</h3>
 		</div>
