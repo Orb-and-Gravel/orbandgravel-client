@@ -18,14 +18,17 @@ function App() {
 				timeout={300}
 				classNames='my-node'
 			>
-				<section ref={navRef} className={`sm:block ${!open && 'hidden'}`}>
+				<section
+					ref={navRef}
+					className={`sm:block relative ${!open && 'hidden'} z-10`}
+				>
 					<Navbar />
 				</section>
 			</CSSTransition>
 			<Hero />
-			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center -z-10 relative'>
+			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center relative'>
 				<section className='mt-4'>
-					<h3 className='text-5xl font-black font-poiret mb-2 text-colorFive tracking-tight text-center sm:text-left'>
+					<h3 className='md:text-4xl lg:text-6xl md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center'>
 						BEST SELLERS
 					</h3>
 					<Carousel />
