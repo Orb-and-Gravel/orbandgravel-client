@@ -5,6 +5,9 @@ import {
 	ShoppingBagIcon,
 	XMarkIcon,
 	Bars3Icon,
+	UserCircleIcon,
+	ChartBarSquareIcon,
+	HeartIcon,
 } from '@heroicons/react/24/outline';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useRef } from 'react';
@@ -26,8 +29,25 @@ const Header = ({ setOpen, open }) => {
 				/>
 			</div>
 			<div className='flex flex-[1_0_0%] justify-center'>
-				<span className='mr-5 cursor-pointer'>
-					<UserIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
+				<span className='mr-5'>
+					<div className='relative'>
+						<UserIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer' />
+						<div className='absolute bg-[#ffffffed] border-colorThree border z-50 right-0 top-8 rounded-md p-4 w-44'>
+							<span className='flex justify-between'>
+								<p>Account</p>
+								<UserCircleIcon className='h-6 w-6' />
+							</span>
+							<span className='flex justify-between mt-2'>
+								<p>OrderHistory</p>
+								<ChartBarSquareIcon className='h-6 w-6' />
+							</span>
+							<span className='flex justify-between mt-2'>
+								<p>Wishlist</p>
+								<HeartIcon className='h-6 w-6' />
+							</span>
+							<p className='mt-2'>Signout</p>
+						</div>
+					</div>
 				</span>
 				<span className='mr-5 cursor-pointer'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
