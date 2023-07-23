@@ -5,12 +5,21 @@ import {
 	ShoppingBagIcon,
 	XMarkIcon,
 	Bars3Icon,
+	UserCircleIcon,
+	ChartBarSquareIcon,
+	HeartIcon,
 } from '@heroicons/react/24/outline';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { DropdownMenu } from './DropdownMenu';
+import { DropdownMenuItem } from './DropdownMenuItem';
 
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
+	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
+
+	const onClickDropdownItem = () => {};
+
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
@@ -26,8 +35,36 @@ const Header = ({ setOpen, open }) => {
 				/>
 			</div>
 			<div className='flex flex-[1_0_0%] justify-center'>
-				<span className='mr-5 cursor-pointer'>
-					<UserIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
+				<span className='mr-5'>
+					<div className='relative'>
+						<UserIcon
+							className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
+							onClick={() => setOpenProfileDropdown((prev) => !prev)}
+						/>
+						{openProfileDropdown && (
+							<DropdownMenu>
+								<DropdownMenuItem href='account'>
+									<p>Account</p>
+									<UserCircleIcon className='h-6 w-6' />
+								</DropdownMenuItem>
+								<DropdownMenuItem href='orderhistory'>
+									<p>Order History</p>
+									<ChartBarSquareIcon className='h-6 w-6' />
+								</DropdownMenuItem>
+								<DropdownMenuItem href='wishlist'>
+									<p>Wishlist</p>
+									<HeartIcon className='h-6 w-6' />
+								</DropdownMenuItem>
+								<DropdownMenuItem
+									onClick={() => {
+										console.log('hello');
+									}}
+								>
+									<p>Signout</p>
+								</DropdownMenuItem>
+							</DropdownMenu>
+						)}
+					</div>
 				</span>
 				<span className='mr-5 cursor-pointer'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />

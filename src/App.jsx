@@ -37,7 +37,6 @@ function App() {
 			<div className='lg:mx-7 md:mx-4 mx-2 max-w-[1840px] xl:mx-auto xl:px-10 h-full'>
 				<VerticalAlternateList />
 			</div>
-			<div>hello</div>
 		</div>
 	);
 }
