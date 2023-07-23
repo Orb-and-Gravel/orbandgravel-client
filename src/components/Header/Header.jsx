@@ -17,6 +17,9 @@ import { DropdownMenuItem } from './DropdownMenuItem';
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
+
+	const onClickDropdownItem = () => {};
+
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
@@ -40,19 +43,23 @@ const Header = ({ setOpen, open }) => {
 						/>
 						{openProfileDropdown && (
 							<DropdownMenu>
-								<DropdownMenuItem>
+								<DropdownMenuItem href='account'>
 									<p>Account</p>
 									<UserCircleIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<p>OrderHistory</p>
+								<DropdownMenuItem href='orderhistory'>
+									<p>Order History</p>
 									<ChartBarSquareIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem>
+								<DropdownMenuItem href='wishlist'>
 									<p>Wishlist</p>
 									<HeartIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem>
+								<DropdownMenuItem
+									onClick={() => {
+										console.log('hello');
+									}}
+								>
 									<p>Signout</p>
 								</DropdownMenuItem>
 							</DropdownMenu>
