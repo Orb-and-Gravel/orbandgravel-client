@@ -66,8 +66,11 @@ const Header = ({ setOpen, open }) => {
 						)}
 					</div>
 				</span>
-				<span className='mr-5 cursor-pointer'>
+				<span className='mr-5 cursor-pointer relative'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
+					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
+						<span className='text-xs text-colorOne rounded-full'>1</span>
+					</span>
 				</span>
 				<SwitchTransition>
 					<CSSTransition
