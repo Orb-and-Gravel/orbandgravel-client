@@ -13,13 +13,12 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useRef, useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import { DropdownMenuItem } from './DropdownMenuItem';
+import cartItems from '../../assets/cartItems.json';
+import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
-
-	const onClickDropdownItem = () => {};
-
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
@@ -69,8 +68,15 @@ const Header = ({ setOpen, open }) => {
 				<span className='mr-5 cursor-pointer relative'>
 					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
 					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
-						<span className='text-xs text-colorOne rounded-full'>1</span>
+						<span className='text-xs text-colorOne rounded-full'>
+							{cartItems.length}
+						</span>
 					</span>
+					<DropdownMenu>
+						{cartItems.map((item) => (
+							<DropdownMenuCartItem item={item} key={item.name} />
+						))}
+					</DropdownMenu>
 				</span>
 				<SwitchTransition>
 					<CSSTransition
