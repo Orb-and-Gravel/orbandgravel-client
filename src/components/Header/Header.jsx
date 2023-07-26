@@ -15,6 +15,7 @@ import { DropdownMenu } from './DropdownMenu';
 import { DropdownMenuItem } from './DropdownMenuItem';
 import cartItems from '../../assets/cartItems.json';
 import { DropdownMenuCartItem } from './DropdownMenuCartItem';
+import { TotalPriceCart } from './TotalPriceCart';
 
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
@@ -76,6 +77,7 @@ const Header = ({ setOpen, open }) => {
 						{cartItems.map((item) => (
 							<DropdownMenuCartItem item={item} key={item.name} />
 						))}
+						<TotalPriceCart />
 					</DropdownMenu>
 				</span>
 				<SwitchTransition>
