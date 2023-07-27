@@ -20,6 +20,8 @@ import { TotalPriceCart } from './TotalPriceCart';
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
+	const [openCartDropdown, setOpenCartDropdown] = useState(false);
+
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
@@ -67,18 +69,24 @@ const Header = ({ setOpen, open }) => {
 					</div>
 				</span>
 				<span className='mr-5 relative'>
-					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer' />
+					<ShoppingBagIcon
+						className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
+						onClick={() => setOpenCartDropdown((prev) => !prev)}
+					/>
 					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
 						<span className='text-xs text-colorOne rounded-full'>
 							{cartItems.length}
 						</span>
 					</span>
-					<DropdownMenu>
-						{cartItems.map((item) => (
-							<DropdownMenuCartItem item={item} key={item.name} />
-						))}
-						<TotalPriceCart />
-					</DropdownMenu>
+
+					{openCartDropdown && (
+						<DropdownMenu>
+							{cartItems.map((item) => (
+								<DropdownMenuCartItem item={item} key={item.name} />
+							))}
+							<TotalPriceCart />
+						</DropdownMenu>
+					)}
 				</span>
 				<SwitchTransition>
 					<CSSTransition
