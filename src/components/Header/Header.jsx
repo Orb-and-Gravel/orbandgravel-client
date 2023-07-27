@@ -13,12 +13,14 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useRef, useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import { DropdownMenuItem } from './DropdownMenuItem';
+import cartItems from '../../assets/cartItems.json';
+import { DropdownMenuCartItem } from './DropdownMenuCartItem';
+import { TotalPriceCart } from './TotalPriceCart';
 
 const Header = ({ setOpen, open }) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
-
-	const onClickDropdownItem = () => {};
+	const [openCartDropdown, setOpenCartDropdown] = useState(false);
 
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
@@ -66,8 +68,25 @@ const Header = ({ setOpen, open }) => {
 						)}
 					</div>
 				</span>
-				<span className='mr-5 cursor-pointer'>
-					<ShoppingBagIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
+				<span className='mr-5 relative'>
+					<ShoppingBagIcon
+						className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
+						onClick={() => setOpenCartDropdown((prev) => !prev)}
+					/>
+					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
+						<span className='text-xs text-colorOne rounded-full'>
+							{cartItems.length}
+						</span>
+					</span>
+
+					{openCartDropdown && (
+						<DropdownMenu>
+							{cartItems.map((item) => (
+								<DropdownMenuCartItem item={item} key={item.name} />
+							))}
+							<TotalPriceCart />
+						</DropdownMenu>
+					)}
 				</span>
 				<SwitchTransition>
 					<CSSTransition
