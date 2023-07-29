@@ -1,3 +1,4 @@
+import React from 'react';
 import Searchbar from './Searchbar';
 import logo from '../../assets/ong-logo.png';
 import {
@@ -17,17 +18,21 @@ import cartItems from '../../assets/cartItems.json';
 import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 import { TotalPriceCart } from './TotalPriceCart';
 
-const Header = ({ setOpen, open }) => {
+const Header = ({
+	setOpenNav,
+	openNav,
+	setOpenCartDropdown,
+	openCartDropdown,
+}) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
-	const [openCartDropdown, setOpenCartDropdown] = useState(false);
 
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
 				<Searchbar />
 			</div>
-			<div className='flex-[1_0_0%] flex sm:justify-center object-contain'>
+			<div className='flex-[1_0_0%] flex sm:justify-center object-contain sm:ml-0 ml-1'>
 				<img
 					src={logo}
 					alt='Orb & Gravel'
@@ -70,7 +75,9 @@ const Header = ({ setOpen, open }) => {
 				</span>
 				<span className='mr-5 relative'>
 					<ShoppingBagIcon
-						className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
+						className={`h-6 w-6 sm:hover:text-colorThree text-colorFour transition-all cursor-pointer ${
+							openCartDropdown && 'text-colorThree'
+						}`}
 						onClick={() => setOpenCartDropdown((prev) => !prev)}
 					/>
 					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
@@ -80,17 +87,19 @@ const Header = ({ setOpen, open }) => {
 					</span>
 
 					{openCartDropdown && (
-						<DropdownMenu>
-							{cartItems.map((item) => (
-								<DropdownMenuCartItem item={item} key={item.name} />
-							))}
-							<TotalPriceCart />
-						</DropdownMenu>
+						<div className='hidden sm:block'>
+							<DropdownMenu>
+								{cartItems.map((item) => (
+									<DropdownMenuCartItem item={item} key={item.name} />
+								))}
+								<TotalPriceCart />
+							</DropdownMenu>
+						</div>
 					)}
 				</span>
 				<SwitchTransition>
 					<CSSTransition
-						key={open}
+						key={openNav}
 						classNames='fade'
 						nodeRef={iconRef}
 						addEndListener={(done) =>
@@ -99,10 +108,10 @@ const Header = ({ setOpen, open }) => {
 					>
 						<span
 							className='sm:hidden cursor-pointer'
-							onClick={() => setOpen(!open)}
+							onClick={() => setOpenNav(!openNav)}
 							ref={iconRef}
 						>
-							{open ? (
+							{openNav ? (
 								<XMarkIcon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
 							) : (
 								<Bars3Icon className='h-6 w-6 hover:text-colorThree text-colorFour transition-all' />
