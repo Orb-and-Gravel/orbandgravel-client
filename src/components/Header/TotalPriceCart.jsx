@@ -3,7 +3,7 @@ import React from 'react';
 
 export function TotalPriceCart() {
 	return (
-		<div className='bg-colorOne text-colorFive ml-2 mt-2 p-2 rounded-md'>
+		<div className='bg-colorOne text-colorFive mt-2 p-2 rounded-md'>
 			<div className='flex justify-between items-center'>
 				<p className='text-colorFour'>Amount</p>
 				<h3 className='font-bold text-xl text-colorFive'>PKR 500</h3>

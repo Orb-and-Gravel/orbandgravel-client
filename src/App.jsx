@@ -5,24 +5,45 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
 import { VerticalAlternateList } from './components/VerticalAlternateList/VerticalAlternateList';
+import { CartDropdownMenuSmallScreen } from './components/Header/CartDropdownMenuSmallScreen';
 
 function App() {
-	const [open, setOpen] = useState(false);
+	const [openNav, setOpenNav] = useState(false);
+	const [openCartDropdown, setOpenCartDropdown] = useState(false);
 	const navRef = useRef(null);
+	const cartRef = useRef(null);
 	return (
 		<div className='font-nunito'>
-			<Header setOpen={setOpen} open={open} />
+			<Header
+				setOpenNav={setOpenNav}
+				openNav={openNav}
+				openCartDropdown={openCartDropdown}
+				setOpenCartDropdown={setOpenCartDropdown}
+			/>
 			<CSSTransition
 				nodeRef={navRef}
-				in={open}
+				in={openNav}
 				timeout={300}
 				classNames='my-node'
 			>
 				<section
 					ref={navRef}
-					className={`sm:block relative ${!open && 'hidden'} z-10`}
+					className={`sm:block relative ${!openNav && 'hidden'} z-10`}
 				>
 					<Navbar />
+				</section>
+			</CSSTransition>
+			<CSSTransition
+				nodeRef={cartRef}
+				in={openCartDropdown}
+				timeout={300}
+				classNames='my-node'
+			>
+				<section
+					ref={cartRef}
+					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-10`}
+				>
+					<CartDropdownMenuSmallScreen />
 				</section>
 			</CSSTransition>
 			<Hero />
