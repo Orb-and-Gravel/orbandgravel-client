@@ -14,6 +14,7 @@ export function CartDropdownMenuSmallScreen() {
 				</React.Fragment>
 			))}
 			<TotalPriceCartSmallScreen />
+			<hr className='border-colorTwo' />
 		</ul>
 	);
 }

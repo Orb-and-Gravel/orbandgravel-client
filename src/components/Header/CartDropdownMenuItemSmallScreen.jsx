@@ -7,7 +7,7 @@ export function CartDropdownMenuItemSmallScreen({ item }) {
 		<li className='flex justify-between w-full p-4'>
 			<div className='flex justify-between w-full items-center'>
 				<div className='flex'>
-					<div className='w-20'>
+					<div className='max-w-[80px] min-w-[80px]'>
 						<img src={item.imgUrl} className='rounded' />
 					</div>
 					<div className='ml-5 space-y-3 max-w-[200px] my-auto'>
@@ -18,7 +18,7 @@ export function CartDropdownMenuItemSmallScreen({ item }) {
 					</div>
 				</div>
 				<div className='mr-2'>
-					<h2 className='text-lg text-colorThree font-bold'>
+					<h2 className='text-lg text-colorThree font-bold whitespace-nowrap'>
 						PKR {item.price}
 					</h2>
 				</div>
