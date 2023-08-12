@@ -6,6 +6,7 @@ import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
 import { VerticalAlternateList } from './components/VerticalAlternateList/VerticalAlternateList';
 import { CartDropdownMenuSmallScreen } from './components/Header/CartDropdownMenuSmallScreen';
+import { Featured } from './components/Featured/Featured';
 
 function App() {
 	const [openNav, setOpenNav] = useState(false);
@@ -58,6 +59,9 @@ function App() {
 			<div className='lg:mx-7 md:mx-4 mx-2 max-w-[1840px] xl:mx-auto xl:px-10 h-full'>
 				<VerticalAlternateList />
 			</div>
+			<section className='lg:mx-7 md:mx-4 mx-2'>
+				<Featured />
+			</section>
 		</div>
 	);
 }
