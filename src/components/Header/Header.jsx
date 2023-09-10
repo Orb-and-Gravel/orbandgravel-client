@@ -39,6 +39,7 @@ const Header = ({
 					width={250}
 					height={250}
 					className='cursor-pointer'
+					loading='lazy'
 				/>
 			</div>
 			<div className='flex flex-[1_0_0%] justify-center'>

@@ -8,7 +8,7 @@ export function CartDropdownMenuItemSmallScreen({ item }) {
 			<div className='flex justify-between w-full items-center'>
 				<div className='flex'>
 					<div className='max-w-[80px] min-w-[80px]'>
-						<img src={item.imgUrl} className='rounded' />
+						<img src={item.imgUrl} className='rounded' loading='lazy' />
 					</div>
 					<div className='ml-5 space-y-3 max-w-[200px] my-auto'>
 						<h2 className='text-xl text-colorFour tracking-wide'>
