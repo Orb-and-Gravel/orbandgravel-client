@@ -20,6 +20,7 @@ function App() {
 				openNav={openNav}
 				openCartDropdown={openCartDropdown}
 				setOpenCartDropdown={setOpenCartDropdown}
+				cartRef={cartRef}
 			/>
 			<CSSTransition
 				nodeRef={navRef}
