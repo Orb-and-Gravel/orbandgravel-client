@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Searchbar from './Searchbar';
 import logo from '../../assets/ong-logo.png';
 import {
@@ -26,6 +26,18 @@ const Header = ({
 }) => {
 	const iconRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleOutsideClick);
+		return () => {
+			document.removeEventListener('mousedown', handleOutsideClick);
+		};
+	}, []);
+
+	function handleOutsideClick() {
+		setOpenCartDropdown(false);
+		setOpenProfileDropdown(false);
+	}
 
 	return (
 		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
