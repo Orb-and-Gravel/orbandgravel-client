@@ -25,8 +25,9 @@ const Header = ({
 	openCartDropdown,
 }) => {
 	const iconRef = useRef(null);
-	const cartIconRef = useRef();
-	const profileIconRef = useRef();
+	const cartIconRef = useRef(null);
+	const profileIconRef = useRef(null);
+	const cartDropdownRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
 
 	useEffect(() => {
@@ -37,7 +38,10 @@ const Header = ({
 	}, []);
 
 	function handleOutsideClick(event) {
-		if (!cartIconRef.current.contains(event.target)) {
+		if (
+			!cartIconRef.current.contains(event.target) &&
+			!cartDropdownRef.current?.contains(event.target)
+		) {
 			setOpenCartDropdown(false);
 		}
 		if (!profileIconRef.current.contains(event.target)) {
@@ -108,7 +112,7 @@ const Header = ({
 					</span>
 
 					{openCartDropdown && (
-						<div className='hidden sm:block'>
+						<div className='hidden sm:block' ref={cartDropdownRef}>
 							<DropdownMenu>
 								{cartItems.map((item) => (
 									<DropdownMenuCartItem item={item} key={item.name} />
