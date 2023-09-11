@@ -25,6 +25,8 @@ const Header = ({
 	openCartDropdown,
 }) => {
 	const iconRef = useRef(null);
+	const cartIconRef = useRef();
+	const profileIconRef = useRef();
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
 
 	useEffect(() => {
@@ -34,9 +36,13 @@ const Header = ({
 		};
 	}, []);
 
-	function handleOutsideClick() {
-		setOpenCartDropdown(false);
-		setOpenProfileDropdown(false);
+	function handleOutsideClick(event) {
+		if (!cartIconRef.current.contains(event.target)) {
+			setOpenCartDropdown(false);
+		}
+		if (!profileIconRef.current.contains(event.target)) {
+			setOpenProfileDropdown(false);
+		}
 	}
 
 	return (
@@ -60,6 +66,7 @@ const Header = ({
 						<UserIcon
 							className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
 							onClick={() => setOpenProfileDropdown((prev) => !prev)}
+							ref={profileIconRef}
 						/>
 						{openProfileDropdown && (
 							<DropdownMenu>
@@ -91,6 +98,7 @@ const Header = ({
 						className={`h-6 w-6 sm:hover:text-colorThree text-colorFour transition-all cursor-pointer ${
 							openCartDropdown && 'text-colorThree'
 						}`}
+						ref={cartIconRef}
 						onClick={() => setOpenCartDropdown((prev) => !prev)}
 					/>
 					<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
