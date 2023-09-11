@@ -13,7 +13,12 @@ export function CategoryPictureListItem({
 					{categoryNumber}
 				</h3>
 			</div>
-			<img src={imageSrc} alt='' className='object-cover h-[250px]' />
+			<img
+				src={imageSrc}
+				alt=''
+				className='object-cover h-[250px]'
+				loading='lazy'
+			/>
 		</div>
 	);
 }
