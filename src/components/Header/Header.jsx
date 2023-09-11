@@ -23,6 +23,7 @@ const Header = ({
 	openNav,
 	setOpenCartDropdown,
 	openCartDropdown,
+	cartRef,
 }) => {
 	const iconRef = useRef(null);
 	const cartIconRef = useRef(null);
@@ -40,7 +41,8 @@ const Header = ({
 	function handleOutsideClick(event) {
 		if (
 			!cartIconRef.current.contains(event.target) &&
-			!cartDropdownRef.current?.contains(event.target)
+			!cartDropdownRef.current?.contains(event.target) &&
+			!cartRef.current?.contains(event.target)
 		) {
 			setOpenCartDropdown(false);
 		}
