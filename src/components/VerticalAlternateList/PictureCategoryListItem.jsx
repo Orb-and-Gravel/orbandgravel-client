@@ -4,12 +4,13 @@ export function PictureCategoryListItem({
 	imageSrc,
 	categoryName,
 	categoryNumber,
+	alt,
 }) {
 	return (
 		<div className='grid grid-cols-2'>
 			<img
 				src={imageSrc}
-				alt=''
+				alt={alt}
 				className='object-cover h-[250px]'
 				loading='lazy'
 			/>

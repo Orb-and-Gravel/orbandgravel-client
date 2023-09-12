@@ -4,6 +4,7 @@ export function CategoryPictureListItem({
 	categoryNumber,
 	categoryName,
 	imageSrc,
+	alt,
 }) {
 	return (
 		<div className='grid grid-cols-2'>
@@ -15,7 +16,7 @@ export function CategoryPictureListItem({
 			</div>
 			<img
 				src={imageSrc}
-				alt=''
+				alt={alt}
 				className='object-cover h-[250px]'
 				loading='lazy'
 			/>
