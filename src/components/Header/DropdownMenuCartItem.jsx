@@ -7,7 +7,12 @@ export function DropdownMenuCartItem({ item }) {
 		<li>
 			<div className='flex gap-x-4 p-2 hover:bg-colorHeader'>
 				<div className='w-14'>
-					<img src={item.imgUrl} className='rounded' loading='lazy' />
+					<img
+						src={item.imgUrl}
+						alt={item.alt}
+						className='rounded'
+						loading='lazy'
+					/>
 				</div>
 				<div className='mt-1'>
 					<p className='whitespace-nowrap tracking-wide text-colorFour'>

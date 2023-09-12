@@ -6,7 +6,9 @@ export function Featured() {
 		<div className='md:grid md:grid-cols-2 md:gap-x-12'>
 			<div className='mb-5 md:mb-0'>
 				<img
-					className='rounded-xl h-full object-cover'
+					className='rounded-xl h-full w-full object-cover'
+					alt='alt feature img'
+					loading='lazy'
 					src='https://images.unsplash.com/photo-1601821765780-754fa98637c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 				/>
 			</div>
@@ -15,21 +17,25 @@ export function Featured() {
 					imgUrl='https://images.unsplash.com/photo-1601821765780-754fa98637c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 					name='Necklace Name Long'
 					price='PKR 1800'
+					alt='alt img'
 				/>
 				<ProductItem
 					imgUrl='https://images.unsplash.com/photo-1601821765780-754fa98637c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 					name='Necklace Name Long'
 					price='PKR 1800'
+					alt='alt img'
 				/>
 				<ProductItem
 					imgUrl='https://images.unsplash.com/photo-1601821765780-754fa98637c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 					name='Necklace Name Long'
 					price='PKR 1800'
+					alt='alt img'
 				/>
 				<ProductItem
 					imgUrl='https://images.unsplash.com/photo-1601821765780-754fa98637c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 					name='Necklace Name Long'
 					price='PKR 1800'
+					alt='alt img'
 				/>
 			</div>
 		</div>
