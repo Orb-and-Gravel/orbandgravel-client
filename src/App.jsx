@@ -67,7 +67,7 @@ function App() {
 				</h3>
 				<FreshSeasonPick />
 			</section>
-			<section className='lg:mx-7 md:mx-4 mx-2 max-w-[1840px] xl:mx-auto xl:px-10 h-full mt-8'>
+			<section className='lg:mx-7 md:mx-4 mx-2 max-w-[1840px] xl:mx-auto xl:px-10 h-full mt-4'>
 				<h3 className='md:text-4xl lg:text-6xl md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center'>
 					FEATURED
 				</h3>
