@@ -11,7 +11,7 @@ export function LandingBanner() {
 					Orb & Gravel
 				</h2>
 				<h3 className='text-colorOne text-lg'>Marketplace</h3>
-				<button className='text-colorFive bg-colorOne px-7 py-2 rounded-full font-extrabold mt-2 hover:bg-colorTwo transition-all'>
+				<button className='text-colorFive bg-colorOne px-7 py-2 rounded-full font-extrabold mt-2 hover:scale-110 transition-all'>
 					Shop Now
 				</button>
 			</div>

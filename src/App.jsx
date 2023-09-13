@@ -9,6 +9,7 @@ import { CartDropdownMenuSmallScreen } from './components/Header/CartDropdownMen
 import { Featured } from './components/Featured/Featured';
 import { FreshSeasonPick } from './components/FreshSeasonPick/FreshSeasonPick';
 import { LandingBanner } from './components/Banner/LandingBanner';
+import Footer from './components/Footer/Footer';
 
 function App() {
 	const [openNav, setOpenNav] = useState(false);
@@ -77,6 +78,7 @@ function App() {
 				</h3>
 				<Featured />
 			</section>
+			<Footer />
 		</div>
 	);
 }
