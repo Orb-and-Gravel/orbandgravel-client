@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Searchbar from './Searchbar';
-import logo from '../../assets/ong-logo.png';
 import {
 	UserIcon,
 	ShoppingBagIcon,
@@ -58,7 +57,7 @@ const Header = ({
 			</div>
 			<div className='flex-[1_0_0%] flex sm:justify-center object-contain sm:ml-0 ml-1'>
 				<img
-					src={logo}
+					src='/ong-logo.png'
 					alt='Orb & Gravel'
 					width={250}
 					height={250}
