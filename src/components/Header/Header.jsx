@@ -51,7 +51,7 @@ const Header = ({
 	}
 
 	return (
-		<div className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
+		<header className='bg-colorHeader min-w-full h-24 sm:h-28 flex items-center justify-between'>
 			<div className='flex-[1_0_0%] sm:flex justify-center hidden'>
 				<Searchbar />
 			</div>
@@ -123,7 +123,7 @@ const Header = ({
 						</div>
 					)}
 				</span>
-				<SwitchTransition>
+				<SwitchTransition mode='out-in'>
 					<CSSTransition
 						key={openNav}
 						classNames='fade'
@@ -146,7 +146,7 @@ const Header = ({
 					</CSSTransition>
 				</SwitchTransition>
 			</div>
-		</div>
+		</header>
 	);
 };
 

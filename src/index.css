@@ -106,3 +106,13 @@ body {
 	rotate: 14deg;
 	top: 8px;
 }
+
+.dropdown {
+	overflow: hidden;
+	height: 0px;
+	transition: height 0.5s ease;
+}
+
+.dropdown.open {
+	height: 43px;
+}
