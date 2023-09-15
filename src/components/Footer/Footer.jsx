@@ -21,7 +21,11 @@ export default function Footer() {
 						>
 							COMPANY INFO
 						</h6>
-						<div className={`sm:block space-y-0.5 ${!infoDrop && 'hidden'}`}>
+						<div
+							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+								infoDrop ? 'h-[43px]' : ''
+							}`}
+						>
 							<p className='cursor-pointer hover:text-colorFour w-fit px-2 sm:px-0'>
 								Terms & Conditions
 							</p>
@@ -46,7 +50,11 @@ export default function Footer() {
 						>
 							HELP & SUPPORT
 						</h6>
-						<div className={`sm:block space-y-0.5 ${!helpDrop && 'hidden'}`}>
+						<div
+							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+								helpDrop ? 'h-[87px]' : ''
+							}`}
+						>
 							<p className='cursor-pointer hover:text-colorFour w-fit px-2 sm:px-0'>
 								Refund
 							</p>
@@ -68,7 +76,11 @@ export default function Footer() {
 						>
 							CUSTOMER CARE
 						</h6>
-						<div className={`sm:block space-y-0.5 ${!careDrop && 'hidden'}`}>
+						<div
+							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+								careDrop ? 'h-[21px]' : ''
+							}`}
+						>
 							<p className='cursor-pointer hover:text-colorFour w-fit px-2 sm:px-0'>
 								Contact Us
 							</p>
