@@ -22,7 +22,7 @@ export default function Footer() {
 							COMPANY INFO
 						</h6>
 						<div
-							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+							className={`sm:block space-y-0.5 overflow-hidden h-0 sm:h-fit transition-[height] duration-300 ${
 								infoDrop ? 'h-[43px]' : ''
 							}`}
 						>
@@ -51,7 +51,7 @@ export default function Footer() {
 							HELP & SUPPORT
 						</h6>
 						<div
-							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+							className={`sm:block space-y-0.5 overflow-hidden h-0 sm:h-fit transition-[height] duration-300 ${
 								helpDrop ? 'h-[87px]' : ''
 							}`}
 						>
@@ -77,7 +77,7 @@ export default function Footer() {
 							CUSTOMER CARE
 						</h6>
 						<div
-							className={`sm:block space-y-0.5 overflow-hidden h-0 transition-[height] duration-300 ${
+							className={`sm:block space-y-0.5 overflow-hidden h-0 sm:h-fit transition-[height] duration-300 ${
 								careDrop ? 'h-[21px]' : ''
 							}`}
 						>
