@@ -3,7 +3,7 @@ import { SeasonProductItem } from '../Products/SeasonProductItem';
 
 export function FreshSeasonPick() {
 	return (
-		<div className='md:flex md:justify-between md:gap-x-3 grid grid-cols-2 justify-items-center gap-10'>
+		<div className='md:flex md:justify-between md:gap-x-3 grid grid-cols-2 justify-items-center gap-x-6 gap-y-3'>
 			<SeasonProductItem
 				imgUrl='https://plus.unsplash.com/premium_photo-1675719330802-537e44150023?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
 				name='Diamond'
