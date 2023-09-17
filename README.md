@@ -12,4 +12,4 @@
 ---
 
 - Delete all branches locally execpt master and development
-  git branch | grep -v "develop" | grep -v "master" | xargs git branch -D
+  - git branch | grep -v "develop" | grep -v "master" | xargs git branch -D
