@@ -118,7 +118,7 @@ export default function Footer() {
 					</div>
 				</div>
 			</div>
-			<div className='lg:flex lg:justify-between text-xs text-center lg:text-left'>
+			<div className='lg:flex lg:justify-between text-xs text-center lg:text-left tracking-wide'>
 				<p>©2023 Orb & Gravel All Rights Reserved</p>
 				<p>Software by QuantiPhi Systems</p>
 			</div>
