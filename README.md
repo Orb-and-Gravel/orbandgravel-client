@@ -13,3 +13,5 @@
 
 - Delete all branches locally execpt master and development
   - git branch | grep -v "develop" | grep -v "master" | xargs git branch -D
+- Dynamic size images link
+  - https://via.placeholder.com/220?text=2
