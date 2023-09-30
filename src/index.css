@@ -78,6 +78,10 @@ body {
 	width: calc(100% / var(--img-count));
 }
 
+.item:hover > :not(:last-child) {
+	filter: blur(1px) brightness(80%);
+}
+
 @media (max-width: 1838px) {
 	.container {
 		--img-count: 4;

@@ -4,7 +4,6 @@ const Hero = () => {
 		<section className='-z-10 relative max-h-[35rem]'>
 			<picture>
 				<img
-					loading='lazy'
 					src={heroImage}
 					alt='Orb & Gravel'
 					className='object-cover w-full max-h-[35rem]'
