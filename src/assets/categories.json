@@ -1,0 +1,30 @@
+[
+   {
+      "categoryId": 1,
+      "categoryName": "jewelry"
+   },
+   {
+      "categoryId": 2,
+      "categoryName": "fine jewelry"
+   },
+   {
+      "categoryId": 3,
+      "categoryName": "collections"
+   },
+   {
+      "categoryId": 4,
+      "categoryName": "men's"
+   },
+   {
+      "categoryId": 5,
+      "categoryName": "women's"
+   },
+   {
+      "categoryId": 6,
+      "categoryName": "gifts"
+   },
+   {
+      "categoryId": 7,
+      "categoryName": "sale"
+   }
+]
