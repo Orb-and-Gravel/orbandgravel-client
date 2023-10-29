@@ -1,56 +1,14 @@
-import React, { useRef, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
 import { Carousel } from '../components/Carousel/Carousel';
-import Header from '../components/Header/Header';
 import Hero from '../components/Hero/Hero';
-import Navbar from '../components/Navbar/Navbar';
 import { VerticalAlternateList } from '../components/VerticalAlternateList/VerticalAlternateList';
-import { CartDropdownMenuSmallScreen } from '../components/Header/CartDropdownMenuSmallScreen';
 import { Featured } from '../components/Featured/Featured';
 import { FreshSeasonPick } from '../components/FreshSeasonPick/FreshSeasonPick';
 import { LandingBanner } from '../components/Banner/LandingBanner';
-import Footer from '../components/Footer/Footer';
 
 export function LandingPage() {
-	const [openNav, setOpenNav] = useState(false);
-	const [openCartDropdown, setOpenCartDropdown] = useState(false);
-	const navRef = useRef(null);
-	const cartRef = useRef(null);
 	return (
-		<div className='font-nunito'>
-			<Header
-				setOpenNav={setOpenNav}
-				openNav={openNav}
-				openCartDropdown={openCartDropdown}
-				setOpenCartDropdown={setOpenCartDropdown}
-				cartRef={cartRef}
-			/>
-			<CSSTransition
-				nodeRef={navRef}
-				in={openNav}
-				timeout={300}
-				classNames='my-node'
-			>
-				<section
-					ref={navRef}
-					className={`sm:block relative ${!openNav && 'hidden'} z-10`}
-				>
-					<Navbar />
-				</section>
-			</CSSTransition>
-			<CSSTransition
-				nodeRef={cartRef}
-				in={openCartDropdown}
-				timeout={300}
-				classNames='my-node'
-			>
-				<section
-					ref={cartRef}
-					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-10`}
-				>
-					<CartDropdownMenuSmallScreen />
-				</section>
-			</CSSTransition>
+		<div>
 			<Hero />
 			<div className='xl:mx-10 lg:mx-7 md:mx-4 mx-2 flex justify-center relative'>
 				<section className='mt-4'>
@@ -78,7 +36,6 @@ export function LandingPage() {
 				</h3>
 				<Featured />
 			</section>
-			<Footer />
 		</div>
 	);
 }
