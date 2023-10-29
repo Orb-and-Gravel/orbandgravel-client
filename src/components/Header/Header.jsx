@@ -56,14 +56,14 @@ const Header = ({
 				<Searchbar />
 			</div>
 			<div className='flex-[1_0_0%] flex sm:justify-center object-contain sm:ml-0 ml-1'>
-				<img
-					src='/ong-logo.png'
-					alt='Orb & Gravel'
-					width={250}
-					height={250}
-					className='cursor-pointer'
-					loading='lazy'
-				/>
+				<a href='/'>
+					<img
+						src='/ong-logo.png'
+						alt='Orb & Gravel'
+						width={250}
+						height={250}
+					/>
+				</a>
 			</div>
 			<div className='flex flex-[1_0_0%] justify-center'>
 				<span className='mr-5'>
