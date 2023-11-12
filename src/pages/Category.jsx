@@ -6,14 +6,18 @@ export function Category() {
 	const { categoryId } = useParams();
 	const catData = category[categoryId - 1];
 	return (
-		<div className='px-4'>
-			<p>{catData.categoryId}</p>
-			<p>{catData.categoryName}</p>
+		<div className='p-4'>
+			{/* <p>{catData.categoryId}</p> */}
 			<img
 				src={catData.banner}
 				alt={catData.categoryName}
-				className='w-full h-[300px] object-cover rounded-xl'
+				className='w-full h-[25rem] object-cover rounded-xl'
 			/>
+			<section className='mt-4'>
+				<h3 className='md:text-4xl lg:text-6xl md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center uppercase'>
+					{catData.categoryName}
+				</h3>
+			</section>
 		</div>
 	);
 }
