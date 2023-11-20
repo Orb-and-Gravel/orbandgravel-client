@@ -2,36 +2,43 @@
    {
       "categoryId": 1,
       "categoryName": "jewelry",
+      "slug": "jewelry",
       "banner": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&q=80&w=1775&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 2,
       "categoryName": "fine jewelry",
+      "slug": "fine-jewelry",
       "banner": "https://images.unsplash.com/photo-1554047310-ab6170fc7b10?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 3,
       "categoryName": "collections",
+      "slug": "collections",
       "banner": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 4,
       "categoryName": "men's",
+      "slug": "mens",
       "banner": "https://images.unsplash.com/photo-1594734415578-00fc9540929b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 5,
       "categoryName": "women's",
+      "slug": "womens",
       "banner": "https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 6,
       "categoryName": "gifts",
+      "slug": "gifts",
       "banner": "https://images.unsplash.com/photo-1528372531841-f1228963b0af?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    },
    {
       "categoryId": 7,
       "categoryName": "sale",
+      "slug": "sale",
       "banner": "https://images.unsplash.com/photo-1477093782505-e10aaeb27c6d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
    }
 ]

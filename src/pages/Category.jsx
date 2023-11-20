@@ -1,37 +1,46 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import category from '../assets/categories.json';
 
 export function Category() {
-	const { categoryId } = useParams();
-	const catData = category[categoryId - 1];
+	const { slug } = useParams();
+	let catData;
+	category.forEach((cat) => {
+		if (cat.slug === slug) catData = cat;
+	});
 	return (
 		<div className='p-4'>
-			{/* <p>{catData.categoryId}</p> */}
 			<img
 				src={catData.banner}
 				alt={catData.categoryName}
 				className='w-full h-[25rem] object-cover rounded-xl'
 			/>
-			<section className='mt-4 flex justify-between'>
-				<h3 className='md:text-4xl lg:text-6xl md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center uppercase'>
+			<section className='mt-4 sm:flex sm:justify-between'>
+				<h3 className='lg:text-6xl sm:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center uppercase'>
 					{catData.categoryName}
 				</h3>
-				<div className='flex items-center gap-x-2 w-64'>
+				<div className='sm:flex sm:items-center gap-x-2 sm:w-64 text-center mt-5 sm:mt-0'>
 					<p className='whitespace-nowrap'>Sort by</p>
-					{/* !Todo: Replace select and options tag */}
 					<select
 						name='sort'
 						id='sort-categories'
-						className='bg-colorHeader text-colorFour p-2 w-full rounded-md border border-colorTwo'
+						className='bg-colorHeader text-colorFive p-2 w-full rounded-md border border-colorTwo focus-visible:outline-none cursor-pointer'
 					>
-						<option value='popularity' className='bg-white'>
+						<option value='popularity' className='text-colorFour bg-white'>
 							Popularity
 						</option>
-						<option value='date'>Date</option>
-						<option value='ratings'>Ratings</option>
-						<option value='bestseller'>Best Seller</option>
-						<option value='new'>New</option>
+						<option value='date' className='text-colorFour bg-white'>
+							Date
+						</option>
+						<option value='ratings' className='text-colorFour bg-white'>
+							Ratings
+						</option>
+						<option value='bestseller' className='text-colorFour bg-white'>
+							Best Seller
+						</option>
+						<option value='new' className='text-colorFour bg-white'>
+							New
+						</option>
 					</select>
 				</div>
 			</section>

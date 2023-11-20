@@ -51,7 +51,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<LandingPage />} />
-					<Route path='/category/:categoryId' element={<Category />} />
+					<Route path='/category/:slug' element={<Category />} />
 				</Routes>
 			</BrowserRouter>
 			<Footer />
