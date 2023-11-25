@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import category from '../assets/categories.json';
+import { CatProductItem } from '../components/Products/CatProductItem';
 
 export function Category() {
 	const { slug } = useParams();
@@ -44,6 +45,7 @@ export function Category() {
 					</select>
 				</div>
 			</section>
+			<CatProductItem />
 		</div>
 	);
 }
