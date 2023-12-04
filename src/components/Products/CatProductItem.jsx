@@ -28,7 +28,7 @@ export function CatProductItem() {
 function ColorCatProduct() {
 	return (
 		<div className='flex gap-x-2'>
-			<button className='h-4 w-4 bg-colorThree rounded-full'></button>
+			<button className='h-4 w-4 bg-colorThree rounded-full focus:outline-1 focus:outline-offset-2 focus:outline-colorFour focus:outline'></button>
 			<div className='h-4 w-4 bg-colorFive rounded-full'></div>
 			<div className='h-4 w-4 bg-colorOne rounded-full'></div>
 		</div>
