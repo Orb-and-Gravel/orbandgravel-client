@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Rating() {
 	return (
-		<div class='flex items-center'>
+		<div className='flex items-center'>
 			<svg
 				className='text-colorTwo'
 				aria-hidden='true'
