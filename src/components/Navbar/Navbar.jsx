@@ -5,10 +5,11 @@ const Navbar = () => {
 			<hr className='border-colorTwo' />
 			<ul className='flex justify-between sm:items-center my-4 xl:mx-64 lg:mx-32 md:mx-16 sm:mx-4 sm:flex-row flex-col ml-6'>
 				{categories.map((category) => (
-					<li className='text-sm tracking-widest cursor-pointer text-colorFour hover:text-colorThree sm:mb-0 mb-3 transition-all uppercase'>
-						<a href={`/category/${category.categoryId}`}>
-							{category.categoryName}
-						</a>
+					<li
+						className='text-sm tracking-widest cursor-pointer text-colorFour hover:text-colorThree sm:mb-0 mb-3 transition-all uppercase'
+						key={category.categoryId}
+					>
+						<a href={`/category/${category.slug}`}>{category.categoryName}</a>
 					</li>
 				))}
 			</ul>
