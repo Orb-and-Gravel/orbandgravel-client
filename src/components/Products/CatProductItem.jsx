@@ -11,7 +11,7 @@ export function CatProductItem() {
 	const [colorVariant, setColorVariant] = useState(0);
 
 	return (
-		<div className='w-96 relative'>
+		<div className='max-w-sm relative'>
 			<div className='absolute top-4 left-4'>
 				<ColorCatProduct
 					setColorVariant={setColorVariant}

@@ -45,7 +45,14 @@ export function Category() {
 					</select>
 				</div>
 			</section>
-			<CatProductItem />
+			<section className='flex lg:justify-between flex-wrap gap-10 justify-center mt-10'>
+				<CatProductItem />
+				<CatProductItem />
+				<CatProductItem />
+				<CatProductItem />
+				<CatProductItem />
+				<CatProductItem />
+			</section>
 		</div>
 	);
 }
