@@ -12,7 +12,7 @@ export function CatProductItem() {
 
 	return (
 		<div className='max-w-sm relative'>
-			<div className='absolute top-4 left-4'>
+			<div className='absolute top-4 left-4 z-10'>
 				<ColorCatProduct
 					setColorVariant={setColorVariant}
 					colorVariant={colorVariant}
