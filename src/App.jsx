@@ -52,6 +52,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<LandingPage />} />
 					<Route path='/category/:slug' element={<Category />} />
+					<Route path='/*' element={<div>Error</div>} />
 				</Routes>
 			</BrowserRouter>
 			<Footer />

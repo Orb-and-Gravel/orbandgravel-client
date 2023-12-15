@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import category from '../assets/categories.json';
 import { CatProductItem } from '../components/Products/CatProductItem';
@@ -11,11 +11,26 @@ export function Category() {
 	});
 	return (
 		<div className='p-4'>
-			<img
-				src={catData.banner}
-				alt={catData.categoryName}
-				className='w-full h-[25rem] object-cover rounded-xl'
-			/>
+			<div className='relative'>
+				<img
+					src={catData.banner}
+					alt={catData.categoryName}
+					className='w-full h-[25rem] object-cover rounded-xl'
+				/>
+				<div className='absolute inset-0 m-auto max-h-fit max-w-fit'>
+					<h1
+						className='font-poiret xl:text-[7rem] lg:text-[6rem] sm:text-[5rem] text-[3rem] tracking-tight text-center max-w-fit sm:px-10 px-3'
+						style={{
+							color: '#E0E0FF',
+							mixBlendMode: 'normal',
+							textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+							WebkitTextStroke: '1px #E3C584',
+						}}
+					>
+						{catData.categoryName}
+					</h1>
+				</div>
+			</div>
 			<section className='mt-4 sm:flex sm:justify-between'>
 				<h3 className='lg:text-6xl sm:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center uppercase'>
 					{catData.categoryName}
