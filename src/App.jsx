@@ -1,62 +1,36 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LandingPage } from './pages/LandingPage';
 import { Category } from './pages/Category';
-import Header from './components/Header/Header';
-import { CSSTransition } from 'react-transition-group';
-import Navbar from './components/Navbar/Navbar';
-import { CartDropdownMenuSmallScreen } from './components/Header/CartDropdownMenuSmallScreen';
 import Footer from './components/Footer/Footer';
+import { HeaderWhole } from './components/Header/HeaderWhole';
+import { Outlet } from 'react-router-dom';
+import { Error } from './pages/Error';
+
+function PageLayout() {
+	return (
+		<>
+			<HeaderWhole />
+			<Outlet />
+			<Footer />
+		</>
+	);
+}
 
 function App() {
-	const [openNav, setOpenNav] = useState(false);
-	const [openCartDropdown, setOpenCartDropdown] = useState(false);
-	const navRef = useRef(null);
-	const cartRef = useRef(null);
 	return (
-		<main className='font-nunito'>
-			<Header
-				setOpenNav={setOpenNav}
-				openNav={openNav}
-				openCartDropdown={openCartDropdown}
-				setOpenCartDropdown={setOpenCartDropdown}
-				cartRef={cartRef}
-			/>
-			<CSSTransition
-				nodeRef={navRef}
-				in={openNav}
-				timeout={300}
-				classNames='my-node'
-			>
-				<section
-					ref={navRef}
-					className={`sm:block relative ${!openNav && 'hidden'} z-10`}
-				>
-					<Navbar />
-				</section>
-			</CSSTransition>
-			<CSSTransition
-				nodeRef={cartRef}
-				in={openCartDropdown}
-				timeout={300}
-				classNames='my-node'
-			>
-				<section
-					ref={cartRef}
-					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-10`}
-				>
-					<CartDropdownMenuSmallScreen />
-				</section>
-			</CSSTransition>
+		<div className='font-nunito'>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<LandingPage />} />
-					<Route path='/category/:slug' element={<Category />} />
-					<Route path='/*' element={<div>Error</div>} />
+					<Route element={<PageLayout />}>
+						<Route path='/' element={<LandingPage />} />
+						<Route path='/category/:slug' element={<Category />} />
+					</Route>
+					<Route path='/error' element={<Error />} />
+					<Route path='/*' element={<Error />} />
 				</Routes>
 			</BrowserRouter>
-			<Footer />
-		</main>
+		</div>
 	);
 }
 
