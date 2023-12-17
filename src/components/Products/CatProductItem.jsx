@@ -18,7 +18,7 @@ export function CatProductItem() {
 					colorVariant={colorVariant}
 				/>
 			</div>
-			<a href='/single-product'>
+			<a href='/single-product-page/1'>
 				<img
 					src={images[colorVariant]}
 					alt=''

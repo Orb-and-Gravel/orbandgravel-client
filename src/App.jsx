@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import { HeaderWhole } from './components/Header/HeaderWhole';
 import { Outlet } from 'react-router-dom';
 import { Error } from './pages/Error';
+import { SingleProductPage } from './pages/SingleProductPage';
 
 function PageLayout() {
 	return (
@@ -25,6 +26,10 @@ function App() {
 					<Route element={<PageLayout />}>
 						<Route path='/' element={<LandingPage />} />
 						<Route path='/category/:slug' element={<Category />} />
+						<Route
+							path='/single-product-page/:slug'
+							element={<SingleProductPage />}
+						/>
 					</Route>
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />

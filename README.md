@@ -8,6 +8,9 @@
 - http://www.independent-software.com/drawing-progress-arc-in-pure-css-using-skewed-rectangles.html
 - https://dribbble.com/shots/22184402-FurnitureWorld-Ecommerce-Product-List-Design-Exploration
 - https://colorlib.com/wp/free-404-error-page-templates/
+- https://www.kendrascott.com/jewelry/bracelets/elaina-gold-adjustable-chain-bracelet-in-emerald-cats-eye/842177153130.html
+- https://mejuri.com/world/en/shop/products/hoops-and-pearl-charms-set
+- https://react-slick.neostack.com/docs/get-started/
 
 ### Useful Commands
 
