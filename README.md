@@ -10,7 +10,7 @@
 - https://colorlib.com/wp/free-404-error-page-templates/
 - https://www.kendrascott.com/jewelry/bracelets/elaina-gold-adjustable-chain-bracelet-in-emerald-cats-eye/842177153130.html
 - https://mejuri.com/world/en/shop/products/hoops-and-pearl-charms-set
-- https://react-slick.neostack.com/docs/get-started/
+- https://www.elo.shopping/products/mens-solid-design-minor-fault-crew-neck-tee-shirt
 
 ### Useful Commands
 
