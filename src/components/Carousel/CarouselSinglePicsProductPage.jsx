@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useSwipeable } from 'react-swipeable';
 
-export function CarouselSinglePicsProductPage({ children }) {
+export function CarouselSinglePicsProductPage({ children, setActiveSlide }) {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const swipeCarousel = (updatedIndex) => {
@@ -15,10 +15,13 @@ export function CarouselSinglePicsProductPage({ children }) {
 		);
 		if (updatedIndex < 0) {
 			setActiveIndex(0);
+			setActiveSlide(0);
 		} else if (updatedIndex > totalIndex) {
 			setActiveIndex(totalIndex);
+			setActiveSlide(totalIndex);
 		} else {
 			setActiveIndex(updatedIndex);
+			setActiveSlide(updatedIndex);
 		}
 	};
 
