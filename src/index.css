@@ -71,11 +71,17 @@ body {
 
 .container {
 	--img-count: 4;
+	--img-count-single: 1;
 }
 
 .item {
 	flex: 0 0 calc(100% / var(--img-count));
 	width: calc(100% / var(--img-count));
+}
+
+.item-single {
+	flex: 0 0 calc(100% / var(--img-count-single));
+	width: calc(100% / var(--img-count-single));
 }
 
 .item:hover > :not(:last-child) {

@@ -18,17 +18,19 @@ export function CatProductItem() {
 					colorVariant={colorVariant}
 				/>
 			</div>
-			<img
-				src={images[colorVariant]}
-				alt=''
-				className='object-cover rounded-2xl h-96'
-			/>
-			<span className='flex justify-between mt-3'>
-				<p className='text-lg font-medium text-colorFive'>
-					Nova Bliss Necklace
-				</p>
-				<h6 className='text-2xl text-colorThree font-bold'>PKR 3000</h6>
-			</span>
+			<a href='/single-product-page/1'>
+				<img
+					src={images[colorVariant]}
+					alt=''
+					className='object-cover rounded-2xl h-96'
+				/>
+				<span className='flex justify-between mt-3'>
+					<p className='text-lg font-medium text-colorFive'>
+						Nova Bliss Necklace
+					</p>
+					<h6 className='text-2xl text-colorThree font-bold'>PKR 3000</h6>
+				</span>
+			</a>
 			<div className='w-36'>
 				<Rating />
 			</div>
