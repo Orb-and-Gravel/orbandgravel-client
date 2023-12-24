@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CarouselItem({ imgLink, alt }) {
+export function CarouselItem({ imgLink, alt }) {
 	return (
 		<div className='item aspect-4/5 p-1 group relative'>
 			<img

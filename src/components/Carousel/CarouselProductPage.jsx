@@ -1,21 +1,10 @@
 import React from 'react';
-import CarouselItemProductPage from './CarouselItemProductPage';
-import CarouselPicsProductPage from './CarouselPicsProductPage';
+import { CarouselItemProductPage } from './CarouselItemProductPage';
+import { CarouselPicsProductPage } from './CarouselPicsProductPage';
 
-export function CarouselProductPage({
-	slides,
-	activeSlide,
-	activeIndexCarouselProduct,
-	setActiveIndexCarouselProduct,
-	productPageRef,
-}) {
+export function CarouselProductPage({ slides, activeSlide, setActiveSlide }) {
 	return (
-		<CarouselPicsProductPage
-			activeSlide={activeSlide}
-			activeIndex={activeIndexCarouselProduct}
-			setActiveIndex={setActiveIndexCarouselProduct}
-			ref={productPageRef}
-		>
+		<CarouselPicsProductPage activeSlide={activeSlide}>
 			{slides.map((slide, index) => {
 				return (
 					<CarouselItemProductPage
@@ -24,6 +13,7 @@ export function CarouselProductPage({
 						alt={slide.alt}
 						activeSlide={activeSlide}
 						index={index}
+						setActiveSlide={setActiveSlide}
 					/>
 				);
 			})}

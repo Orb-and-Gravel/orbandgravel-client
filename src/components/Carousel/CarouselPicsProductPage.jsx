@@ -1,17 +1,21 @@
-import React, { forwardRef, useImperativeHandle } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useSwipeable } from 'react-swipeable';
 
-const CarouselPicsProductPage = forwardRef(function (
-	{ children, activeIndex, setActiveIndex },
-	ref
-) {
+export function CarouselPicsProductPage({ children, activeSlide }) {
+	const [activeIndex, setActiveIndex] = useState(0);
 	function computeItemsToDisplay() {
 		const container = document.querySelector('.container');
 		const allItems = getComputedStyle(container);
 		const itemsDisplayed = allItems.getPropertyValue('--img-count');
 		return itemsDisplayed;
 	}
+
+	useEffect(() => {
+		const itemsDisplayed = computeItemsToDisplay();
+		const factor = Math.floor(activeSlide / itemsDisplayed);
+		swipeCarousel(factor);
+	}, [activeSlide]);
 
 	function swipeCarousel(updatedIndex) {
 		const itemsDisplayed = computeItemsToDisplay();
@@ -27,11 +31,6 @@ const CarouselPicsProductPage = forwardRef(function (
 			setActiveIndex(updatedIndex);
 		}
 	}
-	useImperativeHandle(ref, () => ({
-		moveCarousel(ai) {
-			swipeCarousel(ai);
-		},
-	}));
 
 	const swipe = useSwipeable({
 		onSwipedLeft: () => swipeCarousel(activeIndex + 1),
@@ -72,6 +71,4 @@ const CarouselPicsProductPage = forwardRef(function (
 			</div>
 		</section>
 	);
-});
-
-export default CarouselPicsProductPage;
+}

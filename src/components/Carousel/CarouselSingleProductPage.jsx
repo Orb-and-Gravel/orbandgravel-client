@@ -1,18 +1,16 @@
 import React from 'react';
 import { CarouselSinglePicsProductPage } from './CarouselSinglePicsProductPage';
-import CarouselSingleItemProductPage from './CarouselSingleItemProductPage';
+import { CarouselSingleItemProductPage } from './CarouselSingleItemProductPage';
 
 export function CarouselSingleProductPage({
 	slides,
 	setActiveSlide,
-	autoForwardSlide,
-	autoBackwardSlide,
+	activeSlide,
 }) {
 	return (
 		<CarouselSinglePicsProductPage
 			setActiveSlide={setActiveSlide}
-			autoBackwardSlide={autoBackwardSlide}
-			autoForwardSlide={autoForwardSlide}
+			activeSlide={activeSlide}
 		>
 			{slides.map((slide, index) => {
 				return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CarouselSingleItemProductPage({ imgLink, alt }) {
+export function CarouselSingleItemProductPage({ imgLink, alt }) {
 	return (
 		<div className='item-single aspect-4/5 p-1 relative'>
 			<img
