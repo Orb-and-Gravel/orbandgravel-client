@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useSwipeable } from 'react-swipeable';
 
-export function CarouselSinglePicsProductPage({ children, setActiveSlide }) {
+export function CarouselSinglePicsProductPage({
+	children,
+	setActiveSlide,
+	autoForwardSlide,
+	autoBackwardSlide,
+}) {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const swipeCarousel = (updatedIndex) => {
@@ -34,7 +39,10 @@ export function CarouselSinglePicsProductPage({ children, setActiveSlide }) {
 		<section {...swipe} className='flex overflow-hidden w-fit'>
 			<div className='bg-white z-10 flex items-center'>
 				<button
-					onClick={() => swipeCarousel(activeIndex - 1)}
+					onClick={() => {
+						swipeCarousel(activeIndex - 1);
+						autoBackwardSlide();
+					}}
 					className='h-fit'
 				>
 					<ArrowLeftIcon className='w-6 h-6 transition-all text-colorFive bg-colorOne rounded-full' />
@@ -56,7 +64,10 @@ export function CarouselSinglePicsProductPage({ children, setActiveSlide }) {
 			</div>
 			<div className='bg-white z-10 flex items-center'>
 				<button
-					onClick={() => swipeCarousel(activeIndex + 1)}
+					onClick={() => {
+						swipeCarousel(activeIndex + 1);
+						autoForwardSlide();
+					}}
 					className='h-fit'
 				>
 					<ArrowRightIcon className='w-6 h-6 transition-all text-colorFive bg-colorOne rounded-full' />

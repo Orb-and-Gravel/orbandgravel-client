@@ -1,13 +1,25 @@
 import React from 'react';
 import CarouselItemProductPage from './CarouselItemProductPage';
-import { CarouselPicsProductPage } from './CarouselPicsProductPage';
+import CarouselPicsProductPage from './CarouselPicsProductPage';
 
-export function CarouselProductPage({ slides, activeSlide }) {
+export function CarouselProductPage({
+	slides,
+	activeSlide,
+	activeIndexCarouselProduct,
+	setActiveIndexCarouselProduct,
+	productPageRef,
+}) {
 	return (
-		<CarouselPicsProductPage>
+		<CarouselPicsProductPage
+			activeSlide={activeSlide}
+			activeIndex={activeIndexCarouselProduct}
+			setActiveIndex={setActiveIndexCarouselProduct}
+			ref={productPageRef}
+		>
 			{slides.map((slide, index) => {
 				return (
 					<CarouselItemProductPage
+						key={index}
 						imgLink={slide.imgLink}
 						alt={slide.alt}
 						activeSlide={activeSlide}

@@ -4,14 +4,20 @@ import CarouselSingleItemProductPage from './CarouselSingleItemProductPage';
 
 export function CarouselSingleProductPage({
 	slides,
-	activeSlide,
 	setActiveSlide,
+	autoForwardSlide,
+	autoBackwardSlide,
 }) {
 	return (
-		<CarouselSinglePicsProductPage setActiveSlide={setActiveSlide}>
-			{slides.map((slide) => {
+		<CarouselSinglePicsProductPage
+			setActiveSlide={setActiveSlide}
+			autoBackwardSlide={autoBackwardSlide}
+			autoForwardSlide={autoForwardSlide}
+		>
+			{slides.map((slide, index) => {
 				return (
 					<CarouselSingleItemProductPage
+						key={index}
 						imgLink={slide.imgLink}
 						alt={slide.alt}
 					/>

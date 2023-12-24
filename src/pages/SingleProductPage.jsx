@@ -47,6 +47,16 @@ const images = [
 			'https://plus.unsplash.com/premium_photo-1681319269837-98a23dfb24aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
 		alt: 'alt',
 	},
+	{
+		imgLink:
+			'https://images.unsplash.com/photo-1695345272166-4efd76dd7a21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80',
+		alt: 'alt',
+	},
+	{
+		imgLink:
+			'https://images.unsplash.com/photo-1564512480295-86e479d9b87c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+		alt: 'alt',
+	},
 ];
 
 export function SingleProductPage() {
