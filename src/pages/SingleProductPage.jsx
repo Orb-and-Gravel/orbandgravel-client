@@ -61,7 +61,7 @@ const images = [
 
 export function SingleProductPage() {
 	return (
-		<div className='grid grid-cols-7 gap-x-4'>
+		<div className='grid grid-cols-7'>
 			<section className='col-span-4'>
 				<ProductPageImageSlider slides={images} />
 			</section>
