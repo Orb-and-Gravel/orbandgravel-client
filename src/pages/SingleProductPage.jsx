@@ -5,18 +5,18 @@ import { StarIcon } from '@heroicons/react/24/solid';
 
 export function SingleProductPage() {
 	return (
-		<div className='grid grid-cols-7'>
+		<div className='md:grid block grid-cols-7'>
 			<section className='col-span-4'>
 				<ProductPageImageSlider slides={images} />
 			</section>
-			<section className='col-span-3 p-14'>
-				<h4 className='text-2xl font-bold text-colorFive'>
+			<section className='col-span-3 lg:p-14 p-8 md:text-left text-center'>
+				<h4 className='lg:text-2xl text-xl font-bold text-colorFive'>
 					Hoops & Pearl Charms set
 				</h4>
-				<h6 className='font-semibold text-xl text-colorThree mt-0.5'>
+				<h6 className='font-semibold lg:text-xl text-lg text-colorThree mt-0.5'>
 					PKR 3000
 				</h6>
-				<div className='flex gap-x-2 mt-3 items-center'>
+				<div className='flex lg:gap-x-2 gap-x-1 mt-3 items-center sm:justify-start justify-center'>
 					<StarIcon className='w-4' />
 					<StarIcon className='w-4' />
 					<StarIcon className='w-4' />
