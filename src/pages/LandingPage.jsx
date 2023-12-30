@@ -27,15 +27,15 @@ export function LandingPage() {
 				</h3>
 				<FreshSeasonPick />
 			</section>
-			<div className='mt-10'>
-				<LandingBanner />
-			</div>
 			<section className='lg:mx-7 md:mx-4 mx-2 max-w-[1840px] xl:mx-auto xl:px-10 h-full mt-8'>
 				<h3 className='md:text-4xl lg:text-6xl md:font-oswald text-colorFive whitespace-nowrap text-5xl font-black font-poiret tracking-tight md:block flex justify-center'>
 					FEATURED
 				</h3>
 				<Featured />
 			</section>
+			<div className='mt-10'>
+				<LandingBanner />
+			</div>
 		</div>
 	);
 }

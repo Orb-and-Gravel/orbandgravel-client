@@ -26,7 +26,7 @@ export function HeaderWhole() {
 			>
 				<section
 					ref={navRef}
-					className={`sm:block relative ${!openNav && 'hidden'} z-10`}
+					className={`sm:block relative ${!openNav && 'hidden'} z-50`}
 				>
 					<Navbar />
 				</section>
@@ -39,7 +39,7 @@ export function HeaderWhole() {
 			>
 				<section
 					ref={cartRef}
-					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-10`}
+					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-50`}
 				>
 					<CartDropdownMenuSmallScreen />
 				</section>
