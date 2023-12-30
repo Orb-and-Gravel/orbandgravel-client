@@ -38,7 +38,7 @@ export function CarouselSinglePicsProductPage({
 					}}
 					className='h-fit'
 				>
-					<ArrowLeftIcon className='w-6 h-6 transition-all text-colorFive bg-colorOne rounded-full' />
+					<ArrowLeftIcon className='md:w-6 md:h-6 w-4 h-4 transition-all text-colorFive bg-colorOne rounded-full' />
 				</button>
 			</div>
 			<div className='container flex w-full'>
@@ -62,7 +62,7 @@ export function CarouselSinglePicsProductPage({
 					}}
 					className='h-fit'
 				>
-					<ArrowRightIcon className='w-6 h-6 transition-all text-colorFive bg-colorOne rounded-full' />
+					<ArrowRightIcon className='md:w-6 md:h-6 w-4 h-4 transition-all text-colorFive bg-colorOne rounded-full' />
 				</button>
 			</div>
 		</section>
