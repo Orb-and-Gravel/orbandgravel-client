@@ -16,7 +16,7 @@ export function SingleProductPage() {
 				<h6 className='font-semibold lg:text-xl text-lg text-colorThree mt-0.5'>
 					PKR 3000
 				</h6>
-				<div className='flex lg:gap-x-2 gap-x-1 mt-3 items-center sm:justify-start justify-center'>
+				<div className='flex lg:gap-x-2 gap-x-1 mt-3 items-center md:justify-start justify-center'>
 					<StarIcon className='w-4' />
 					<StarIcon className='w-4' />
 					<StarIcon className='w-4' />
@@ -29,7 +29,14 @@ export function SingleProductPage() {
 					</a>
 				</div>
 				<hr className='mt-7 border border-colorFour' />
-				<div></div>
+				<div className='mt-8'>
+					<p>color green</p>
+					<div className='flex gap-x-4 mt-3'>
+						<button className='h-8 w-8 bg-slate-500 rounded-full outline outline-1 outline-offset-2 outline-colorFour' />
+						<button className='h-8 w-8 bg-blue-500 rounded-full outline outline-1 outline-offset-2 outline-colorFour' />
+						<button className='h-8 w-8 bg-green-500 rounded-full outline outline-1 outline-offset-2 outline-colorFour' />
+					</div>
+				</div>
 			</section>
 		</div>
 	);
