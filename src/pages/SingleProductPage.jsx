@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ProductPageImageSlider } from '../components/Products/ProductPageImageSlider';
 import images from '../assets/images.json';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { HeartIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 export function SingleProductPage() {
 	const [color, setColor] = useState('slate');
-
+	const [drop, setDrop] = useState(false);
+	const divRef = useRef(null);
+	const [height, setHeight] = useState(null);
+	console.log(divRef?.current?.clientHeight);
+	useEffect(() => {
+		setHeight(divRef?.current?.clientHeight);
+	});
 	return (
 		<div className='md:grid block grid-cols-7'>
 			<section className='col-span-4'>
@@ -31,9 +38,9 @@ export function SingleProductPage() {
 					</a>
 				</div>
 				<hr className='mt-7 border border-colorFour' />
-				<div className='mt-8'>
+				<div className='mt-12'>
 					<p>color {color}</p>
-					<div className='flex gap-x-4 mt-3'>
+					<div className='flex gap-x-4 mt-3 justify-center sm:justify-start'>
 						<button
 							className={`h-8 w-8 bg-slate-500 rounded-full outline ${
 								color == 'slate' ? 'outline-3' : 'outline-1'
@@ -60,6 +67,43 @@ export function SingleProductPage() {
 						/>
 					</div>
 				</div>
+				<div className='mt-16'>
+					<div className='flex gap-x-1'>
+						<button className='text-colorOne bg-colorFive p-4 flex-1 font-semibold tracking-wider hover:bg-colorFour transition-all'>
+							ADD TO CART
+						</button>
+						<button className='text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'>
+							<HeartIcon className='w-6' />
+						</button>
+					</div>
+				</div>
+				<section className='mt-20'>
+					<hr className='border border-colorFour' />
+					<div className='flex items-center justify-between mt-6 text-colorFive px-3'>
+						<h3>Details</h3>
+						<PlusIcon
+							className='w-6'
+							onClick={() => setDrop((prev) => !prev)}
+						/>
+					</div>
+					<div
+						className={`h-0 overflow-hidden transition-[height] duration-300 ${
+							drop ? `h-[${height}px]` : ''
+						}`}
+					>
+						<div ref={divRef}>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+							<p>s</p>
+						</div>
+					</div>
+					<hr className='border border-colorFour mt-6' />
+				</section>
 			</section>
 		</div>
 	);

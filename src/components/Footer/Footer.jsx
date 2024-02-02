@@ -8,7 +8,6 @@ export default function Footer() {
 	const [infoDrop, setInfoDrop] = useState(false);
 	const [helpDrop, setHelpDrop] = useState(false);
 	const [careDrop, setCareDrop] = useState(false);
-	const infoRef = useRef(null);
 
 	return (
 		<footer className='bg-colorHeader text-colorFive sm:px-14 pt-14 mt-8'>
