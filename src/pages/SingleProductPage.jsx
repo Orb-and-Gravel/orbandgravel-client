@@ -2,17 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ProductPageImageSlider } from '../components/Products/ProductPageImageSlider';
 import images from '../assets/images.json';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { HeartIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { ProductPageAccordion } from '../components/Products/ProductPageAccordion';
+import { ProductItem } from '../components/Products/ProductItem';
 
 export function SingleProductPage() {
 	const [color, setColor] = useState('slate');
-	const [drop, setDrop] = useState(false);
-	const divRef = useRef(null);
-	const [height, setHeight] = useState(null);
-	console.log(divRef?.current?.clientHeight);
-	useEffect(() => {
-		setHeight(divRef?.current?.clientHeight);
-	});
 	return (
 		<div className='md:grid block grid-cols-7'>
 			<section className='col-span-4'>
@@ -79,30 +74,60 @@ export function SingleProductPage() {
 				</div>
 				<section className='mt-20'>
 					<hr className='border border-colorFour' />
-					<div className='flex items-center justify-between mt-6 text-colorFive px-3'>
-						<h3>Details</h3>
-						<PlusIcon
-							className='w-6'
-							onClick={() => setDrop((prev) => !prev)}
+					<ProductPageAccordion
+						accordionDetails='
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>
+						<p>s</p>'
+						accordionName='Details'
+					/>
+					<hr className='border border-colorFour mt-6' />
+					<ProductPageAccordion
+						accordionDetails='
+						<p>p</p>
+						<p>p</p>
+						<p>p</p>
+						<p>p</p>
+						<p>l</p>
+						<p>v</p>
+						<p>cv</p>
+						<p>df</p>'
+						accordionName='Description'
+					/>
+					<hr className='border border-colorFour mt-6' />
+				</section>
+				<section className='mt-20'>
+					<h3 className='font-oswald text-4xl font-semibold tracking-tight text-colorFive mb-2'>
+						YOU MIGHT ALSO LIKE
+					</h3>
+					<div className='grid grid-cols-3 gap-x-2 md:grid-cols-2 xl:grid-cols-3'>
+						<ProductItem
+							imgUrl='https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+							name='Necklace Silver'
+							price='PKR 2300'
+							alt='alt img'
+							height={200}
+						/>
+						<ProductItem
+							imgUrl='https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+							name='Necklace Silver'
+							price='PKR 2300'
+							alt='alt img'
+							height={200}
+						/>
+						<ProductItem
+							imgUrl='https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+							name='Necklace Silver'
+							price='PKR 2300'
+							alt='alt img'
+							height={200}
 						/>
 					</div>
-					<div
-						className={`h-0 overflow-hidden transition-[height] duration-300 ${
-							drop ? `h-[${height}px]` : ''
-						}`}
-					>
-						<div ref={divRef}>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-							<p>s</p>
-						</div>
-					</div>
-					<hr className='border border-colorFour mt-6' />
 				</section>
 			</section>
 		</div>
