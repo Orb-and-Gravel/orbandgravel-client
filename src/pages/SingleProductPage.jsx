@@ -122,29 +122,33 @@ export function SingleProductPage() {
 								alt='alt img'
 								height={200}
 							/>
-							<ProductItem
-								imgUrl='https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
-								name='Necklace Silver'
-								price='PKR 2300'
-								alt='alt img'
-								height={200}
-							/>
+							<div className='md:hidden xl:block'>
+								<ProductItem
+									imgUrl='https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+									name='Necklace Silver'
+									price='PKR 2300'
+									alt='alt img'
+									height={200}
+								/>
+							</div>
 						</div>
 					</section>
 				</section>
 			</div>
-			<section className='px-16 mt-16 w-full'>
-				<h2 className='font-oswald text-5xl font-semibold text-colorFive'>
+			<section className='sm:px-16 px-8 mt-16 w-full'>
+				<h2 className='font-oswald text-5xl font-semibold text-colorFive tracking-tight'>
 					REVIEWS
 				</h2>
-				<div className='bg-colorOne mt-10 p-7 grid grid-cols-3 items-center'>
+				<div className='bg-colorOne sm:mt-10 mt-5 py-7 sm:px-7 px-3 xl:grid xl:grid-cols-3 xl:items-center text-center sm:text-left'>
 					<div className='font-colorFive font-roboto'>
 						<span className='text-9xl font-bold'>4.5</span>
 						<span className='text-4xl'>/</span>
 						<span className='text-lg font-bold'>5</span>
+						<br className='xl:hidden' />
+						<span className='xl:ml-10 ml-2 font-nunito'>(30 reviews)</span>
 					</div>
-					<div className='h-full border-l-2 border-colorFive mx-auto'></div>
-					<div className='justify-self-center'>
+					<div className='h-full border-l-2 border-colorFive mx-auto hidden xl:block'></div>
+					<div className='xl:justify-self-center mt-3 xl:mt-0 w-fit mx-auto sm:mx-0'>
 						<RatingsFilter />
 					</div>
 				</div>
