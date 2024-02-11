@@ -6,6 +6,7 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { ProductPageAccordion } from '../components/Products/ProductPageAccordion';
 import { ProductItem } from '../components/Products/ProductItem';
 import { RatingsFilter } from '../components/Products/RatingsFilter';
+import { Review } from '../components/Review/Review';
 
 export function SingleProductPage() {
 	const [color, setColor] = useState('slate');
@@ -152,6 +153,26 @@ export function SingleProductPage() {
 						<RatingsFilter />
 					</div>
 				</div>
+				<section className='mt-10'>
+					<Review />
+					<Review />
+					<Review />
+					<div class='flex flex-col items-center'>
+						<span class='text-sm text-colorFour'>
+							Showing <span class='font-semibold text-colorFive'>1</span> to{' '}
+							<span class='font-semibold text-colorFive'>3</span> of{' '}
+							<span class='font-semibold text-colorFive'>30</span> Entries
+						</span>
+						<div class='inline-flex mt-2 xs:mt-0 text-colorFive border border-colorFour rounded-md'>
+							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium bg-colorTwo rounded-l-md hover:bg-colorThree'>
+								Prev
+							</button>
+							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium border-l border-colorFour bg-colorTwo hover:bg-colorThree rounded-r-md'>
+								Next
+							</button>
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 	);
