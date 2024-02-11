@@ -26,7 +26,7 @@ export function HeaderWhole() {
 			>
 				<section
 					ref={navRef}
-					className={`sm:block relative ${!openNav && 'hidden'} z-50`}
+					className={`sm:block relative ${!openNav && 'hidden'} z-50 sm:z-10`}
 				>
 					<Navbar />
 				</section>
