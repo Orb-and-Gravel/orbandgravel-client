@@ -31,8 +31,8 @@ export function SingleProductPage() {
 						<StarIcon className='w-4' />
 						<p className='text-sm mx-1 leading-[0px]'>4.5</p>
 						<p>|</p>
-						<a className='text-sm underline ml-1' href='#'>
-							See 5 reviews
+						<a className='text-sm underline ml-1' href='#reviews'>
+							See reviews
 						</a>
 					</div>
 					<hr className='mt-10 border border-colorFour' />
@@ -136,7 +136,7 @@ export function SingleProductPage() {
 					</section>
 				</section>
 			</div>
-			<section className='sm:px-16 px-8 mt-16 w-full'>
+			<section className='sm:px-16 px-8 mt-16 w-full' id='reviews'>
 				<h2 className='font-oswald text-5xl font-semibold text-colorFive tracking-tight'>
 					REVIEWS
 				</h2>
@@ -164,10 +164,10 @@ export function SingleProductPage() {
 							<span class='font-semibold text-colorFive'>30</span> Entries
 						</span>
 						<div class='inline-flex mt-2 xs:mt-0 text-colorFive border border-colorFour rounded-md'>
-							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium bg-colorTwo rounded-l-md hover:bg-colorThree'>
+							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium rounded-l-md hover:bg-colorOne'>
 								Prev
 							</button>
-							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium border-l border-colorFour bg-colorTwo hover:bg-colorThree rounded-r-md'>
+							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium border-l border-colorFour hover:bg-colorOne rounded-r-md'>
 								Next
 							</button>
 						</div>
