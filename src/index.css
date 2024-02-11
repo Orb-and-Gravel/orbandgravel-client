@@ -126,3 +126,12 @@ body {
 .dropdown.open {
 	height: 43px;
 }
+
+progress::-webkit-progress-bar {
+	background-color: white;
+	height: 10px;
+}
+
+progress::-webkit-progress-value {
+	background-color: var(--color-five);
+}
