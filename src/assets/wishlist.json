@@ -1,0 +1,23 @@
+[
+   {
+      "id": 1,
+      "productName": "Chain",
+      "price": "PKR 3000",
+      "productImage": "https://cdn.pixabay.com/photo/2018/02/16/02/03/pocket-watch-3156771_1280.jpg",
+      "stockStatus": 1
+   },
+   {
+      "id": 2,
+      "productName": "Pendant",
+      "price": "PKR 5000",
+      "productImage": "https://cdn.pixabay.com/photo/2015/03/12/01/12/amber-669473_1280.jpg",
+      "stockStatus": 0
+   },
+   {
+      "id": 3,
+      "productName": "Ring",
+      "price": "PKR 1200",
+      "productImage": "https://cdn.pixabay.com/photo/2018/01/04/19/43/paper-3061485_1280.jpg",
+      "stockStatus": 1
+   }
+]
