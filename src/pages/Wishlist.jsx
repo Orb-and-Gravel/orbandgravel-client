@@ -1,18 +1,22 @@
 import React from 'react';
-import { HeartIcon, TrashIcon } from '@heroicons/react/24/solid';
+import {
+	HeartIcon,
+	ShoppingCartIcon,
+	TrashIcon,
+} from '@heroicons/react/24/solid';
 import wishlist from '../assets/wishlist.json';
 
 export function Wishlist() {
 	return (
 		<React.Fragment>
 			<section className='text-colorFive flex flex-col items-center mt-8'>
-				<h2 className='text-8xl font-oswald font-black tracking-tight'>
+				<h2 className='sm:text-8xl text-5xl font-oswald font-black tracking-tight'>
 					My Wishlist
 				</h2>
-				<HeartIcon className='w-28 text-rose-300' />
+				<HeartIcon className='sm:w-28 w-16 text-rose-300' />
 			</section>
-			<section className='px-32 mt-7'>
-				<table className='w-full'>
+			<section className='lg:px-32 md:px-16 mt-7 overflow-auto'>
+				<table className='w-full min-w-[36rem]'>
 					<thead className='w-full text-left'>
 						<th className='w-10 p-3'></th>
 						<th className='w-24 p-3'></th>
@@ -56,7 +60,8 @@ export function Wishlist() {
 										}`}
 										disabled={!item.stockStatus}
 									>
-										ADD TO CART
+										<span className='sm:block hidden'>ADD TO CART</span>
+										<ShoppingCartIcon className='w-4 h-4 block sm:hidden' />
 									</button>
 								</td>
 							</tr>
