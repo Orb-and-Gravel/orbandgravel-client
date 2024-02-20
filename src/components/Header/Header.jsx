@@ -26,7 +26,7 @@ const Header = ({
 }) => {
 	const iconRef = useRef(null);
 	const cartIconRef = useRef(null);
-	const profileIconRef = useRef(null);
+	const profileDropdownRef = useRef(null);
 	const cartDropdownRef = useRef(null);
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
 
@@ -45,7 +45,7 @@ const Header = ({
 		) {
 			setOpenCartDropdown(false);
 		}
-		if (!profileIconRef.current.contains(event.target)) {
+		if (!profileDropdownRef.current.contains(event.target)) {
 			setOpenProfileDropdown(false);
 		}
 	}
@@ -67,11 +67,10 @@ const Header = ({
 			</div>
 			<div className='flex flex-[1_0_0%] justify-center'>
 				<span className='mr-5'>
-					<div className='relative'>
+					<div className='relative' ref={profileDropdownRef}>
 						<UserIcon
 							className='h-6 w-6 hover:text-colorThree text-colorFour transition-all cursor-pointer'
 							onClick={() => setOpenProfileDropdown((prev) => !prev)}
-							ref={profileIconRef}
 						/>
 						{openProfileDropdown && (
 							<DropdownMenu>
@@ -83,15 +82,11 @@ const Header = ({
 									<p>Order History</p>
 									<ChartBarSquareIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem href='wishlist'>
+								<DropdownMenuItem href='/wishlist'>
 									<p>Wishlist</p>
 									<HeartIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem
-									onClick={() => {
-										console.log('hello');
-									}}
-								>
+								<DropdownMenuItem>
 									<p>Signout</p>
 								</DropdownMenuItem>
 							</DropdownMenu>
