@@ -7,6 +7,7 @@ import { HeaderWhole } from './components/Header/HeaderWhole';
 import { Outlet } from 'react-router-dom';
 import { Error } from './pages/Error';
 import { SingleProductPage } from './pages/SingleProductPage';
+import { Wishlist } from './pages/Wishlist';
 
 function PageLayout() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 							path='/single-product-page/:slug'
 							element={<SingleProductPage />}
 						/>
+						<Route path='/wishlist' element={<Wishlist />} />
 					</Route>
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />

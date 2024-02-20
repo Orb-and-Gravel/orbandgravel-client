@@ -11,6 +11,7 @@
 - https://www.kendrascott.com/jewelry/bracelets/elaina-gold-adjustable-chain-bracelet-in-emerald-cats-eye/842177153130.html
 - https://mejuri.com/world/en/shop/products/hoops-and-pearl-charms-set
 - https://www.elo.shopping/products/mens-solid-design-minor-fault-crew-neck-tee-shirt
+- https://medium.com/javarevisited/lets-add-wishlist-feature-for-our-e-commerce-app-using-java-and-spring-boot-1402c0b6f1e8
 
 ### Useful Commands
 
