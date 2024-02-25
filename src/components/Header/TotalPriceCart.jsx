@@ -1,5 +1,6 @@
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function TotalPriceCart() {
 	return (
@@ -8,10 +9,13 @@ export function TotalPriceCart() {
 				<p className='text-colorFour'>Amount</p>
 				<h3 className='font-bold text-xl text-colorFive'>PKR 500</h3>
 			</div>
-			<button className='flex gap-x-1 text-colorTwo bg-colorFour w-full items-center justify-center rounded-full py-2 text-sm tracking-wider'>
+			<Link
+				to='/checkout'
+				className='flex gap-x-1 text-colorTwo bg-colorFour w-full items-center justify-center rounded-full py-2 text-sm tracking-wider'
+			>
 				CHECKOUT
 				<ArrowLongRightIcon className='w-6' />
-			</button>
+			</Link>
 		</div>
 	);
 }

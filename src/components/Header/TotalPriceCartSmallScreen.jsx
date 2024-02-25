@@ -1,5 +1,6 @@
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function TotalPriceCartSmallScreen() {
 	return (
@@ -10,7 +11,9 @@ export function TotalPriceCartSmallScreen() {
 			</div>
 			<div className='bg-colorFour'>
 				<div className='flex justify-center items-center h-full text-colorOne'>
-					<p className='tracking-wide'>CHECKOUT</p>
+					<Link to='/checkout'>
+						<p className='tracking-wide'>CHECKOUT</p>
+					</Link>
 					<ArrowLongRightIcon className='w-6' />
 				</div>
 			</div>
