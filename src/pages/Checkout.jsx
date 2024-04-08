@@ -1,35 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon as CheckCircleIconFilled } from '@heroicons/react/24/solid';
 import { UserDetails } from '../components/Checkout/UserDetails';
+import Shipping from '../components/Checkout/Shipping';
 
 export function Checkout() {
+	const [step, setStep] = useState(1);
+
+	function calculateStyles(stepAt) {
+		if (stepAt == step) {
+			return <CheckCircleIcon className='w-5 text-colorThree' />;
+		} else if (step > stepAt) {
+			return <CheckCircleIconFilled className='w-5 text-colorThree' />;
+		} else {
+			return <CheckCircleIcon className='w-5' />;
+		}
+	}
+
+	function handleClickNext() {
+		if (step <= 3) {
+			setStep((prev) => prev + 1);
+		}
+	}
+
 	return (
 		<div className='grid grid-cols-5 m-8 gap-x-5'>
 			<section className='col-span-3 bg-colorHeader rounded-lg border border-colorThree p-6'>
 				<section className='px-14 max-w-2xl mx-auto'>
 					<section className='flex items-center gap-x-4 justify-center text-colorFive'>
 						<div className='flex gap-x-0.5 whitespace-nowrap'>
-							<CheckCircleIcon className='w-5' />
-							<p className='text-sm'>User Details</p>
+							{calculateStyles(1)}
+							<p className={`text-sm ${step >= 1 ? 'text-colorThree' : ''}`}>
+								User Details
+							</p>
 						</div>
 						<hr className='w-full border-0.5 border-black' />
 						<div className='flex gap-x-0.5'>
-							<CheckCircleIcon className='w-5' />
-							<p className='text-sm'>Shipping</p>
+							{calculateStyles(2)}
+							<p className={`text-sm ${step >= 2 ? 'text-colorThree' : ''}`}>
+								Shipping
+							</p>
 						</div>
 						<hr className='w-full border-0.5 border-black' />
 						<div className='flex gap-x-0.5 whitespace-nowrap'>
-							<CheckCircleIcon className='w-5' />
-							<p className='text-sm'>Confirm Order</p>
+							{calculateStyles(3)}
+							<p className={`text-sm ${step >= 3 ? 'text-colorThree' : ''}`}>
+								Confirm Order
+							</p>
 						</div>
 					</section>
 					<section className='mt-9'>
-						<UserDetails />
+						{step == 1 && <UserDetails />}
+						{step == 2 && <Shipping />}
 						<div className='flex gap-x-3 justify-end mt-7'>
-							<button className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md'>
+							<button className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'>
 								Cancel
 							</button>
-							<button className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md'>
+							<button
+								className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
+								onClick={handleClickNext}
+							>
 								Next
 							</button>
 						</div>
