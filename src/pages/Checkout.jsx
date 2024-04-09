@@ -3,6 +3,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon as CheckCircleIconFilled } from '@heroicons/react/24/solid';
 import { UserDetails } from '../components/Checkout/UserDetails';
 import Shipping from '../components/Checkout/Shipping';
+import { ConfirmOrder } from '../components/Checkout/ConfirmOrder';
 
 export function Checkout() {
 	const [step, setStep] = useState(1);
@@ -20,6 +21,16 @@ export function Checkout() {
 	function handleClickNext() {
 		if (step <= 3) {
 			setStep((prev) => prev + 1);
+		}
+
+		console.log({ step });
+	}
+
+	function handleBackCancel() {
+		if (step == 1) {
+			return;
+		} else if (step > 1) {
+			setStep((prev) => prev - 1);
 		}
 	}
 
@@ -52,9 +63,13 @@ export function Checkout() {
 					<section className='mt-9'>
 						{step == 1 && <UserDetails />}
 						{step == 2 && <Shipping />}
+						{step == 3 && <ConfirmOrder />}
 						<div className='flex gap-x-3 justify-end mt-7'>
-							<button className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'>
-								Cancel
+							<button
+								className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
+								onClick={handleBackCancel}
+							>
+								{step > 1 ? 'Back' : 'Cancel'}
 							</button>
 							<button
 								className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
