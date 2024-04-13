@@ -16,14 +16,14 @@ export function ConfirmOrder() {
 					<p className='text-sm'>Email</p>
 				</div>
 				<div className='mt-4'>
-					<p className='font-bold'>acbkjs.asas@asiks.aco</p>
+					<p className='font-bold break-words'>acbkjs.asas@asiks.aco</p>
 				</div>
 
 				<div className='mt-4'>
 					<p className='text-sm'>Phone</p>
 				</div>
 				<div className='mt-4'>
-					<p className='font-bold'>+49552255115787</p>
+					<p className='font-bold break-words'>+49552255115787</p>
 				</div>
 
 				<div className='mt-4'>

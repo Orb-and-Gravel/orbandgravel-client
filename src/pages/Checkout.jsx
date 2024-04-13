@@ -5,6 +5,7 @@ import { UserDetails } from '../components/Checkout/UserDetails';
 import Shipping from '../components/Checkout/Shipping';
 import { ConfirmOrder } from '../components/Checkout/ConfirmOrder';
 import { Modal } from '../components/Modal/Modal';
+import { OrderSummary } from '../components/Checkout/OrderSummary';
 
 export function Checkout() {
 	const [step, setStep] = useState(1);
@@ -45,24 +46,26 @@ export function Checkout() {
 				onCancel={() => setOpen(false)}
 				onConfirm={() => setOpen(false)}
 			/>
-			<div className='grid grid-cols-5 m-8 gap-x-5'>
-				<section className='col-span-3 bg-colorHeader rounded-lg border border-colorThree p-6'>
-					<section className='px-14 max-w-2xl mx-auto'>
-						<section className='flex items-center gap-x-4 justify-center text-colorFive'>
+			<div className='lg:grid lg:grid-cols-5 m-8 lg:gap-x-5 min-h-[35rem]'>
+				<section className='lg:col-span-3 bg-colorHeader rounded-lg border border-colorThree p-6 mb-5 lg:mb-0'>
+					<section className='sm:px-14 2xl:max-w-5xl xl:max-w-2xl mx-auto'>
+						<section className='flex flex-col sm:flex-row sm:items-center sm:gap-x-4 gap-y-1 sm:gap-y-0 sm:justify-center text-colorFive'>
 							<div className='flex gap-x-0.5 whitespace-nowrap'>
 								{calculateStyles(1)}
 								<p className={`text-sm ${step >= 1 ? 'text-colorThree' : ''}`}>
 									User Details
 								</p>
 							</div>
-							<hr className='w-full border-0.5 border-black' />
+							<hr className='w-full border-black hidden sm:block' />
+							<div className='h-8 border border-black ml-2 border-t-0 border-r-0 border-b-0 block sm:hidden' />
 							<div className='flex gap-x-0.5'>
 								{calculateStyles(2)}
 								<p className={`text-sm ${step >= 2 ? 'text-colorThree' : ''}`}>
 									Shipping
 								</p>
 							</div>
-							<hr className='w-full border-0.5 border-black' />
+							<hr className='w-full border-black hidden sm:block' />
+							<div className='h-8 border border-black ml-2 border-t-0 border-r-0 border-b-0 block sm:hidden' />
 							<div className='flex gap-x-0.5 whitespace-nowrap'>
 								{calculateStyles(3)}
 								<p className={`text-sm ${step >= 3 ? 'text-colorThree' : ''}`}>
@@ -70,7 +73,7 @@ export function Checkout() {
 								</p>
 							</div>
 						</section>
-						<section className='mt-9'>
+						<section className='sm:mt-9 mt-5'>
 							{step == 1 && <UserDetails />}
 							{step == 2 && <Shipping />}
 							{step == 3 && <ConfirmOrder />}
@@ -92,7 +95,7 @@ export function Checkout() {
 					</section>
 				</section>
 				<section className='col-span-2 bg-colorHeader rounded-lg border border-colorThree p-6'>
-					order summary
+					<OrderSummary />
 				</section>
 			</div>
 		</>
