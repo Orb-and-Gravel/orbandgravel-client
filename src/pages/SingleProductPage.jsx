@@ -163,11 +163,11 @@ export function SingleProductPage() {
 							<span class='font-semibold text-colorFive'>3</span> of{' '}
 							<span class='font-semibold text-colorFive'>30</span> Entries
 						</span>
-						<div class='inline-flex mt-2 xs:mt-0 text-colorFive border border-colorFour rounded-md'>
+						<div class='inline-flex mt-2 xs:mt-0 text-colorFive border border-colorFour rounded-md divide-x divide-colorFour'>
 							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium rounded-l-md hover:bg-colorOne'>
 								Prev
 							</button>
-							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium border-l border-colorFour hover:bg-colorOne rounded-r-md'>
+							<button class='flex items-center justify-center px-3 h-8 text-sm font-medium hover:bg-colorOne rounded-r-md'>
 								Next
 							</button>
 						</div>

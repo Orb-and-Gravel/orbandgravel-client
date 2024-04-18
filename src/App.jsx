@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import { Error } from './pages/Error';
 import { SingleProductPage } from './pages/SingleProductPage';
 import { Wishlist } from './pages/Wishlist';
+import { Checkout } from './pages/Checkout';
 
 function PageLayout() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 							element={<SingleProductPage />}
 						/>
 						<Route path='/wishlist' element={<Wishlist />} />
+						<Route path='/checkout' element={<Checkout />} />
 					</Route>
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />
