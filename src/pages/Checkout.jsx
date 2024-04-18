@@ -46,7 +46,7 @@ export function Checkout() {
 				onCancel={() => setOpen(false)}
 				onConfirm={() => setOpen(false)}
 			/>
-			<div className='lg:grid lg:grid-cols-5 m-8 lg:gap-x-5 h-[35rem]'>
+			<div className='lg:grid lg:grid-cols-5 m-8 lg:gap-x-5 lg:h-[35rem]'>
 				<section className='lg:col-span-3 bg-colorHeader rounded-lg border border-colorThree p-6 mb-5 lg:mb-0'>
 					<section className='sm:px-14 2xl:max-w-5xl xl:max-w-2xl mx-auto'>
 						<section className='flex flex-col sm:flex-row sm:items-center sm:gap-x-4 gap-y-1 sm:gap-y-0 sm:justify-center text-colorFive'>

@@ -5,7 +5,7 @@ import { MinusIcon } from '@heroicons/react/24/outline';
 
 export function OrderSummary() {
 	return (
-		<div className='px-8'>
+		<div className='sm:px-8'>
 			<h3 className='font-bold mb-5 text-xl'>Order Summary</h3>
 			<div
 				className={`overflow-auto max-h-[17rem] ${
@@ -19,13 +19,13 @@ export function OrderSummary() {
 							alt='img'
 							className='w-full h-48 object-cover'
 						/>
-						<div className='flex justify-between mt-3 items-start'>
+						<div className='sm:flex sm:justify-between mt-3 sm:items-start'>
 							<div>
 								<p className='font-bold text-lg tracking-wide'>{item.name}</p>
 								<p className='text-sm'>PKR {item.price}</p>
 							</div>
 
-							<div className='flex items-center gap-x-3'>
+							<div className='flex items-center gap-x-3 mt-3 sm:mt-0'>
 								<button className='bg-white border border-colorThree hover:bg-colorOne rounded-lg flex w-8 h-8 justify-center items-center transition-all'>
 									<PlusIcon className='w-5' />
 								</button>
@@ -40,6 +40,24 @@ export function OrderSummary() {
 						)}
 					</section>
 				))}
+			</div>
+			<div className='space-y-5 mt-6'>
+				<div className='flex items-center justify-between'>
+					<p className='text-sm text-zinc-600'>Subtotal</p>
+					<p>PKR 1000</p>
+				</div>
+				<div className='flex items-center justify-between'>
+					<p className='text-sm text-zinc-600'>Tax</p>
+					<p>PKR 1000</p>
+				</div>
+				<div className='flex items-center justify-between'>
+					<p className='text-sm text-zinc-600'>Shipping</p>
+					<p>Free</p>
+				</div>
+				<div className='flex items-center justify-between'>
+					<p className='font-bold'>Total</p>
+					<p>PKR 1000</p>
+				</div>
 			</div>
 		</div>
 	);

@@ -7,7 +7,7 @@ export function Modal({ open, heading, description, onCancel, onConfirm }) {
 				open ? 'flex' : 'hidden'
 			} items-center justify-center`}
 		>
-			<div className='bg-white border border-colorThree rounded-lg w-[400px] py-2 px-4'>
+			<div className='bg-white border border-colorThree rounded-lg w-[400px] p-4 mx-2'>
 				<h3 className='font-bold text-lg text-colorFour mb-2'>{heading}</h3>
 				<p>{description}</p>
 				<div className='flex gap-x-3 justify-end mt-5'>
