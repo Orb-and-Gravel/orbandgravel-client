@@ -9,6 +9,7 @@ import { Error } from './pages/Error';
 import { SingleProductPage } from './pages/SingleProductPage';
 import { Wishlist } from './pages/Wishlist';
 import { Checkout } from './pages/Checkout';
+import { Account } from './pages/Account';
 
 function PageLayout() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 						/>
 						<Route path='/wishlist' element={<Wishlist />} />
 						<Route path='/checkout' element={<Checkout />} />
+						<Route path='/account' element={<Account />} />
 					</Route>
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />
