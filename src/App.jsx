@@ -10,6 +10,7 @@ import { SingleProductPage } from './pages/SingleProductPage';
 import { Wishlist } from './pages/Wishlist';
 import { Checkout } from './pages/Checkout';
 import { Account } from './pages/Account';
+import { OrderHistory } from './pages/OrderHistory';
 
 function PageLayout() {
 	return (
@@ -36,6 +37,7 @@ function App() {
 						<Route path='/wishlist' element={<Wishlist />} />
 						<Route path='/checkout' element={<Checkout />} />
 						<Route path='/account' element={<Account />} />
+						<Route path='/orderhistory' element={<OrderHistory />} />
 					</Route>
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />

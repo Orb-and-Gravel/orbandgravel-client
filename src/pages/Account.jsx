@@ -3,9 +3,9 @@ import React from 'react';
 export function Account() {
 	return (
 		<div className='xl:m-10 lg:m-7 md:m-4 m-2'>
-			<h3 className='sm:text-5xl text-2xl font-oswald font-black text-center'>
+			<h2 className='sm:text-8xl text-5xl font-oswald font-black tracking-tight text-center'>
 				Account Details
-			</h3>
+			</h2>
 			<div className='mt-10 max-w-lg mx-auto'>
 				<h5 className='text-xl font-semibold text-center'>
 					Personal Information
