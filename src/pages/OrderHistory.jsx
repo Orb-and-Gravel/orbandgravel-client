@@ -1,4 +1,5 @@
 import React from 'react';
+import orderHistory from '../assets/orderHistory.json';
 
 export function OrderHistory() {
 	return (
@@ -7,30 +8,45 @@ export function OrderHistory() {
 				Order History
 			</h2>
 			<section className='mt-14 max-w-screen-2xl m-auto'>
-				<div className='grid grid-cols-4 font-semibold text-center'>
+				<div className='grid-cols-4 font-semibold text-center md:grid hidden'>
 					<h5>Order Number</h5>
 					<h5>Order Detail</h5>
 					<h5>Placed On</h5>
 					<h5>Tentative Delivery</h5>
 				</div>
-				<div className='grid grid-cols-4 mt-2 hover:bg-gray-200'>
-					<a
-						href='#'
-						className='text-center underline decoration-1 underline-offset-1 text-colorThree'
-					>
-						1335233223
-					</a>
-					<div className='flex items-center gap-x-2 justify-center'>
-						<img
-							src='https://plus.unsplash.com/premium_photo-1678554875441-b286d1b6174a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-							alt=''
-							className='w-10 h-14 object-cover rounded-md'
-						/>
-						<span>1x Ring, ...</span>
-					</div>
-					<span className='text-center font-bold'>23-10-2011</span>
-					<span className='text-center font-bold'>23-11-2011</span>
-				</div>
+				{orderHistory.map((order) => (
+					<>
+						<div
+							key={order.orderId}
+							className='md:grid md:grid-cols-4 mt-2 hover:bg-colorHeader py-2 pl-5 flex flex-col gap-y-1'
+						>
+							<p className='md:text-center underline decoration-1 underline-offset-1 text-colorThree'>
+								<a href='#'>{order.orderId}</a>
+							</p>
+							<div className='flex items-center gap-x-2 md:justify-center'>
+								<img
+									src={order.image}
+									alt=''
+									className='w-14 h-10 object-cover rounded-md'
+								/>
+								<span className='md:block hidden'>
+									{order.orderDetails[0]}, ...
+								</span>
+								<span className='block md:hidden'>
+									{order.orderDetails.join(', ')}
+								</span>
+							</div>
+							<p className='md:text-center font-bold flex items-center gap-x-2 md:block'>
+								<p className='text-sm text-colorTwo md:hidden'>Order Date: </p>
+								{order.placedOn}
+							</p>
+							<p className='text-center font-bold md:block hidden'>
+								{order.tentativeArrival}
+							</p>
+						</div>
+						<hr className='border-1 border-colorOne my-4 md:hidden' />
+					</>
+				))}
 			</section>
 		</div>
 	);
