@@ -11,6 +11,7 @@ import { Wishlist } from './pages/Wishlist';
 import { Checkout } from './pages/Checkout';
 import { Account } from './pages/Account';
 import { OrderHistory } from './pages/OrderHistory';
+import { Order } from './pages/Order';
 
 function PageLayout() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 							path='/single-product-page/:slug'
 							element={<SingleProductPage />}
 						/>
+						<Route path='/order/:slug' element={<Order />} />
 						<Route path='/wishlist' element={<Wishlist />} />
 						<Route path='/checkout' element={<Checkout />} />
 						<Route path='/account' element={<Account />} />

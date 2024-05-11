@@ -18,10 +18,10 @@ export function OrderHistory() {
 					<>
 						<div
 							key={order.orderId}
-							className='md:grid md:grid-cols-4 mt-2 hover:bg-colorHeader py-2 pl-5 flex flex-col gap-y-1'
+							className='md:grid md:grid-cols-4 mt-2 hover:bg-colorHeader py-2 pl-5 md:pl-0 flex flex-col gap-y-1'
 						>
 							<p className='md:text-center underline decoration-1 underline-offset-1 text-colorThree'>
-								<a href='#'>{order.orderId}</a>
+								<a href={`/order/${order.orderId}`}>{order.orderId}</a>
 							</p>
 							<div className='flex items-center gap-x-2 md:justify-center'>
 								<img
