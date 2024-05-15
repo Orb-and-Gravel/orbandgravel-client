@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { ProductPageImageSlider } from '../components/Products/ProductPageImageSlider';
 import images from '../assets/images.json';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { HeartIcon } from '@heroicons/react/24/outline';
 import { ProductPageAccordion } from '../components/Products/ProductPageAccordion';
 import { ProductItem } from '../components/Products/ProductItem';
 import { RatingsFilter } from '../components/Products/RatingsFilter';
