@@ -51,7 +51,7 @@ export function Wishlist() {
 										{item.stockStatus ? 'In Stock' : 'Out of Stock'}
 									</p>
 								</td>
-								<td className='p-3'>
+								<td className='p-3 text-center'>
 									<button
 										className={`text-xs bg-colorFour text-colorOne px-5 py-2 rounded-full transition-all ${
 											item.stockStatus

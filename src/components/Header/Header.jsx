@@ -74,11 +74,11 @@ const Header = ({
 						/>
 						{openProfileDropdown && (
 							<DropdownMenu>
-								<DropdownMenuItem href='account'>
+								<DropdownMenuItem href='/account'>
 									<p>Account</p>
 									<UserCircleIcon className='h-6 w-6' />
 								</DropdownMenuItem>
-								<DropdownMenuItem href='orderhistory'>
+								<DropdownMenuItem href='/orderhistory'>
 									<p>Order History</p>
 									<ChartBarSquareIcon className='h-6 w-6' />
 								</DropdownMenuItem>
