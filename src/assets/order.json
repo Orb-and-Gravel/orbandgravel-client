@@ -1,0 +1,23 @@
+[
+   {
+      "id": "127853432423",
+      "image": "https://media.istockphoto.com/id/1434115118/de/foto/diamant-auf-goldenem-grund.jpg?s=1024x1024&w=is&k=20&c=awKxNLURdqz1haQdL5rpTcOdZyt04T7Epbon3u89t5M=",
+      "color": "#54F2AB",
+      "quantity": 2,
+      "price": 4000
+   },
+   {
+      "id": "121517652423",
+      "image": "https://media.istockphoto.com/id/1434115118/de/foto/diamant-auf-goldenem-grund.jpg?s=1024x1024&w=is&k=20&c=awKxNLURdqz1haQdL5rpTcOdZyt04T7Epbon3u89t5M=",
+      "color": "#512AE5",
+      "quantity": 3,
+      "price": 500
+   },
+   {
+      "id": "121513432464",
+      "image": "https://media.istockphoto.com/id/1434115118/de/foto/diamant-auf-goldenem-grund.jpg?s=1024x1024&w=is&k=20&c=awKxNLURdqz1haQdL5rpTcOdZyt04T7Epbon3u89t5M=",
+      "color": "#512AE5",
+      "quantity": 1,
+      "price": 4300
+   }
+]
