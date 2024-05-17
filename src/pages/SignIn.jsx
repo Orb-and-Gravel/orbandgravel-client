@@ -20,14 +20,16 @@ export function SignIn() {
 						className='border border-colorTwo border-b-0 rounded-t-lg outline-none px-4 py-2 w-full'
 						placeholder='email'
 					/>
-					<br />
 					<input
 						type='password'
 						placeholder='password'
 						className='border border-colorTwo rounded-b-lg outline-none px-4 py-2 w-full'
 					/>
 				</form>
-				<button className='bg-colorOne text-colorFive rounded-2xl px-3 py-1.5 lg:w-44 w-32 block mx-auto mt-3'>
+				<button
+					className='bg-colorOne text-colorFive rounded-2xl px-3 py-1.5 lg:w-44 w-32 block mx-auto mt-3
+				hover:bg-colorFive hover:text-colorOne hover:scale-105 transition-all'
+				>
 					Enter
 				</button>
 				<span className='block mt-4 text-xs text-center'>
