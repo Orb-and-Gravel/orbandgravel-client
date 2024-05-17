@@ -12,6 +12,8 @@ import { Checkout } from './pages/Checkout';
 import { Account } from './pages/Account';
 import { OrderHistory } from './pages/OrderHistory';
 import { Order } from './pages/Order';
+import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
 
 function PageLayout() {
 	return (
@@ -41,6 +43,8 @@ function App() {
 						<Route path='/account' element={<Account />} />
 						<Route path='/orderhistory' element={<OrderHistory />} />
 					</Route>
+					<Route path='/sign-in' element={<SignIn />} />
+					<Route path='/sign-up' element={<SignUp />} />
 					<Route path='/error' element={<Error />} />
 					<Route path='/*' element={<Error />} />
 				</Routes>
