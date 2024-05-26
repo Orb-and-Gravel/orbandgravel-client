@@ -14,6 +14,7 @@ import { OrderHistory } from './pages/OrderHistory';
 import { Order } from './pages/Order';
 import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
+import { axiosbase } from './axiosConfig';
 
 function PageLayout() {
 	return (
