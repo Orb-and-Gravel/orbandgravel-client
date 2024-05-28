@@ -1,3 +1,8 @@
 import { axiosbase } from '../../axiosConfig';
 
-export function getProductsByCategory(categoryId) {}
+export async function getProductsByCategory(categoryId) {
+	const params = {
+		category: categoryId,
+	};
+	return await axiosbase.get('/product/getCategoryProducts', { params });
+}

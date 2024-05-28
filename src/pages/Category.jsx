@@ -4,12 +4,15 @@ import { CatProductItem } from '../components/Products/CatProductItem';
 import { useNavigate } from 'react-router-dom';
 import { useGetAllCategory } from '../query/hooks/useCategory';
 import { Loader } from '../components/Loader/Loader';
+import { ErrorDialog } from '../components/Error/ErrorDialog';
+import { useGetProductsByCategory } from '../query/hooks/useProduct';
 
 export function Category() {
 	const { slug } = useParams();
-	const { data, isLoading } = useGetAllCategory();
 	const navigate = useNavigate();
+	const { data, isLoading, isError, error } = useGetAllCategory();
 	const [catData, setCatData] = useState();
+	const { refetch } = useGetProductsByCategory(catData?._id, catData?.name);
 
 	function fetchData() {
 		for (let cat of data?.data?.message) {
@@ -24,7 +27,7 @@ export function Category() {
 	}
 
 	useEffect(() => {
-		if (!isLoading) {
+		if (!isLoading && !isError) {
 			fetchData();
 		}
 	}, [isLoading]);
@@ -35,6 +38,8 @@ export function Category() {
 				<Loader />
 			</div>
 		);
+	} else if (isError) {
+		return <ErrorDialog errorText={error.response.data.message} />;
 	} else
 		return (
 			<div className='p-4'>
