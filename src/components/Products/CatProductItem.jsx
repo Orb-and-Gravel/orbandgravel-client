@@ -7,7 +7,7 @@ const images = [
 	'https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 ];
 
-export function CatProductItem() {
+export function CatProductItem({ product }) {
 	const [colorVariant, setColorVariant] = useState(0);
 
 	return (

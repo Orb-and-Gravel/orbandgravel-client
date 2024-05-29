@@ -12,7 +12,7 @@ export function Category() {
 	const navigate = useNavigate();
 	const { data, isLoading, isError, error } = useGetAllCategory();
 	const [catData, setCatData] = useState();
-	const { refetch } = useGetProductsByCategory(catData?._id, catData?.name);
+	const { data: productsData } = useGetProductsByCategory(catData);
 
 	function fetchData() {
 		for (let cat of data?.data?.message) {
@@ -31,6 +31,10 @@ export function Category() {
 			fetchData();
 		}
 	}, [isLoading]);
+
+	// useEffect(() => {
+	// 	if (catData) refetch();
+	// }, [catData]);
 
 	if (isLoading) {
 		return (
@@ -93,12 +97,13 @@ export function Category() {
 					</div>
 				</section>
 				<section className='flex lg:justify-between flex-wrap gap-10 justify-center mt-10'>
-					<CatProductItem />
-					<CatProductItem />
-					<CatProductItem />
-					<CatProductItem />
-					<CatProductItem />
-					<CatProductItem />
+					{catData &&
+						productsData?.data?.status &&
+						productsData?.data?.message?.map((product) => (
+							<div key={product._id}>
+								<CatProductItem product={product} />
+							</div>
+						))}
 				</section>
 			</div>
 		);
