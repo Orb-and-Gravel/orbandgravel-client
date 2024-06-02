@@ -6,3 +6,10 @@ export async function getProductsByCategory(categoryId) {
 	};
 	return await axiosbase.get('/product/getCategoryProducts', { params });
 }
+
+export async function getSingleProduct(slug) {
+	const params = {
+		slug,
+	};
+	return await axiosbase.get('/product/getSingleProduct', { params });
+}

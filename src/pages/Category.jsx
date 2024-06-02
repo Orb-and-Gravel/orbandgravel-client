@@ -32,10 +32,6 @@ export function Category() {
 		}
 	}, [isLoading]);
 
-	// useEffect(() => {
-	// 	if (catData) refetch();
-	// }, [catData]);
-
 	if (isLoading) {
 		return (
 			<div className='flex justify-center'>
