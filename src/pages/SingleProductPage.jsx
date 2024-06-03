@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ProductPageImageSlider } from '../components/Products/ProductPageImageSlider';
-import images from '../assets/images.json';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { ProductPageAccordion } from '../components/Products/ProductPageAccordion';
@@ -10,10 +9,12 @@ import { Review } from '../components/Review/Review';
 import { useParams } from 'react-router-dom';
 import { useGetSingleProduct } from '../query/hooks/useProduct';
 import { Loader } from '../components/Loader/Loader';
+import { useGetReviews } from '../query/hooks/useReview';
 
 export function SingleProductPage() {
 	const { slug } = useParams();
-	const { data, isLoading, isError } = useGetSingleProduct(slug);
+	const { data, isLoading, isError, error } = useGetSingleProduct(slug);
+	const { data: reviews, refetch } = useGetReviews(data?.data.message._id);
 	const [color, setColor] = useState(null);
 	const [colorImages, setColorImages] = useState([]);
 
@@ -21,6 +22,7 @@ export function SingleProductPage() {
 		if (data) {
 			setColor(data?.data.message.productSet.itemSet[0].color);
 			setColorImages(data?.data.message.productSet.itemSet[0].images);
+			refetch();
 		}
 	}, [data]);
 
@@ -35,6 +37,8 @@ export function SingleProductPage() {
 				<Loader />
 			</div>
 		);
+	} else if (isError) {
+		return <ErrorDialog errorText={error.response.data.message} />;
 	} else
 		return (
 			<div>
@@ -146,11 +150,15 @@ export function SingleProductPage() {
 					</h2>
 					<div className='bg-colorOne sm:mt-10 mt-5 py-7 sm:px-7 px-3 xl:grid xl:grid-cols-3 xl:items-center text-center sm:text-left'>
 						<div className='font-colorFive font-roboto'>
-							<span className='text-9xl font-bold'>4.5</span>
+							<span className='text-9xl font-bold'>
+								{data.data.message.reviewsOverview.rating}
+							</span>
 							<span className='text-4xl'>/</span>
 							<span className='text-lg font-bold'>5</span>
 							<br className='xl:hidden' />
-							<span className='xl:ml-10 ml-2 font-nunito'>(30 reviews)</span>
+							<span className='xl:ml-10 ml-2 font-nunito'>
+								({data.data.message.reviewsOverview.total} reviews)
+							</span>
 						</div>
 						<div className='h-full border-l-2 border-colorFive mx-auto hidden xl:block'></div>
 						<div className='xl:justify-self-center mt-3 xl:mt-0 w-fit mx-auto sm:mx-0'>
@@ -158,9 +166,9 @@ export function SingleProductPage() {
 						</div>
 					</div>
 					<section className='mt-10'>
-						<Review />
-						<Review />
-						<Review />
+						{reviews?.data.message.map((review) => (
+							<Review review={review} />
+						))}
 						<div className='flex flex-col items-center'>
 							<span className='text-sm text-colorFour'>
 								Showing <span className='font-semibold text-colorFive'>1</span>{' '}
