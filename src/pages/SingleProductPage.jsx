@@ -9,26 +9,53 @@ import { Review } from '../components/Review/Review';
 import { useParams } from 'react-router-dom';
 import { useGetSingleProduct } from '../query/hooks/useProduct';
 import { Loader } from '../components/Loader/Loader';
-import { useGetReviews } from '../query/hooks/useReview';
+import {
+	useGetReviews,
+	useGetReviewsAnalytics,
+} from '../query/hooks/useReview';
+import { ErrorDialog } from '../components/Error/ErrorDialog';
 
 export function SingleProductPage() {
 	const { slug } = useParams();
 	const { data, isLoading, isError, error } = useGetSingleProduct(slug);
-	const { data: reviews, refetch } = useGetReviews(data?.data.message._id);
+	const [page, setPage] = useState(1);
+	const [filter, setFilter] = useState(0);
+	const {
+		data: reviews,
+		refetch,
+		isLoading: isReviewLoading,
+	} = useGetReviews(data?.data.message._id, page, filter);
+	const {
+		data: reviewsAnalytics,
+		refetch: reviewsAnalyticsRefetch,
+		isLoading: isAnalyticsLoading,
+		isError: isAnalyticsError,
+		error: analyticsError,
+	} = useGetReviewsAnalytics(data?.data.message._id);
 	const [color, setColor] = useState(null);
 	const [colorImages, setColorImages] = useState([]);
+	const pageLimit = Math.ceil(data?.data.message.reviewsOverview.total / 3);
 
 	useEffect(() => {
 		if (data) {
 			setColor(data?.data.message.productSet.itemSet[0].color);
 			setColorImages(data?.data.message.productSet.itemSet[0].images);
 			refetch();
+			reviewsAnalyticsRefetch();
 		}
 	}, [data]);
 
 	function onChangeColor(item) {
 		setColor(item.color);
 		setColorImages(item.images);
+	}
+
+	function onChangePage(opr) {
+		if (opr == 'next') {
+			setPage((prev) => prev + 1);
+		} else {
+			setPage((prev) => prev - 1);
+		}
 	}
 
 	if (isLoading) {
@@ -162,24 +189,64 @@ export function SingleProductPage() {
 						</div>
 						<div className='h-full border-l-2 border-colorFive mx-auto hidden xl:block'></div>
 						<div className='xl:justify-self-center mt-3 xl:mt-0 w-fit mx-auto sm:mx-0'>
-							<RatingsFilter />
+							<RatingsFilter
+								analytics={reviewsAnalytics}
+								overview={data.data.message.reviewsOverview}
+								isLoading={isAnalyticsLoading}
+								isError={isAnalyticsError}
+								error={analyticsError}
+								setFilter={setFilter}
+								filter={filter}
+							/>
 						</div>
 					</div>
 					<section className='mt-10'>
-						{reviews?.data.message.map((review) => (
-							<Review review={review} />
-						))}
+						{isReviewLoading ? (
+							<div className='flex justify-center min-h-[30rem]'>
+								<Loader />
+							</div>
+						) : (
+							<>
+								{reviews?.data.message.map((review) => (
+									<Review review={review} key={review._id} />
+								))}
+							</>
+						)}
 						<div className='flex flex-col items-center'>
 							<span className='text-sm text-colorFour'>
-								Showing <span className='font-semibold text-colorFive'>1</span>{' '}
-								to <span className='font-semibold text-colorFive'>3</span> of{' '}
-								<span className='font-semibold text-colorFive'>30</span> Entries
+								Showing{' '}
+								<span className='font-semibold text-colorFive'>
+									{page === 1 ? 1 : (page - 1) * 3 + 1}
+								</span>{' '}
+								to{' '}
+								<span className='font-semibold text-colorFive'>
+									{page === pageLimit
+										? data.data.message.reviewsOverview.total
+										: page * 3}
+								</span>{' '}
+								of{' '}
+								<span className='font-semibold text-colorFive'>
+									{data.data.message.reviewsOverview.total}
+								</span>{' '}
+								Entries
 							</span>
 							<div className='inline-flex mt-2 xs:mt-0 text-colorFive border border-colorFour rounded-md divide-x divide-colorFour'>
-								<button className='flex items-center justify-center px-3 h-8 text-sm font-medium rounded-l-md hover:bg-colorOne'>
+								<button
+									className={`flex items-center justify-center px-3 h-8 text-sm font-medium rounded-l-md ${
+										page <= 1 ? 'opacity-50' : 'hover:bg-colorOne'
+									}`}
+									onClick={() => onChangePage('prev')}
+									disabled={page <= 1}
+								>
 									Prev
 								</button>
-								<button className='flex items-center justify-center px-3 h-8 text-sm font-medium hover:bg-colorOne rounded-r-md'>
+								<button
+									className={`flex items-center justify-center px-3 h-8 text-sm font-medium rounded-r-md ${
+										page >= pageLimit ? 'opacity-50' : 'hover:bg-colorOne'
+									}`}
+									onClick={() => onChangePage('next')}
+									disabled={page >= pageLimit}
+								>
 									Next
 								</button>
 							</div>

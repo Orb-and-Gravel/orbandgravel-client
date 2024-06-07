@@ -12,8 +12,8 @@ export function Review({ review }) {
 				</h4>
 				<div className='sm:col-span-6 col-span-9'>
 					<span className='flex'>
-						{Array.from({ length: review.rating }).map(() => (
-							<StarIcon className='w-4' />
+						{Array.from({ length: review.rating }).map((_, i) => (
+							<StarIcon className='w-4' key={i} />
 						))}
 					</span>
 					<h4 className='text-sm font-bold mt-4'>{review.heading}</h4>

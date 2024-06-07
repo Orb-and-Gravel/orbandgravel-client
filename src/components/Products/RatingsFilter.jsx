@@ -1,48 +1,123 @@
 import { StarIcon } from '@heroicons/react/16/solid';
 import React from 'react';
+import { Loader } from '../Loader/Loader';
+import { ErrorDialog } from '../Error/ErrorDialog';
 
-export function RatingsFilter() {
+export function RatingsFilter({
+	analytics,
+	overview,
+	isLoading,
+	isError,
+	error,
+	setFilter,
+	filter,
+}) {
+	if (isLoading) {
+		return <Loader />;
+	} else if (isError) {
+		return <ErrorDialog errorText={error.response.data.message} />;
+	}
 	return (
 		<React.Fragment>
-			<div className='flex hover:bg-colorTwo px-2'>
+			<div
+				className={`flex px-2 ${
+					analytics.data.message[5]
+						? `hover:bg-colorTwo ${filter === 5 && 'bg-colorTwo'}`
+						: 'opacity-50'
+				}`}
+				aria-disabled={!analytics.data.message[5]}
+				onClick={() => setFilter(5)}
+			>
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
-				<progress value={60} max={100} className='ml-2 mt-2' />
+				<progress
+					value={analytics.data.message[5]}
+					max={overview.total}
+					className='ml-2 mt-2'
+				/>
 			</div>
-			<div className='flex mt-1 px-2 hover:bg-colorTwo '>
+			<div
+				className={`flex mt-1 px-2 hover:bg-colorTwo ${
+					analytics.data.message[4]
+						? `hover:bg-colorTwo ${filter === 4 && 'bg-colorTwo'}`
+						: 'opacity-50'
+				}`}
+				aria-disabled={!analytics.data.message[4]}
+				onClick={() => setFilter(4)}
+			>
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5 text-white' />
-				<progress value={32} max={100} className='ml-2 mt-2' />
+				<progress
+					value={analytics.data.message[4]}
+					max={overview.total}
+					className='ml-2 mt-2'
+				/>
 			</div>
-			<div className='flex mt-1 px-2 opacity-50 '>
+			<div
+				className={`flex mt-1 px-2 ${
+					analytics.data.message[3]
+						? `hover:bg-colorTwo ${filter === 3 && 'bg-colorTwo'}`
+						: 'opacity-50'
+				}`}
+				aria-disabled={!analytics.data.message[3]}
+				onClick={() => setFilter(3)}
+			>
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
-				<progress value={0} max={100} className='ml-2 mt-2' />
+				<progress
+					value={analytics.data.message[3]}
+					max={overview.total}
+					className='ml-2 mt-2'
+				/>
 			</div>
-			<div className='flex mt-1 px-2 opacity-50 '>
+			<div
+				className={`flex mt-1 px-2 ${
+					analytics.data.message[2]
+						? `hover:bg-colorTwo ${filter === 2 && 'bg-colorTwo'}`
+						: 'opacity-50'
+				}`}
+				aria-disabled={!analytics.data.message[2]}
+				onClick={() => setFilter(2)}
+			>
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
-				<progress value={0} max={100} className='ml-2 mt-2' />
+				<progress
+					value={analytics.data.message[2]}
+					max={overview.total}
+					className='ml-2 mt-2'
+				/>
 			</div>
-			<div className='flex mt-1 px-2 opacity-50 '>
+			<div
+				className={`flex mt-1 px-2 ${
+					analytics.data.message[1]
+						? `hover:bg-colorTwo ${filter === 1 && 'bg-colorTwo'}`
+						: 'opacity-50'
+				}`}
+				aria-disabled={!analytics.data.message[1]}
+				onClick={() => setFilter(1)}
+			>
 				<StarIcon className='w-5' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
 				<StarIcon className='w-5 text-white' />
-				<progress value={0} max={100} className='ml-2 mt-2' />
+				<progress
+					value={analytics.data.message[1]}
+					max={overview.total}
+					className='ml-2 mt-2'
+				/>
 			</div>
 		</React.Fragment>
 	);
