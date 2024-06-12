@@ -15,3 +15,11 @@ export async function getReviewsAnalytics(productId) {
 	};
 	return await axiosbase.get('/review/getAnalysis', { params });
 }
+
+export async function getReviewsPagination(productId, filter) {
+	const params = {
+		product: productId,
+		filter,
+	};
+	return await axiosbase.get('/review/getPagination', { params });
+}

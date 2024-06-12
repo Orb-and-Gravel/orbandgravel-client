@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { getReviews, getReviewsAnalytics } from '../api/review';
+import {
+	getReviews,
+	getReviewsAnalytics,
+	getReviewsPagination,
+} from '../api/review';
 
 export function useGetReviews(productId, page, filter) {
 	return useQuery({
@@ -13,6 +17,14 @@ export function useGetReviewsAnalytics(productId) {
 	return useQuery({
 		queryKey: ['reviewAnalytics'],
 		queryFn: () => getReviewsAnalytics(productId),
+		enabled: !!productId,
+	});
+}
+
+export function useGetReviewsPagination(productId, filter) {
+	return useQuery({
+		queryKey: ['reviewPagination', filter],
+		queryFn: () => getReviewsPagination(productId, filter),
 		enabled: !!productId,
 	});
 }

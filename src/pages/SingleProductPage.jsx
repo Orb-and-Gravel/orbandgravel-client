@@ -12,6 +12,7 @@ import { Loader } from '../components/Loader/Loader';
 import {
 	useGetReviews,
 	useGetReviewsAnalytics,
+	useGetReviewsPagination,
 } from '../query/hooks/useReview';
 import { ErrorDialog } from '../components/Error/ErrorDialog';
 
@@ -32,9 +33,12 @@ export function SingleProductPage() {
 		isError: isAnalyticsError,
 		error: analyticsError,
 	} = useGetReviewsAnalytics(data?.data.message._id);
+	// review pagination
+	const { data: paginationData, refetch: paginationRefetch } =
+		useGetReviewsPagination(data?.data.message._id, filter);
 	const [color, setColor] = useState(null);
 	const [colorImages, setColorImages] = useState([]);
-	const pageLimit = Math.ceil(data?.data.message.reviewsOverview.total / 3);
+	const pageLimit = Math.ceil(paginationData?.data.message / 3);
 
 	useEffect(() => {
 		if (data) {
@@ -42,6 +46,7 @@ export function SingleProductPage() {
 			setColorImages(data?.data.message.productSet.itemSet[0].images);
 			refetch();
 			reviewsAnalyticsRefetch();
+			paginationRefetch();
 		}
 	}, [data]);
 
@@ -80,20 +85,22 @@ export function SingleProductPage() {
 						<h6 className='font-semibold lg:text-xl text-lg text-colorThree mt-2'>
 							PKR {data.data.message.price}
 						</h6>
-						<div className='flex lg:gap-x-2 gap-x-1 mt-5 items-center md:justify-start justify-center'>
-							<StarIcon className='w-4' />
-							<StarIcon className='w-4' />
-							<StarIcon className='w-4' />
-							<StarIcon className='w-4' />
-							<StarIcon className='w-4' />
-							<p className='text-sm mx-1 leading-[0px]'>
-								{data.data.message.reviewsOverview.rating}
-							</p>
-							<p>|</p>
-							<a className='text-sm underline ml-1' href='#reviews'>
-								See reviews
-							</a>
-						</div>
+						{data.data.message.reviewsOverview.total > 0 && (
+							<div className='flex lg:gap-x-2 gap-x-1 mt-5 items-center md:justify-start justify-center'>
+								<StarIcon className='w-4' />
+								<StarIcon className='w-4' />
+								<StarIcon className='w-4' />
+								<StarIcon className='w-4' />
+								<StarIcon className='w-4' />
+								<p className='text-sm mx-1 leading-[0px]'>
+									{data.data.message.reviewsOverview.rating}
+								</p>
+								<p>|</p>
+								<a className='text-sm underline ml-1' href='#reviews'>
+									See reviews
+								</a>
+							</div>
+						)}
 						<hr className='mt-10 border border-colorFour' />
 						{data.data.message.variation && (
 							<div className='mt-12'>
@@ -171,7 +178,12 @@ export function SingleProductPage() {
 						</section>
 					</section>
 				</div>
-				<section className='sm:px-16 px-8 mt-16 w-full' id='reviews'>
+				<section
+					className={`sm:px-16 px-8 mt-16 w-full ${
+						data?.data.message.reviewsOverview.total > 0 ? 'block' : 'hidden'
+					}`}
+					id='reviews'
+				>
 					<h2 className='font-oswald text-5xl font-semibold text-colorFive tracking-tight'>
 						REVIEWS
 					</h2>
@@ -200,6 +212,14 @@ export function SingleProductPage() {
 							/>
 						</div>
 					</div>
+					<button
+						className={`float-right border-colorOne border rounded-md px-2 mt-1 ${
+							filter == 0 ? 'hidden' : 'block'
+						}`}
+						onClick={() => setFilter(0)}
+					>
+						clear filter
+					</button>
 					<section className='mt-10'>
 						{isReviewLoading ? (
 							<div className='flex justify-center min-h-[30rem]'>
@@ -220,13 +240,11 @@ export function SingleProductPage() {
 								</span>{' '}
 								to{' '}
 								<span className='font-semibold text-colorFive'>
-									{page === pageLimit
-										? data.data.message.reviewsOverview.total
-										: page * 3}
+									{page === pageLimit ? paginationData?.data.message : page * 3}
 								</span>{' '}
 								of{' '}
 								<span className='font-semibold text-colorFive'>
-									{data.data.message.reviewsOverview.total}
+									{paginationData?.data.message}
 								</span>{' '}
 								Entries
 							</span>

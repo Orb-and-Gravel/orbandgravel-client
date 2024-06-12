@@ -40,7 +40,7 @@ export function RatingsFilter({
 				/>
 			</div>
 			<div
-				className={`flex mt-1 px-2 hover:bg-colorTwo ${
+				className={`flex mt-1 px-2 ${
 					analytics.data.message[4]
 						? `hover:bg-colorTwo ${filter === 4 && 'bg-colorTwo'}`
 						: 'opacity-50'
