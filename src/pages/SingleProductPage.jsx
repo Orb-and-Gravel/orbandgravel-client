@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ProductPageImageSlider } from '../components/Products/ProductPageImageSlider';
-import { StarIcon } from '@heroicons/react/24/solid';
+import {
+	StarIcon,
+	HeartIcon as HeartIconSolid,
+} from '@heroicons/react/24/solid';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { ProductPageAccordion } from '../components/Products/ProductPageAccordion';
 import { ProductItem } from '../components/Products/ProductItem';
@@ -15,17 +18,20 @@ import {
 	useGetReviewsPagination,
 } from '../query/hooks/useReview';
 import { ErrorDialog } from '../components/Error/ErrorDialog';
+import { useCheckWishlistItem } from '../query/hooks/useWishlist';
 
 export function SingleProductPage() {
 	const { slug } = useParams();
 	const { data, isLoading, isError, error } = useGetSingleProduct(slug);
 	const [page, setPage] = useState(1);
 	const [filter, setFilter] = useState(0);
+
 	const {
 		data: reviews,
 		refetch,
 		isLoading: isReviewLoading,
 	} = useGetReviews(data?.data.message._id, page, filter);
+
 	const {
 		data: reviewsAnalytics,
 		refetch: reviewsAnalyticsRefetch,
@@ -33,12 +39,17 @@ export function SingleProductPage() {
 		isError: isAnalyticsError,
 		error: analyticsError,
 	} = useGetReviewsAnalytics(data?.data.message._id);
-	// review pagination
+
 	const { data: paginationData, refetch: paginationRefetch } =
 		useGetReviewsPagination(data?.data.message._id, filter);
+
 	const [color, setColor] = useState(null);
 	const [colorImages, setColorImages] = useState([]);
+
 	const pageLimit = Math.ceil(paginationData?.data.message / 3);
+
+	const { data: checkWishlistData, refetch: checkWishlistRefetch } =
+		useCheckWishlistItem('userId', data?.data.message._id);
 
 	useEffect(() => {
 		if (data) {
@@ -47,6 +58,7 @@ export function SingleProductPage() {
 			refetch();
 			reviewsAnalyticsRefetch();
 			paginationRefetch();
+			checkWishlistRefetch();
 		}
 	}, [data]);
 
@@ -128,8 +140,18 @@ export function SingleProductPage() {
 								<button className='text-colorOne bg-colorFive p-4 flex-1 font-semibold tracking-wider hover:bg-colorFour transition-all'>
 									ADD TO CART
 								</button>
-								<button className='text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'>
-									<HeartIcon className='w-6' />
+								<button
+									className={
+										checkWishlistData?.data.message
+											? 'text-colorFive bg-colorOne py-4 px-6'
+											: 'text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'
+									}
+								>
+									{checkWishlistData?.data.message ? (
+										<HeartIconSolid className='w-6' />
+									) : (
+										<HeartIcon className='w-6' />
+									)}
 								</button>
 							</div>
 						</div>
