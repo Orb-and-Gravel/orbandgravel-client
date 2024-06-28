@@ -33,10 +33,7 @@ function App() {
 					<Route element={<PageLayout />}>
 						<Route path='/' element={<LandingPage />} />
 						<Route path='/category/:slug' element={<Category />} />
-						<Route
-							path='/single-product-page/:slug'
-							element={<SingleProductPage />}
-						/>
+						<Route path='/product/:slug' element={<SingleProductPage />} />
 						<Route path='/order/:slug' element={<Order />} />
 						<Route path='/wishlist' element={<Wishlist />} />
 						<Route path='/checkout' element={<Checkout />} />

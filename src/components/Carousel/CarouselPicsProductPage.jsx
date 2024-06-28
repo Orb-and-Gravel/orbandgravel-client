@@ -26,7 +26,8 @@ export function CarouselPicsProductPage({ children, activeSlide }) {
 		if (updatedIndex < 0) {
 			setActiveIndex(0);
 		} else if (updatedIndex > totalIndex) {
-			setActiveIndex(totalIndex);
+			if (totalIndex < 0) setActiveIndex(0);
+			else setActiveIndex(totalIndex);
 		} else {
 			setActiveIndex(updatedIndex);
 		}
