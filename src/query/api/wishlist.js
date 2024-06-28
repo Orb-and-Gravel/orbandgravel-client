@@ -15,3 +15,11 @@ export async function checkWishlistItem(userId, productId) {
 
 	return await axiosbase.get('/wishlist/check', { params });
 }
+
+export async function toggleWishlistItem(userId, productId) {
+	const body = {
+		product: productId,
+		user: userId,
+	};
+	return await axiosbase.post('/wishlist/create', { ...body });
+}

@@ -18,7 +18,10 @@ import {
 	useGetReviewsPagination,
 } from '../query/hooks/useReview';
 import { ErrorDialog } from '../components/Error/ErrorDialog';
-import { useCheckWishlistItem } from '../query/hooks/useWishlist';
+import {
+	useCheckWishlistItem,
+	useToggleWishlistItem,
+} from '../query/hooks/useWishlist';
 
 export function SingleProductPage() {
 	const { slug } = useParams();
@@ -50,6 +53,8 @@ export function SingleProductPage() {
 
 	const { data: checkWishlistData, refetch: checkWishlistRefetch } =
 		useCheckWishlistItem('userId', data?.data.message._id);
+
+	const { mutate } = useToggleWishlistItem();
 
 	useEffect(() => {
 		if (data) {
@@ -145,6 +150,12 @@ export function SingleProductPage() {
 										checkWishlistData?.data.message
 											? 'text-colorFive bg-colorOne py-4 px-6'
 											: 'text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'
+									}
+									onClick={() =>
+										mutate({
+											userId: 'userId',
+											productId: data?.data.message._id,
+										})
 									}
 								>
 									{checkWishlistData?.data.message ? (
