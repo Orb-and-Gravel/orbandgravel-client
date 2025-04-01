@@ -1,6 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { ErrorBar } from '../components/Error/ErrorBar';
+import { useSignIn } from '../query/hooks/useUser';
+import { LoadingButtonAnim } from '../assets/LoadingButtonAnim';
 
 const signInValidationSchema = Yup.object().shape({
 	email: Yup.string()
@@ -12,14 +15,22 @@ const signInValidationSchema = Yup.object().shape({
 });
 
 export function SignIn() {
+	const {
+		mutate: handleSignIn,
+		error: signInError,
+		isPending: signInPending,
+	} = useSignIn();
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
 			password: '',
 		},
 		validationSchema: signInValidationSchema,
+		validateOnBlur: false,
+		validateOnChange: false,
 		onSubmit: (values) => {
-			console.log({ values });
+			handleSignIn(values);
 		},
 	});
 
@@ -38,7 +49,9 @@ export function SignIn() {
 				</h2>
 				<form className='mt-3' onSubmit={formik.handleSubmit}>
 					<input
-						className='border border-colorTwo border-b-0 rounded-t-lg outline-none px-4 py-2 w-full'
+						className={`border border-b-0 rounded-t-lg outline-none px-4 py-2 w-full ${
+							formik.errors.email ? 'border-red-600' : 'border-colorTwo'
+						}`}
 						placeholder='email'
 						name='email'
 						type='email'
@@ -48,14 +61,24 @@ export function SignIn() {
 					<input
 						type='password'
 						placeholder='password'
-						className='border border-colorTwo rounded-b-lg outline-none px-4 py-2 w-full'
+						name='password'
+						onChange={formik.handleChange}
+						value={formik.values.password}
+						className={`border rounded-b-lg outline-none px-4 py-2 w-full ${
+							formik.errors.password ? 'border-red-600' : 'border-colorTwo'
+						}`}
 					/>
+					<div className='space-y-1 mt-1'>
+						<ErrorBar message={formik.errors.email} />
+						<ErrorBar message={formik.errors.password} />
+						<ErrorBar message={signInError?.response.data.message} />
+					</div>
 					<button
 						className='bg-colorOne text-colorFive rounded-2xl px-3 py-1.5 lg:w-44 w-32 block mx-auto mt-3
 				hover:bg-colorFive hover:text-colorOne hover:scale-105 transition-all'
 						type='submit'
 					>
-						Enter
+						{signInPending ? <LoadingButtonAnim /> : 'Enter'}
 					</button>
 				</form>
 				<span className='block mt-4 text-xs text-center'>
