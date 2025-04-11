@@ -10,9 +10,9 @@ export function useSignIn() {
 	return useMutation({
 		mutationKey: ['signIn'],
 		mutationFn: ({ email, password }) => signIn(email, password),
-		onSuccess: (data) => {
+		onSuccess: ({ data }) => {
 			navigate('/');
-			dispatch(signedInUser(data.data.user));
+			dispatch(signedInUser(data.user));
 		},
 	});
 }
