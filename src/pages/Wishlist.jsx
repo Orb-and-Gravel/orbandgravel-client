@@ -8,9 +8,11 @@ import wishlist from '../assets/wishlist.json';
 import { useGetWishlist } from '../query/hooks/useWishlist';
 import { ErrorDialog } from '../components/Error/ErrorDialog';
 import { Loader } from '../components/Loader/Loader';
+import { useSelector } from 'react-redux';
 
 export function Wishlist() {
-	const { data, isLoading, isError, error } = useGetWishlist('userId');
+	const { userRecord } = useSelector((state) => state.user);
+	const { data, isLoading, isError, error } = useGetWishlist(userRecord._id);
 	if (isError) return <ErrorDialog errorText={error.response.data.message} />;
 	else if (isLoading)
 		return (

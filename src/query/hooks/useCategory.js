@@ -5,5 +5,7 @@ export function useGetAllCategory() {
 	return useQuery({
 		queryKey: ['getAllCategory'],
 		queryFn: getCategories,
+		cacheTime: Infinity,
+		staleTime: Infinity,
 	});
 }

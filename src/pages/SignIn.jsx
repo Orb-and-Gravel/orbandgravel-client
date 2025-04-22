@@ -37,13 +37,15 @@ export function SignIn() {
 	return (
 		<div className='bg-colorHeader h-screen'>
 			<section className='lg:w-1/3 w-2/3 mx-auto pt-20'>
-				<img
-					src='/ong-logo.png'
-					alt='Orb & Gravel'
-					className='mx-auto'
-					width={300}
-					height={300}
-				/>
+				<a href='/'>
+					<img
+						src='/ong-logo.png'
+						alt='Orb & Gravel'
+						className='mx-auto'
+						width={300}
+						height={300}
+					/>
+				</a>
 				<h2 className='text-center font-semibold font-oswald text-colorFive text-2xl mt-8 tracking-wide'>
 					LOGIN
 				</h2>
