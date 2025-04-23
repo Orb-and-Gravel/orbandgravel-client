@@ -1,10 +1,7 @@
 import { axiosbase } from '../../axiosConfig';
 
-export async function getWishlist(userId) {
-	const params = {
-		user: userId,
-	};
-	return await axiosbase.get('/wishlist/fetch', { params });
+export async function getWishlist() {
+	return await axiosbase.get('/wishlist/fetch');
 }
 
 export async function checkWishlistItem(userId, productId) {
@@ -16,10 +13,9 @@ export async function checkWishlistItem(userId, productId) {
 	return await axiosbase.get('/wishlist/check', { params });
 }
 
-export async function toggleWishlistItem(userId, productId) {
+export async function toggleWishlistItem(productId) {
 	const body = {
 		product: productId,
-		user: userId,
 	};
-	return await axiosbase.post('/wishlist/create', { ...body });
+	return await axiosbase.post('/wishlist/toggle', { ...body });
 }

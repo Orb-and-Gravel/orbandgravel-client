@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import {
 	checkWishlistItem,
@@ -8,8 +8,8 @@ import {
 
 export function useGetWishlist(userId) {
 	return useQuery({
-		queryKey: ['wishlist', userId],
-		queryFn: () => getWishlist(userId),
+		queryKey: ['wishlist'],
+		queryFn: () => getWishlist(),
 		enabled: !!userId,
 	});
 }
@@ -23,8 +23,11 @@ export function useCheckWishlistItem(userId, productId) {
 }
 
 export function useToggleWishlistItem() {
+	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: ({ userId, productId }) =>
-			toggleWishlistItem(userId, productId),
+		mutationFn: ({ productId }) => toggleWishlistItem(productId),
+		onSuccess: () => {
+			queryClient.invalidateQueries(['checkWishlist']);
+		},
 	});
 }

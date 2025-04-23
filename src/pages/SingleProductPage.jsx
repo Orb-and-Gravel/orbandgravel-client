@@ -46,15 +46,15 @@ export function SingleProductPage() {
 	const { data: paginationData, refetch: paginationRefetch } =
 		useGetReviewsPagination(data?.data.message._id, filter);
 
-	const [color, setColor] = useState(null);
-	const [colorImages, setColorImages] = useState([]);
-
-	const pageLimit = Math.ceil(paginationData?.data.message / 3);
-
 	const { data: checkWishlistData, refetch: checkWishlistRefetch } =
 		useCheckWishlistItem('userId', data?.data.message._id);
 
 	const { mutate } = useToggleWishlistItem();
+
+	const [color, setColor] = useState(null);
+	const [colorImages, setColorImages] = useState([]);
+
+	const pageLimit = Math.ceil(paginationData?.data.message / 3);
 
 	useEffect(() => {
 		if (data) {
@@ -153,7 +153,6 @@ export function SingleProductPage() {
 									}
 									onClick={() =>
 										mutate({
-											userId: 'userId',
 											productId: data?.data.message._id,
 										})
 									}
