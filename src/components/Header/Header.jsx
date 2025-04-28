@@ -39,6 +39,9 @@ const Header = ({
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleOutsideClick);
+		if (!Cookies.get('token')) {
+			dispatch(logoutUser());
+		}
 		return () => {
 			document.removeEventListener('mousedown', handleOutsideClick);
 		};

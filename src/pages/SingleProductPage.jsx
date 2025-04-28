@@ -47,9 +47,9 @@ export function SingleProductPage() {
 		useGetReviewsPagination(data?.data.message._id, filter);
 
 	const { data: checkWishlistData, refetch: checkWishlistRefetch } =
-		useCheckWishlistItem('userId', data?.data.message._id);
+		useCheckWishlistItem(data?.data.message._id);
 
-	const { mutate } = useToggleWishlistItem();
+	const { mutate, isPending } = useToggleWishlistItem();
 
 	const [color, setColor] = useState(null);
 	const [colorImages, setColorImages] = useState([]);
@@ -151,6 +151,7 @@ export function SingleProductPage() {
 											? 'text-colorFive bg-colorOne py-4 px-6'
 											: 'text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'
 									}
+									disabled={isPending}
 									onClick={() =>
 										mutate({
 											productId: data?.data.message._id,

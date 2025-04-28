@@ -4,7 +4,10 @@ import {
 	ShoppingCartIcon,
 	TrashIcon,
 } from '@heroicons/react/24/solid';
-import { useGetWishlist } from '../query/hooks/useWishlist';
+import {
+	useGetWishlist,
+	useRemoveWishlistItem,
+} from '../query/hooks/useWishlist';
 import { ErrorDialog } from '../components/Error/ErrorDialog';
 import { Loader } from '../components/Loader/Loader';
 import { useSelector } from 'react-redux';
@@ -13,7 +16,9 @@ import { Alert } from '../components/Alert/Alert';
 export function Wishlist() {
 	const { userRecord } = useSelector((state) => state.user);
 	const { data, isLoading, isError, error } = useGetWishlist(userRecord._id);
+	const { mutate } = useRemoveWishlistItem();
 	const [loggedin, setLoggedin] = useState(!userRecord._id);
+
 	if (isError) return <ErrorDialog errorText={error.response.data.message} />;
 	else if (isLoading)
 		return (
@@ -45,7 +50,10 @@ export function Wishlist() {
 								data?.data.message.map((item) => (
 									<tr className='w-full border-t-2' key={item._id}>
 										<td className='p-3'>
-											<TrashIcon className='w-6 cursor-pointer text-red-500 transition-all hover:text-red-600' />
+											<TrashIcon
+												onClick={() => mutate({ productId: item.product._id })}
+												className='w-6 cursor-pointer text-red-500 transition-all hover:text-red-600'
+											/>
 										</td>
 										<td className='p-3'>
 											<img
