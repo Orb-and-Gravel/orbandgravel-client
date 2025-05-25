@@ -15,11 +15,11 @@ export function useGetWishlist(userId) {
 	});
 }
 
-export function useCheckWishlistItem(productId) {
+export function useCheckWishlistItem(productId, userId) {
 	return useQuery({
 		queryKey: ['checkWishlist', productId],
 		queryFn: () => checkWishlistItem(productId),
-		enabled: !!productId,
+		enabled: !!productId && !!userId,
 	});
 }
 

@@ -22,9 +22,11 @@ import {
 	useCheckWishlistItem,
 	useToggleWishlistItem,
 } from '../query/hooks/useWishlist';
+import { useSelector } from 'react-redux';
 
 export function SingleProductPage() {
 	const { slug } = useParams();
+	const { userRecord } = useSelector((state) => state.user);
 	const { data, isLoading, isError, error } = useGetSingleProduct(slug);
 	const [page, setPage] = useState(1);
 	const [filter, setFilter] = useState(0);
@@ -47,7 +49,7 @@ export function SingleProductPage() {
 		useGetReviewsPagination(data?.data.message._id, filter);
 
 	const { data: checkWishlistData, refetch: checkWishlistRefetch } =
-		useCheckWishlistItem(data?.data.message._id);
+		useCheckWishlistItem(data?.data.message._id, userRecord._id);
 
 	const { mutate, isPending } = useToggleWishlistItem();
 
@@ -63,7 +65,9 @@ export function SingleProductPage() {
 			refetch();
 			reviewsAnalyticsRefetch();
 			paginationRefetch();
-			checkWishlistRefetch();
+			if (userRecord._id) {
+				checkWishlistRefetch();
+			}
 		}
 	}, [data]);
 
@@ -146,12 +150,13 @@ export function SingleProductPage() {
 									ADD TO CART
 								</button>
 								<button
-									className={
-										checkWishlistData?.data.message
-											? 'text-colorFive bg-colorOne py-4 px-6'
-											: 'text-colorOne bg-colorFive py-4 px-6 hover:bg-colorFour transition-all'
-									}
-									disabled={isPending}
+									className={`py-4 px-6 transition-all
+										${
+											checkWishlistData?.data.message
+												? 'text-colorFive bg-colorOne'
+												: 'text-colorOne bg-colorFive hover:bg-colorFour'
+										} disabled:opacity-75 disabled:cursor-not-allowed disabled:hover:bg-colorFive`}
+									disabled={isPending || !userRecord._id}
 									onClick={() =>
 										mutate({
 											productId: data?.data.message._id,
