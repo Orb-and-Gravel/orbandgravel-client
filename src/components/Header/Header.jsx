@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Searchbar from './Searchbar';
 import {
 	UserIcon,
@@ -17,9 +18,10 @@ import cartItems from '../../assets/cartItems.json';
 import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 import { TotalPriceCart } from './TotalPriceCart';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../redux/slices/userSlice';
+import { logoutUser, setGuestHash } from '../../redux/slices/userSlice';
 import Cookies from 'js-cookie';
 import { Alert } from '../Alert/Alert';
+import { useGetCart } from '../../query/hooks/useCart';
 
 const Header = ({
 	setOpenNav,
@@ -35,13 +37,34 @@ const Header = ({
 	const [openProfileDropdown, setOpenProfileDropdown] = useState(false);
 	const [openAlert, setOpenAlert] = useState(false);
 	const { userRecord } = useSelector((state) => state.user);
+	const { guestHash } = useSelector((state) => state.user);
+	const { data: cartData } = useGetCart(guestHash);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleOutsideClick);
-		if (!Cookies.get('token')) {
+
+		const token = Cookies.get('token');
+		const existingUserHash = Cookies.get('userHash');
+
+		if (!token) {
 			dispatch(logoutUser());
+
+			if (!existingUserHash) {
+				const hash = uuidv4();
+				Cookies.set('userHash', hash, {
+					expires: 365,
+					path: '/',
+					sameSite: 'Lax',
+				});
+				dispatch(setGuestHash(hash));
+				console.log('set new hash');
+			} else {
+				dispatch(setGuestHash(existingUserHash));
+				console.log('existing hash');
+			}
 		}
+
 		return () => {
 			document.removeEventListener('mousedown', handleOutsideClick);
 		};
@@ -126,17 +149,19 @@ const Header = ({
 						/>
 						<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
 							<span className='text-xs text-colorOne rounded-full'>
-								{cartItems.length}
+								{cartData?.data.message.totalItems}
 							</span>
 						</span>
 
 						{openCartDropdown && (
 							<div className='hidden sm:block' ref={cartDropdownRef}>
 								<DropdownMenu>
-									{cartItems.map((item) => (
+									{cartData.data.message.items.map((item) => (
 										<DropdownMenuCartItem item={item} key={item.name} />
 									))}
-									<TotalPriceCart />
+									<TotalPriceCart
+										totalPrice={cartData.data.message.totalAmount}
+									/>
 								</DropdownMenu>
 							</div>
 						)}

@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { signIn } from '../api/user';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signedInUser } from '../../redux/slices/userSlice';
+import { setSignedInUser } from '../../redux/slices/userSlice';
 
 export function useSignIn() {
 	const navigate = useNavigate();
@@ -12,7 +12,7 @@ export function useSignIn() {
 		mutationFn: ({ email, password }) => signIn(email, password),
 		onSuccess: ({ data }) => {
 			navigate('/');
-			dispatch(signedInUser(data.user));
+			dispatch(setSignedInUser(data.user));
 		},
 	});
 }
