@@ -2,7 +2,6 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
 export function TotalPriceCart({ totalPrice }) {
-	console.log(totalPrice);
 	return (
 		<div className='bg-colorOne text-colorFive mt-2 p-2 rounded-md'>
 			<div className='flex justify-between items-center'>

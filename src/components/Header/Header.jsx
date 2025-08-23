@@ -14,7 +14,6 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useRef, useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import { DropdownMenuItem } from './DropdownMenuItem';
-import cartItems from '../../assets/cartItems.json';
 import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 import { TotalPriceCart } from './TotalPriceCart';
 import { useDispatch, useSelector } from 'react-redux';
@@ -149,18 +148,18 @@ const Header = ({
 						/>
 						<span className='h-5 w-5 bg-colorFive absolute -top-2 right-0 left-5 flex items-center justify-center rounded-full'>
 							<span className='text-xs text-colorOne rounded-full'>
-								{cartData?.data.message.totalItems}
+								{cartData?.data?.message?.totalItems ?? 0}
 							</span>
 						</span>
 
-						{openCartDropdown && (
+						{openCartDropdown && cartData?.data?.message?.items?.length > 0 && (
 							<div className='hidden sm:block' ref={cartDropdownRef}>
 								<DropdownMenu>
 									{cartData.data.message.items.map((item) => (
 										<DropdownMenuCartItem item={item} key={item.name} />
 									))}
 									<TotalPriceCart
-										totalPrice={cartData.data.message.totalAmount}
+										totalPrice={cartData?.data?.message?.totalAmount ?? 0}
 									/>
 								</DropdownMenu>
 							</div>
