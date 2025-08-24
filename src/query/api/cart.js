@@ -14,3 +14,20 @@ export async function addToCart(guestHash, productId) {
 	};
 	return await axiosbase.post('/cart/addToCart', { ...body });
 }
+
+export async function updateCartItemQuantity(cartId, productId, action) {
+	const body = {
+		cartId,
+		productId,
+		action,
+	};
+	return await axiosbase.patch('/cart/updateCartItemQuantity', { ...body });
+}
+
+export async function deleteCartProduct(productId, cartId) {
+	const body = {
+		productId,
+		cartId,
+	};
+	return await axiosbase.patch('/cart/deleteCartProduct', { ...body });
+}

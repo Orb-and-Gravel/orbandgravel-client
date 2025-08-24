@@ -156,7 +156,11 @@ const Header = ({
 							<div className='hidden sm:block' ref={cartDropdownRef}>
 								<DropdownMenu>
 									{cartData.data.message.items.map((item) => (
-										<DropdownMenuCartItem item={item} key={item.name} />
+										<DropdownMenuCartItem
+											item={item}
+											key={item.name}
+											cartId={cartData.data.message._id}
+										/>
 									))}
 									<TotalPriceCart
 										totalPrice={cartData?.data?.message?.totalAmount ?? 0}

@@ -1,7 +1,7 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { QuantIncDec } from './QuantIncDec';
 
-export function DropdownMenuCartItem({ item, key }) {
+export function DropdownMenuCartItem({ item, key, cartId }) {
 	return (
 		<li key={key}>
 			<div className='flex gap-x-4 p-2 hover:bg-colorHeader'>
@@ -21,6 +21,8 @@ export function DropdownMenuCartItem({ item, key }) {
 						<QuantIncDec
 							quantity={item.quantity}
 							price={item.productTotalPrice}
+							cartId={cartId}
+							productId={item.product._id}
 						/>
 					</div>
 				</div>
