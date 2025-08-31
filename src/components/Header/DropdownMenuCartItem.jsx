@@ -1,10 +1,17 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { QuantIncDec } from './QuantIncDec';
+import { useDeleteCartProduct } from '../../query/hooks/useCart';
 
 export function DropdownMenuCartItem({ item, key, cartId }) {
+	const { mutate: deleteCartMutate, isPending: deleteCartIsPending } =
+		useDeleteCartProduct();
 	return (
 		<li key={key}>
-			<div className='flex gap-x-4 p-2 hover:bg-colorHeader'>
+			<div
+				className={`flex gap-x-4 p-2 hover:bg-colorHeader ${
+					deleteCartIsPending && 'opacity-50 pointer-events-none'
+				}`}
+			>
 				<div className='w-14'>
 					<img
 						src={item.product.headlineImages[0].image.imgLink}
@@ -27,7 +34,12 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 					</div>
 				</div>
 				<div className='ml-14 mt-1'>
-					<XMarkIcon className='w-4 text-colorFour cursor-pointer' />
+					<XMarkIcon
+						className='w-4 text-colorFour cursor-pointer'
+						onClick={() =>
+							deleteCartMutate({ cartId, productId: item.product._id })
+						}
+					/>
 				</div>
 			</div>
 		</li>

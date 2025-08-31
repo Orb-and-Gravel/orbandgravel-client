@@ -1,5 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { addToCart, getCart, updateCartItemQuantity } from '../api/cart';
+import {
+	addToCart,
+	deleteCartProduct,
+	getCart,
+	updateCartItemQuantity,
+} from '../api/cart';
 
 export function useGetCart(guestHash) {
 	return useQuery({
@@ -36,8 +41,7 @@ export function useDeleteCartProduct() {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationKey: ['deleteCartProduct'],
-		mutationFn: ({ cartId, productId }) =>
-			updateCartItemQuantity(cartId, productId),
+		mutationFn: ({ cartId, productId }) => deleteCartProduct(cartId, productId),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['getCart'] });
 		},
