@@ -41,7 +41,7 @@ export function QuantIncDec({ quantity, price, cartId, productId }) {
 				</button>
 			</div>
 			<p className='ml-3 font-bold text-colorThree whitespace-nowrap'>
-				PKR {price * quantity}
+				PKR {price}
 			</p>
 		</div>
 	);
