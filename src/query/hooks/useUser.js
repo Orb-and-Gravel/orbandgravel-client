@@ -11,8 +11,10 @@ export function useSignIn() {
 		mutationKey: ['signIn'],
 		mutationFn: ({ email, password }) => signIn(email, password),
 		onSuccess: ({ data }) => {
-			navigate('/');
-			dispatch(setSignedInUser(data.user));
+			if (data.token && data.user) {
+				dispatch(setSignedInUser(data.user));
+				navigate('/');
+			}
 		},
 	});
 }

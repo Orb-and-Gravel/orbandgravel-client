@@ -73,7 +73,7 @@ export function SignIn() {
 					<div className='space-y-1 mt-1'>
 						<ErrorBar message={formik.errors.email} />
 						<ErrorBar message={formik.errors.password} />
-						<ErrorBar message={signInError?.response.data.message} />
+						<ErrorBar message={signInError?.response?.data?.message} />
 					</div>
 					<button
 						className='bg-colorOne text-colorFive rounded-2xl px-3 py-1.5 lg:w-44 w-32 block mx-auto mt-3

@@ -40,6 +40,8 @@ function useProductPageData(slug, userId) {
 		data: reviews,
 		refetch: refetchReviews,
 		isLoading: isReviewLoading,
+		isError: isReviewError,
+		error: reviewError,
 	} = useGetReviews(productId, page, filter);
 
 	const {
@@ -50,11 +52,19 @@ function useProductPageData(slug, userId) {
 		error: analyticsError,
 	} = useGetReviewsAnalytics(productId);
 
-	const { data: paginationData, refetch: refetchPagination } =
-		useGetReviewsPagination(productId, filter);
+	const {
+		data: paginationData,
+		refetch: refetchPagination,
+		isError: isPaginationError,
+		error: paginationError,
+	} = useGetReviewsPagination(productId, filter);
 
-	const { data: checkWishlistData, refetch: refetchWishlist } =
-		useCheckWishlistItem(productId, userId);
+	const {
+		data: checkWishlistData,
+		refetch: refetchWishlist,
+		isError: isWishlistCheckError,
+		error: wishlistCheckError,
+	} = useCheckWishlistItem(productId, userId);
 
 	useEffect(() => {
 		if (productData) {
@@ -86,17 +96,23 @@ function useProductPageData(slug, userId) {
 		error,
 		reviews,
 		isReviewLoading,
+		isReviewError,
+		reviewError,
 		reviewsAnalytics,
 		isAnalyticsLoading,
 		isAnalyticsError,
 		analyticsError,
 		paginationData,
+		isPaginationError,
+		paginationError,
 		pageLimit,
 		page,
 		setPage,
 		filter,
 		setFilter,
 		checkWishlistData,
+		isWishlistCheckError,
+		wishlistCheckError,
 	};
 }
 
@@ -108,12 +124,12 @@ function ProductVariation({ variation, color, onChangeColor }) {
 			<div className='flex gap-x-4 mt-3 justify-center sm:justify-start'>
 				{variation.productSet.itemSet.map((item, i) => (
 					<button
-						key={i}
+						key={item._id || i}
 						className={`h-8 w-8 rounded-full outline ${
-							color === item.color ? 'outline-3' : 'outline-1'
+							color?.colorId === item._id ? 'outline-3' : 'outline-1'
 						} outline-offset-2 outline-colorFour`}
 						onClick={() => onChangeColor(item)}
-						style={{ backgroundColor: item.color }}
+						style={{ backgroundColor: item?.color }}
 					/>
 				))}
 			</div>
@@ -162,6 +178,8 @@ function ProductActions({
 function ReviewsSection({
 	reviews,
 	isReviewLoading,
+	isReviewError,
+	reviewError,
 	reviewsAnalytics,
 	isAnalyticsLoading,
 	isAnalyticsError,
@@ -171,8 +189,35 @@ function ReviewsSection({
 	page,
 	pageLimit,
 	paginationData,
+	isPaginationError,
+	paginationError,
 	onChangePage,
 }) {
+	if (isReviewError) {
+		return (
+			<div className='mt-10'>
+				<ErrorDialog
+					errorText={
+						reviewError?.response?.data?.message || 'Error loading reviews.'
+					}
+				/>
+			</div>
+		);
+	}
+
+	if (isPaginationError) {
+		return (
+			<div className='mt-10'>
+				<ErrorDialog
+					errorText={
+						paginationError?.response?.data?.message ||
+						'Error loading pagination data.'
+					}
+				/>
+			</div>
+		);
+	}
+
 	return (
 		<section className='mt-10'>
 			{isReviewLoading ? (
@@ -237,38 +282,54 @@ export function SingleProductPage() {
 		error,
 		reviews,
 		isReviewLoading,
+		isReviewError,
+		reviewError,
 		reviewsAnalytics,
 		isAnalyticsLoading,
 		isAnalyticsError,
 		analyticsError,
 		paginationData,
+		isPaginationError,
+		paginationError,
 		pageLimit,
 		page,
 		setPage,
 		filter,
 		setFilter,
 		checkWishlistData,
+		isWishlistCheckError,
+		wishlistCheckError,
 	} = useProductPageData(slug, userRecord._id);
 
-	const { mutate: addToCartMutation, isPending: addToCartPending } =
-		useAddToCart();
-	const { mutate: toggleWishlistMutation, isPending: wishlistPending } =
-		useToggleWishlistItem();
+	const {
+		mutate: addToCartMutation,
+		isPending: addToCartPending,
+		isError: isAddToCartError,
+		error: addToCartError,
+	} = useAddToCart();
+	const {
+		mutate: toggleWishlistMutation,
+		isPending: wishlistPending,
+		isError: isToggleWishlistError,
+		error: toggleWishlistError,
+	} = useToggleWishlistItem();
 
-	const [color, setColor] = useState(null);
+	const [color, setColor] = useState({ color: null, colorId: null });
 	const [colorImages, setColorImages] = useState([]);
 
 	useEffect(() => {
 		if (productData) {
 			const firstItem = productData?.data.message.productSet.itemSet[0];
-			setColor(firstItem?.color || null);
+			setColor({ color: firstItem?.color, colorId: firstItem?._id });
 			setColorImages(firstItem?.images || []);
 		}
 	}, [productData]);
 
 	const handleChangeColor = useCallback((item) => {
-		setColor(item.color);
-		setColorImages(item.images);
+		if (item && item._id && item.color) {
+			setColor({ color: item.color, colorId: item._id });
+			setColorImages(item.images || []);
+		}
 	}, []);
 
 	const handleChangePage = useCallback(
@@ -283,9 +344,10 @@ export function SingleProductPage() {
 			addToCartMutation({
 				userHash: guestHash,
 				productId: productData.data.message._id,
+				color: color.colorId,
 			});
 		}
-	}, [addToCartMutation, guestHash, productData]);
+	}, [addToCartMutation, guestHash, productData, color.colorId]);
 
 	const handleToggleWishlist = useCallback(() => {
 		if (productData?.data.message._id) {
@@ -308,10 +370,37 @@ export function SingleProductPage() {
 		);
 	}
 
+	if (isWishlistCheckError) {
+		return (
+			<ErrorDialog
+				errorText={
+					wishlistCheckError?.response?.data?.message ||
+					'Error checking wishlist status.'
+				}
+			/>
+		);
+	}
+
 	const product = productData?.data.message;
 
 	return (
 		<div>
+			{isAddToCartError && (
+				<ErrorDialog
+					errorText={
+						addToCartError?.response?.data?.message ||
+						'Error adding item to cart.'
+					}
+				/>
+			)}
+			{isToggleWishlistError && (
+				<ErrorDialog
+					errorText={
+						toggleWishlistError?.response?.data?.message ||
+						'Error updating wishlist.'
+					}
+				/>
+			)}
 			<div className='md:grid block grid-cols-7'>
 				<section className='col-span-4'>
 					<ProductPageImageSlider slides={colorImages} />
@@ -441,6 +530,8 @@ export function SingleProductPage() {
 				<ReviewsSection
 					reviews={reviews}
 					isReviewLoading={isReviewLoading}
+					isReviewError={isReviewError}
+					reviewError={reviewError}
 					reviewsAnalytics={reviewsAnalytics}
 					isAnalyticsLoading={isAnalyticsLoading}
 					isAnalyticsError={isAnalyticsError}
@@ -450,6 +541,8 @@ export function SingleProductPage() {
 					page={page}
 					pageLimit={pageLimit}
 					paginationData={paginationData}
+					isPaginationError={isPaginationError}
+					paginationError={paginationError}
 					onChangePage={handleChangePage}
 				/>
 			</section>
