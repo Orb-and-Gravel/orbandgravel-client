@@ -36,9 +36,7 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 				<div className='ml-14 mt-1'>
 					<XMarkIcon
 						className='w-4 text-colorFour cursor-pointer'
-						onClick={() =>
-							deleteCartMutate({ cartId, productId: item.product._id })
-						}
+						onClick={() => deleteCartMutate({ cartId, itemId: item._id })}
 					/>
 				</div>
 			</div>

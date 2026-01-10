@@ -42,7 +42,7 @@ export function useDeleteCartProduct() {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationKey: ['deleteCartProduct'],
-		mutationFn: ({ cartId, productId }) => deleteCartProduct(cartId, productId),
+		mutationFn: ({ cartId, itemId }) => deleteCartProduct(cartId, itemId),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['getCart'] });
 		},

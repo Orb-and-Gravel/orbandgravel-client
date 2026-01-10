@@ -25,9 +25,9 @@ export async function updateCartItemQuantity(cartId, productId, action) {
 	return await axiosbase.patch('/cart/updateCartItemQuantity', { ...body });
 }
 
-export async function deleteCartProduct(cartId, productId) {
+export async function deleteCartProduct(cartId, itemId) {
 	const body = {
-		productId,
+		itemId,
 		cartId,
 	};
 	return await axiosbase.patch('/cart/deleteCartItem', { ...body });
