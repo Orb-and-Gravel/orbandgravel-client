@@ -29,7 +29,7 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 							quantity={item.quantity}
 							price={item.productTotalPrice}
 							cartId={cartId}
-							productId={item.product._id}
+							itemId={item._id}
 						/>
 					</div>
 				</div>

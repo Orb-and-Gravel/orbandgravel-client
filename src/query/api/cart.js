@@ -16,10 +16,10 @@ export async function addToCart(guestHash, productId, color) {
 	return await axiosbase.post('/cart/addToCart', { ...body });
 }
 
-export async function updateCartItemQuantity(cartId, productId, action) {
+export async function updateCartItemQuantity(cartId, itemId, action) {
 	const body = {
 		cartId,
-		productId,
+		itemId,
 		action,
 	};
 	return await axiosbase.patch('/cart/updateCartItemQuantity', { ...body });

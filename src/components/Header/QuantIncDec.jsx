@@ -1,14 +1,14 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useUpdateCartItemQuantity } from '../../query/hooks/useCart';
 
-export function QuantIncDec({ quantity, price, cartId, productId }) {
+export function QuantIncDec({ quantity, price, cartId, itemId }) {
 	const {
 		mutate: updateCartItemQuantityMutation,
 		isPending: updateCartItemQuantityIsPending,
 	} = useUpdateCartItemQuantity();
 
 	function handleQuantityChange(action) {
-		updateCartItemQuantityMutation({ cartId, productId, action });
+		updateCartItemQuantityMutation({ cartId, itemId, action });
 	}
 
 	return (

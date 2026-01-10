@@ -30,8 +30,8 @@ export function useUpdateCartItemQuantity() {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationKey: ['updateCartItemQuantity'],
-		mutationFn: ({ cartId, productId, action }) =>
-			updateCartItemQuantity(cartId, productId, action),
+		mutationFn: ({ cartId, itemId, action }) =>
+			updateCartItemQuantity(cartId, itemId, action),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['getCart'] });
 		},
