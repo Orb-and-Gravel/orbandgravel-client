@@ -24,7 +24,10 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 					<p className='whitespace-nowrap tracking-wide text-colorFour'>
 						{item.product.name}
 					</p>
-					<div className='mt-4'>
+					<p className='text-sm text-colorThree tracking-wide'>
+						color : {item.color.color}
+					</p>
+					<div className='mt-2'>
 						<QuantIncDec
 							quantity={item.quantity}
 							price={item.productTotalPrice}
