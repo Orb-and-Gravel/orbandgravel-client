@@ -16,6 +16,7 @@ import { DropdownMenu } from './DropdownMenu';
 import { DropdownMenuItem } from './DropdownMenuItem';
 import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 import { TotalPriceCart } from './TotalPriceCart';
+import { CartDropdownMenuSmallScreen } from './CartDropdownMenuSmallScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser, setGuestHash } from '../../redux/slices/userSlice';
 import Cookies from 'js-cookie';
@@ -193,6 +194,25 @@ const Header = ({
 					</SwitchTransition>
 				</div>
 			</header>
+			<CSSTransition
+				nodeRef={cartRef}
+				in={openCartDropdown}
+				timeout={300}
+				classNames='my-node'
+			>
+				<>
+					{openCartDropdown && cartData?.data?.message?.items?.length > 0 && (
+						<section
+							ref={cartRef}
+							className={`sm:hidden relative ${
+								!openCartDropdown && 'hidden'
+							} z-50`}
+						>
+							<CartDropdownMenuSmallScreen cartData={cartData} />
+						</section>
+					)}
+				</>
+			</CSSTransition>
 			<Alert
 				open={openAlert}
 				setOpen={setOpenAlert}

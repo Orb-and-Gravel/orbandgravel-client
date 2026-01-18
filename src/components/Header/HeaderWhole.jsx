@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import Header from './Header';
 import { CSSTransition } from 'react-transition-group';
 import Navbar from '../Navbar/Navbar';
-import { CartDropdownMenuSmallScreen } from './CartDropdownMenuSmallScreen';
 
 export function HeaderWhole() {
 	const [openNav, setOpenNav] = useState(false);
@@ -29,19 +28,6 @@ export function HeaderWhole() {
 					className={`sm:block relative ${!openNav && 'hidden'} z-50 sm:z-10`}
 				>
 					<Navbar />
-				</section>
-			</CSSTransition>
-			<CSSTransition
-				nodeRef={cartRef}
-				in={openCartDropdown}
-				timeout={300}
-				classNames='my-node'
-			>
-				<section
-					ref={cartRef}
-					className={`sm:hidden relative ${!openCartDropdown && 'hidden'} z-50`}
-				>
-					<CartDropdownMenuSmallScreen />
 				</section>
 			</CSSTransition>
 		</React.Fragment>

@@ -6,7 +6,7 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 	const { mutate: deleteCartMutate, isPending: deleteCartIsPending } =
 		useDeleteCartProduct();
 	return (
-		<li key={key}>
+		<li key={key} className='w-[350px]'>
 			<div
 				className={`flex gap-x-4 p-2 hover:bg-colorHeader ${
 					deleteCartIsPending && 'opacity-50 pointer-events-none'
@@ -16,7 +16,7 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 					<img
 						src={item.product.headlineImages[0].image.imgLink}
 						alt={item.product.headlineImages[0].image.alt}
-						className='rounded'
+						className='rounded w-full h-full object-cover'
 						loading='lazy'
 					/>
 				</div>
@@ -24,9 +24,14 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 					<p className='whitespace-nowrap tracking-wide text-colorFour'>
 						{item.product.name}
 					</p>
-					<p className='text-sm text-colorThree tracking-wide'>
-						color : {item.color.color}
-					</p>
+					<div className='flex items-center gap-2 my-1'>
+						<span className={`text-xs text-colorThree tracking-wide ${item.color?.color ? 'block' : 'hidden'}`}>Color:</span>
+						<div
+							className='h-4 w-6 rounded-lg flex-shrink-0'
+							style={{ backgroundColor: item.color.color }}
+							title={item.color.color}
+						/>
+					</div>
 					<div className='mt-2'>
 						<QuantIncDec
 							quantity={item.quantity}
@@ -36,7 +41,7 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 						/>
 					</div>
 				</div>
-				<div className='ml-14 mt-1'>
+				<div className='ml-auto mt-1'>
 					<XMarkIcon
 						className='w-4 text-colorFour cursor-pointer'
 						onClick={() => deleteCartMutate({ cartId, itemId: item._id })}
