@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon as CheckCircleIconFilled } from '@heroicons/react/24/solid';
 import { UserDetails } from '../components/Checkout/UserDetails';
@@ -6,10 +10,82 @@ import Shipping from '../components/Checkout/Shipping';
 import { ConfirmOrder } from '../components/Checkout/ConfirmOrder';
 import { Modal } from '../components/Modal/Modal';
 import { OrderSummary } from '../components/Checkout/OrderSummary';
+import { useGetCart } from '../query/hooks/useCart';
+
+const checkoutStep1Schema = Yup.object({
+	fullName: Yup.string().trim().required('Full name is required'),
+	email: Yup.string()
+		.email('Invalid email address')
+		.required('Email is required'),
+	phone: Yup.string()
+		.trim()
+		.required('Phone number is required')
+		.matches(
+			/^(?=.*[0-9])[+0-9]+$/,
+			'Phone may only contain digits and +, with at least one digit'
+		),
+});
+
+function getCheckoutStep2Schema(isLoggedIn) {
+	return Yup.object({
+		savedAddress: isLoggedIn
+			? Yup.string().required('Please select a saved address')
+			: Yup.string(),
+		shippingAddress: Yup.string()
+			.trim()
+			.required('Shipping address is required'),
+		postalCode: Yup.string()
+			.trim()
+			.required('Postal code is required')
+			.matches(/^[A-Z0-9][A-Z0-9\s\-]{0,9}$/i, 'Enter a valid postal code'),
+		paymentMethod: Yup.string(),
+	});
+}
+
+function yupErrorsToFormik(err) {
+	const errors = {};
+	if (err.inner?.length) {
+		err.inner.forEach((e) => {
+			if (e.path) errors[e.path] = e.message;
+		});
+	} else if (err.path) {
+		errors[err.path] = err.message;
+	}
+	return errors;
+}
 
 export function Checkout() {
+	const navigate = useNavigate();
+	const { guestHash, userRecord } = useSelector((state) => state.user);
+	const isLoggedIn = Boolean(userRecord?._id);
+	const { data: cartData, isSuccess: cartLoaded } = useGetCart(guestHash);
 	const [step, setStep] = useState(1);
 	const [open, setOpen] = useState(false);
+
+	const formik = useFormik({
+		initialValues: {
+			fullName: '',
+			email: '',
+			phone: '',
+			savedAddress: '',
+			shippingAddress: '',
+			postalCode: '',
+			paymentMethod: 'cod',
+		},
+		validateOnBlur: false,
+		validateOnChange: false,
+		onSubmit: () => {
+			setOpen(true);
+		},
+	});
+
+	useEffect(() => {
+		if (!guestHash || !cartLoaded) return;
+		const items = cartData?.data?.message?.items;
+		if (!items?.length) {
+			navigate('/', { replace: true });
+		}
+	}, [guestHash, cartLoaded, cartData, navigate]);
 
 	function calculateStyles(stepAt) {
 		if (stepAt == step) {
@@ -21,12 +97,35 @@ export function Checkout() {
 		}
 	}
 
-	function handleClickNext() {
-		if (step < 3) {
-			setStep((prev) => prev + 1);
-		} else {
-			setOpen(true);
+	async function handleClickNext() {
+		formik.setErrors({});
+		if (step === 1) {
+			try {
+				await checkoutStep1Schema.validate(formik.values, {
+					abortEarly: false,
+				});
+				setStep(2);
+			} catch (e) {
+				if (e.name === 'ValidationError') {
+					formik.setErrors(yupErrorsToFormik(e));
+				}
+			}
+			return;
 		}
+		if (step === 2) {
+			try {
+				await getCheckoutStep2Schema(isLoggedIn).validate(formik.values, {
+					abortEarly: false,
+				});
+				setStep(3);
+			} catch (e) {
+				if (e.name === 'ValidationError') {
+					formik.setErrors(yupErrorsToFormik(e));
+				}
+			}
+			return;
+		}
+		formik.handleSubmit();
 	}
 
 	function handleBackCancel() {
@@ -74,23 +173,36 @@ export function Checkout() {
 							</div>
 						</section>
 						<section className='sm:mt-9 mt-5'>
-							{step == 1 && <UserDetails />}
-							{step == 2 && <Shipping />}
-							{step == 3 && <ConfirmOrder />}
-							<div className='flex gap-x-3 justify-end mt-7'>
-								<button
-									className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
-									onClick={handleBackCancel}
-								>
-									{step > 1 ? 'Back' : 'Cancel'}
-								</button>
-								<button
-									className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
-									onClick={handleClickNext}
-								>
-									{step > 2 ? 'Confirm' : 'Next'}
-								</button>
-							</div>
+							<form
+								onSubmit={(e) => {
+									e.preventDefault();
+									if (step === 3) {
+										formik.handleSubmit();
+									}
+								}}
+							>
+								{step == 1 && <UserDetails formik={formik} />}
+								{step == 2 && (
+									<Shipping formik={formik} isLoggedIn={isLoggedIn} />
+								)}
+								{step == 3 && <ConfirmOrder formik={formik} />}
+								<div className='flex gap-x-3 justify-end mt-7'>
+									<button
+										type='button'
+										className='bg-white border-colorTwo border text-colorFive w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
+										onClick={handleBackCancel}
+									>
+										{step > 1 ? 'Back' : 'Cancel'}
+									</button>
+									<button
+										type={step === 3 ? 'submit' : 'button'}
+										className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
+										onClick={step === 3 ? undefined : handleClickNext}
+									>
+										{step > 2 ? 'Confirm' : 'Next'}
+									</button>
+								</div>
+							</form>
 						</section>
 					</section>
 				</section>

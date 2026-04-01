@@ -14,8 +14,8 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 			>
 				<div className='w-14'>
 					<img
-						src={item.product.headlineImages[0].image.imgLink}
-						alt={item.product.headlineImages[0].image.alt}
+						src={item.color.images[0].imgLink}
+						alt={item.color.images[0].alt}
 						className='rounded w-full h-full object-cover'
 						loading='lazy'
 					/>
@@ -25,7 +25,13 @@ export function DropdownMenuCartItem({ item, key, cartId }) {
 						{item.product.name}
 					</p>
 					<div className='flex items-center gap-2 my-1'>
-						<span className={`text-xs text-colorThree tracking-wide ${item.color?.color ? 'block' : 'hidden'}`}>Color:</span>
+						<span
+							className={`text-xs text-colorThree tracking-wide ${
+								item.color?.color ? 'block' : 'hidden'
+							}`}
+						>
+							Color:
+						</span>
 						<div
 							className='h-4 w-6 rounded-lg flex-shrink-0'
 							style={{ backgroundColor: item.color.color }}
