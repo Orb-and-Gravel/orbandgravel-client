@@ -17,8 +17,8 @@ export function CartDropdownMenuItemSmallScreen({ item, cartId }) {
 				<div className='flex'>
 					<div className='max-w-[80px] min-w-[80px]'>
 						<img
-							src={item.product.headlineImages[0].image.imgLink}
-							alt={item.product.headlineImages[0].image.alt}
+							src={item.color.images[0].imgLink}
+							alt={item.color.images[0].alt}
 							className='rounded w-full h-full object-cover'
 							loading='lazy'
 						/>

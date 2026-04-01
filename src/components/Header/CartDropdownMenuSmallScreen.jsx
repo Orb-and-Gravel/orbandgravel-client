@@ -2,7 +2,7 @@ import React from 'react';
 import { CartDropdownMenuItemSmallScreen } from './CartDropdownMenuItemSmallScreen';
 import { TotalPriceCartSmallScreen } from './TotalPriceCartSmallScreen';
 
-export function CartDropdownMenuSmallScreen({ cartData }) {
+export function CartDropdownMenuSmallScreen({ cartData, setOpenCartDropdown }) {
 	return (
 		<ul className='absolute w-full bg-white/90 backdrop-blur-sm'>
 			<hr className='border-colorTwo' />
@@ -17,6 +17,7 @@ export function CartDropdownMenuSmallScreen({ cartData }) {
 			))}
 			<TotalPriceCartSmallScreen
 				totalPrice={cartData?.data?.message?.totalAmount ?? 0}
+				setOpenCartDropdown={setOpenCartDropdown}
 			/>
 			<hr className='border-colorTwo' />
 		</ul>

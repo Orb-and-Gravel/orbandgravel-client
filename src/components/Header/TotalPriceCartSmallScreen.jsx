@@ -2,7 +2,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export function TotalPriceCartSmallScreen({ totalPrice }) {
+export function TotalPriceCartSmallScreen({ totalPrice, setOpenCartDropdown }) {
 	return (
 		<div className='grid grid-cols-2'>
 			<div className='pl-4'>
@@ -13,7 +13,7 @@ export function TotalPriceCartSmallScreen({ totalPrice }) {
 			</div>
 			<div className='bg-colorFour'>
 				<div className='flex justify-center items-center h-full text-colorOne'>
-					<Link to='/checkout'>
+					<Link to='/checkout' onClick={() => setOpenCartDropdown(false)}>
 						<p className='tracking-wide'>CHECKOUT</p>
 					</Link>
 					<ArrowLongRightIcon className='w-6' />

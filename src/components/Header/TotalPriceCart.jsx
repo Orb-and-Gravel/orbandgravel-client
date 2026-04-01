@@ -1,7 +1,7 @@
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
-export function TotalPriceCart({ totalPrice }) {
+export function TotalPriceCart({ totalPrice, setOpenCartDropdown }) {
 	return (
 		<div className='bg-colorOne text-colorFive mt-2 p-2 rounded-md'>
 			<div className='flex justify-between items-center'>
@@ -10,6 +10,7 @@ export function TotalPriceCart({ totalPrice }) {
 			</div>
 			<Link
 				to='/checkout'
+				onClick={() => setOpenCartDropdown(false)}
 				className='flex gap-x-1 text-colorTwo bg-colorFour w-full items-center justify-center rounded-full py-2 text-sm tracking-wider'
 			>
 				CHECKOUT

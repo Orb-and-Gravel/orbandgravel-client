@@ -165,6 +165,7 @@ const Header = ({
 									))}
 									<TotalPriceCart
 										totalPrice={cartData?.data?.message?.totalAmount ?? 0}
+										setOpenCartDropdown={setOpenCartDropdown}
 									/>
 								</DropdownMenu>
 							</div>
@@ -208,7 +209,10 @@ const Header = ({
 								!openCartDropdown && 'hidden'
 							} z-50`}
 						>
-							<CartDropdownMenuSmallScreen cartData={cartData} />
+							<CartDropdownMenuSmallScreen
+								cartData={cartData}
+								setOpenCartDropdown={setOpenCartDropdown}
+							/>
 						</section>
 					)}
 				</>
