@@ -32,3 +32,7 @@ export async function deleteCartProduct(cartId, itemId) {
 	};
 	return await axiosbase.patch('/cart/deleteCartItem', { ...body });
 }
+
+export async function mergeCart(guestHash) {
+	return await axiosbase.post('/cart/mergeCarts', { guestHash });
+}

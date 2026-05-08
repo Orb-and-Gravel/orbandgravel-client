@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useSearchParams } from 'react-router-dom';
 import { ErrorBar } from '../components/Error/ErrorBar';
 import { useSignIn } from '../query/hooks/useUser';
 import { LoadingButtonAnim } from '../assets/LoadingButtonAnim';
@@ -15,11 +16,14 @@ const signInValidationSchema = Yup.object().shape({
 });
 
 export function SignIn() {
+	const [searchParams] = useSearchParams();
+	const redirectTo = searchParams.get('redirect') || '/';
+
 	const {
 		mutate: handleSignIn,
 		error: signInError,
 		isPending: signInPending,
-	} = useSignIn();
+	} = useSignIn(redirectTo);
 
 	const formik = useFormik({
 		initialValues: {

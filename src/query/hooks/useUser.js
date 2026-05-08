@@ -1,19 +1,26 @@
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from '../api/user';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSignedInUser } from '../../redux/slices/userSlice';
+import { useMergeCart } from './useCart';
 
-export function useSignIn() {
+export function useSignIn(redirectTo = '/') {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const { guestHash } = useSelector((state) => state.user);
+	const { mutate: mergeGuestCart } = useMergeCart();
+
 	return useMutation({
 		mutationKey: ['signIn'],
 		mutationFn: ({ email, password }) => signIn(email, password),
 		onSuccess: ({ data }) => {
 			if (data.token && data.user) {
 				dispatch(setSignedInUser(data.user));
-				navigate('/');
+				if (guestHash) {
+					mergeGuestCart(guestHash);
+				}
+				navigate(redirectTo, { replace: true });
 			}
 		},
 	});

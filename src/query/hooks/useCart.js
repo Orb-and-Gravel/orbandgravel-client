@@ -3,6 +3,7 @@ import {
 	addToCart,
 	deleteCartProduct,
 	getCart,
+	mergeCart,
 	updateCartItemQuantity,
 } from '../api/cart';
 
@@ -43,6 +44,16 @@ export function useDeleteCartProduct() {
 	return useMutation({
 		mutationKey: ['deleteCartProduct'],
 		mutationFn: ({ cartId, itemId }) => deleteCartProduct(cartId, itemId),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['getCart'] });
+		},
+	});
+}
+
+export function useMergeCart() {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: (guestHash) => mergeCart(guestHash),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['getCart'] });
 		},

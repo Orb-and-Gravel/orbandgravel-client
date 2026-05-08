@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Modal({ open, heading, description, onCancel, onConfirm }) {
+export function Modal({ open, heading, description, onCancel, onConfirm, confirmLabel = 'Confirm' }) {
 	return (
 		<div
 			className={`fixed inset-0 z-50 bg-opacity-25 bg-black w-full h-full ${
@@ -21,7 +21,7 @@ export function Modal({ open, heading, description, onCancel, onConfirm }) {
 						className='bg-colorFive text-colorOne w-16 text-xs py-2 rounded-md hover:scale-105 transition-all'
 						onClick={onConfirm}
 					>
-						Confirm
+						{confirmLabel}
 					</button>
 				</div>
 			</div>

@@ -59,8 +59,10 @@ export function Checkout() {
 	const { guestHash, userRecord } = useSelector((state) => state.user);
 	const isLoggedIn = Boolean(userRecord?._id);
 	const { data: cartData, isSuccess: cartLoaded } = useGetCart(guestHash);
+
 	const [step, setStep] = useState(1);
 	const [open, setOpen] = useState(false);
+	const [loginModalOpen, setLoginModalOpen] = useState(false);
 
 	const formik = useFormik({
 		initialValues: {
@@ -117,6 +119,10 @@ export function Checkout() {
 				await getCheckoutStep2Schema(isLoggedIn).validate(formik.values, {
 					abortEarly: false,
 				});
+				if (!isLoggedIn) {
+					setLoginModalOpen(true);
+					return;
+				}
 				setStep(3);
 			} catch (e) {
 				if (e.name === 'ValidationError') {
@@ -125,7 +131,6 @@ export function Checkout() {
 			}
 			return;
 		}
-		formik.handleSubmit();
 	}
 
 	function handleBackCancel() {
@@ -136,6 +141,10 @@ export function Checkout() {
 		}
 	}
 
+	function handleLoginRedirect() {
+		navigate('/sign-in');
+	}
+
 	return (
 		<>
 			<Modal
@@ -144,6 +153,14 @@ export function Checkout() {
 				description='Go ahead and confirm the order.'
 				onCancel={() => setOpen(false)}
 				onConfirm={() => setOpen(false)}
+			/>
+			<Modal
+				open={loginModalOpen}
+				heading='Login Required'
+				description='You need to login to place your order.'
+				onCancel={() => setLoginModalOpen(false)}
+				onConfirm={handleLoginRedirect}
+				confirmLabel='Login'
 			/>
 			<div className='lg:grid lg:grid-cols-5 m-8 lg:gap-x-5 lg:h-[35rem]'>
 				<section className='lg:col-span-3 bg-colorHeader rounded-lg border border-colorThree p-6 mb-5 lg:mb-0'>
@@ -176,15 +193,10 @@ export function Checkout() {
 							<form
 								onSubmit={(e) => {
 									e.preventDefault();
-									if (step === 3) {
-										formik.handleSubmit();
-									}
 								}}
 							>
 								{step == 1 && <UserDetails formik={formik} />}
-								{step == 2 && (
-									<Shipping formik={formik} isLoggedIn={isLoggedIn} />
-								)}
+								{step == 2 && <Shipping formik={formik} />}
 								{step == 3 && <ConfirmOrder formik={formik} />}
 								<div className='flex gap-x-3 justify-end mt-7'>
 									<button
@@ -195,9 +207,11 @@ export function Checkout() {
 										{step > 1 ? 'Back' : 'Cancel'}
 									</button>
 									<button
-										type={step === 3 ? 'submit' : 'button'}
+										type='button'
 										className='bg-colorFive text-colorOne w-20 text-sm py-2 rounded-md hover:scale-105 transition-all'
-										onClick={step === 3 ? undefined : handleClickNext}
+										onClick={
+											step === 3 ? () => formik.handleSubmit() : handleClickNext
+										}
 									>
 										{step > 2 ? 'Confirm' : 'Next'}
 									</button>
