@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorBar } from '../Error/ErrorBar';
 
-export default function Shipping({ formik, isLoggedIn }) {
+export default function Shipping({ formik }) {
 	return (
 		<div className='text-colorFive'>
 			<h3 className='font-bold mb-7 text-xl'>Shipping</h3>
