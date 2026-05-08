@@ -1,6 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export function Account() {
+	const { userRecord } = useSelector((state) => state.user);
+	const navigate = useNavigate();
+
+	if (!userRecord?._id) {
+		navigate('/sign-in', { replace: true });
+		return null;
+	}
+
 	return (
 		<div className='xl:m-10 lg:m-7 md:m-4 m-2'>
 			<h2 className='sm:text-8xl text-5xl font-oswald font-black tracking-tight text-center'>
@@ -11,24 +21,21 @@ export function Account() {
 					Personal Information
 				</h5>
 				<div className=''>
-					<p className='mb-1 text-sm'>Full Name</p>
+					<p className='mb-1 text-sm'>First Name</p>
 					<input
 						type='text'
-						className='w-full rounded-md p-2 outline-none border border-colorOne'
+						readOnly
+						value={userRecord.firstName || ''}
+						className='w-full rounded-md p-2 outline-none border border-colorOne bg-gray-50'
 					/>
 				</div>
 				<div className='mt-4'>
-					<p className='mb-1 text-sm'>Date of Birth</p>
-					<input
-						type='date'
-						className='w-full rounded-md p-2 outline-none border border-colorOne'
-					/>
-				</div>
-				<div className='mt-4'>
-					<p className='mb-1 text-sm'>Phone Number</p>
+					<p className='mb-1 text-sm'>Last Name</p>
 					<input
 						type='text'
-						className='w-full rounded-md p-2 outline-none border border-colorOne'
+						readOnly
+						value={userRecord.lastName || ''}
+						className='w-full rounded-md p-2 outline-none border border-colorOne bg-gray-50'
 					/>
 				</div>
 			</div>
@@ -38,7 +45,9 @@ export function Account() {
 					<p className='mb-1 text-sm'>Email</p>
 					<input
 						type='email'
-						className='w-full rounded-md p-2 outline-none border border-colorOne'
+						readOnly
+						value={userRecord.email || ''}
+						className='w-full rounded-md p-2 outline-none border border-colorOne bg-gray-50'
 					/>
 				</div>
 			</div>

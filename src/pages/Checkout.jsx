@@ -11,6 +11,7 @@ import { ConfirmOrder } from '../components/Checkout/ConfirmOrder';
 import { Modal } from '../components/Modal/Modal';
 import { OrderSummary } from '../components/Checkout/OrderSummary';
 import { useGetCart } from '../query/hooks/useCart';
+import { usePlaceOrder } from '../query/hooks/useOrder';
 
 const checkoutStep1Schema = Yup.object({
 	fullName: Yup.string().trim().required('Full name is required'),
@@ -28,9 +29,6 @@ const checkoutStep1Schema = Yup.object({
 
 function getCheckoutStep2Schema(isLoggedIn) {
 	return Yup.object({
-		savedAddress: isLoggedIn
-			? Yup.string().required('Please select a saved address')
-			: Yup.string(),
 		shippingAddress: Yup.string()
 			.trim()
 			.required('Shipping address is required'),
@@ -59,6 +57,8 @@ export function Checkout() {
 	const { guestHash, userRecord } = useSelector((state) => state.user);
 	const isLoggedIn = Boolean(userRecord?._id);
 	const { data: cartData, isSuccess: cartLoaded } = useGetCart(guestHash);
+	const { mutate: placeOrderMutation, isPending: isPlacingOrder } =
+		usePlaceOrder();
 
 	const [step, setStep] = useState(1);
 	const [open, setOpen] = useState(false);
@@ -152,7 +152,27 @@ export function Checkout() {
 				heading='Confirm Purchase?'
 				description='Go ahead and confirm the order.'
 				onCancel={() => setOpen(false)}
-				onConfirm={() => setOpen(false)}
+				onConfirm={() => {
+					placeOrderMutation(
+						{
+							fullName: formik.values.fullName,
+							email: formik.values.email,
+							phone: formik.values.phone,
+							shippingAddress: formik.values.shippingAddress,
+							postalCode: formik.values.postalCode,
+							paymentMethod: formik.values.paymentMethod,
+						},
+						{
+							onSuccess: () => {
+								setOpen(false);
+								navigate('/orderhistory');
+							},
+							onError: () => {
+								setOpen(false);
+							},
+						}
+					);
+				}}
 			/>
 			<Modal
 				open={loginModalOpen}
