@@ -17,11 +17,13 @@ import { SignUp } from "./pages/SignUp";
 
 function PageLayout() {
   return (
-    <React.Fragment>
+    <div className="flex flex-col min-h-screen">
       <HeaderWhole />
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer />
-    </React.Fragment>
+    </div>
   );
 }
 

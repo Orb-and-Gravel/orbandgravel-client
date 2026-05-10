@@ -9,7 +9,7 @@ export function OrderHistory() {
 	const orders = ordersData?.data?.message || [];
 
 	return (
-		<div className='xl:m-10 lg:m-7 md:m-4 m-2'>
+		<div className='xl:m-10 lg:m-7 md:m-4 m-2 min-h-[calc(100vh-540px)]'>
 			<h2 className='sm:text-8xl text-5xl font-oswald font-black tracking-tight text-center'>
 				Order History
 			</h2>
@@ -24,9 +24,7 @@ export function OrderHistory() {
 					<p className='text-center mt-10 text-colorFive'>Loading orders...</p>
 				)}
 				{!isLoading && orders.length === 0 && (
-					<p className='text-center mt-10 text-colorFive'>
-						No orders yet.
-					</p>
+					<p className='text-center mt-10 text-colorFive'>No orders yet.</p>
 				)}
 				{orders.map((order) => (
 					<div key={order._id}>

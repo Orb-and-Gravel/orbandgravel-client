@@ -10,7 +10,7 @@ export default function Footer() {
 	const [careDrop, setCareDrop] = useState(false);
 
 	return (
-		<footer className='bg-colorHeader text-colorFive sm:px-14 pt-14 mt-8'>
+		<footer className='bg-colorHeader text-colorFive sm:px-14 pt-14'>
 			<div className='lg:grid lg:grid-cols-2 lg:gap-x-16 pb-14'>
 				<div className='sm:grid sm:grid-cols-3 sm:justify-items-center'>
 					<div className='text-sm'>
