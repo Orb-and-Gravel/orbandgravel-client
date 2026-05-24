@@ -351,9 +351,12 @@ export function SingleProductPage() {
 
 	const handleToggleWishlist = useCallback(() => {
 		if (productData?.data.message._id) {
-			toggleWishlistMutation({ productId: productData.data.message._id });
+			toggleWishlistMutation({
+				productId: productData.data.message._id,
+				colorId: color.colorId,
+			});
 		}
-	}, [toggleWishlistMutation, productData]);
+	}, [toggleWishlistMutation, productData, color.colorId]);
 
 	if (isLoading) {
 		return (

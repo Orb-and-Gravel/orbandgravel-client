@@ -11,11 +11,12 @@ export async function checkWishlistItem(productId) {
 	return await axiosbase.get('/wishlist/check', { params });
 }
 
-export async function toggleWishlistItem(productId) {
+export async function toggleWishlistItem(productId, colorId) {
 	const body = {
 		product: productId,
+		color: colorId || null,
 	};
-	return await axiosbase.post('/wishlist/toggle', { ...body });
+	return await axiosbase.post('/wishlist/toggle', body);
 }
 
 export async function removeWishlistItem(productId) {

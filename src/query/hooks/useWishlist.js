@@ -27,9 +27,11 @@ export function useToggleWishlistItem() {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationKey: ['toggleWishlist'],
-		mutationFn: ({ productId }) => toggleWishlistItem(productId),
+		mutationFn: ({ productId, colorId }) =>
+			toggleWishlistItem(productId, colorId),
 		onSuccess: () => {
 			queryClient.invalidateQueries(['checkWishlist']);
+			queryClient.invalidateQueries(['wishlist']);
 		},
 	});
 }

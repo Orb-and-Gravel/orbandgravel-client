@@ -12,3 +12,13 @@ export async function signIn(email, password) {
 	}
 	return signedUser;
 }
+
+export async function signUp({ firstName, lastName, email, password }) {
+	const body = { firstName, email, password };
+	if (lastName) body.lastName = lastName;
+	const newUser = await axiosbase.post('/user/signUp', body);
+	if (newUser.status === 201 && newUser.data.token) {
+		Cookies.set('token', newUser.data.token);
+	}
+	return newUser;
+}
