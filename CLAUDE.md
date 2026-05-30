@@ -104,9 +104,8 @@ src/
 
 ### Authentication
 - JWT token stored in a cookie (`js-cookie`)
-- Axios instance reads token from cookie on creation (`axiosConfig.js`)
+- Axios instance attaches the token via a request interceptor in `axiosConfig.js` — the cookie is read on every outgoing request, so a fresh sign-in is picked up immediately without recreating the instance or reloading the page
 - On sign-in success, user object is dispatched to Redux store and token is set in cookie
-- Note: The axios instance creates the auth header at import time — token changes require page reload or instance recreation
 
 ### Routing
 - Layout route (`PageLayout`) wraps all main pages with Header + Footer
@@ -155,7 +154,6 @@ src/
 - No TypeScript — all `.jsx` / `.js` files
 - No test suite currently in place
 - No ESLint/Prettier config in repo
-- The `axiosConfig.js` reads the token once at module load — a known limitation for token refresh without page reload
 - Some JSON fixture files in `assets/` (wishlist.json, orderHistory.json, order.json) suggest some features use mock data
 - The `userSlice.js` has a typo: reducer is named `setsetSignedInUser` but exported as `setSignedInUser`
 - Checkout and Order pages likely have incomplete backend integration (no order model on server)

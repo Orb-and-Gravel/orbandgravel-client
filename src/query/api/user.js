@@ -22,3 +22,11 @@ export async function signUp({ firstName, lastName, email, password }) {
 	}
 	return newUser;
 }
+
+export async function updateProfile({ firstName, lastName }) {
+	const res = await axiosbase.put('/user/profile', { firstName, lastName });
+	if (res.status === 200 && res.data.token) {
+		Cookies.set('token', res.data.token);
+	}
+	return res;
+}

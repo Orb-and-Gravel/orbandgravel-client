@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { signIn, signUp } from '../api/user';
+import { signIn, signUp, updateProfile } from '../api/user';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSignedInUser } from '../../redux/slices/userSlice';
@@ -42,6 +42,20 @@ export function useSignUp(redirectTo = '/') {
 					mergeGuestCart(guestHash);
 				}
 				navigate(redirectTo, { replace: true });
+			}
+		},
+	});
+}
+
+export function useUpdateProfile() {
+	const dispatch = useDispatch();
+
+	return useMutation({
+		mutationKey: ['updateProfile'],
+		mutationFn: (values) => updateProfile(values),
+		onSuccess: ({ data }) => {
+			if (data.user) {
+				dispatch(setSignedInUser(data.user));
 			}
 		},
 	});
