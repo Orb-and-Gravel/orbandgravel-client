@@ -8,6 +8,8 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import { BrowserRouter } from 'react-router-dom';
+import SessionBootstrap from './components/SessionBootstrap';
 
 const queryClient = new QueryClient();
 const persistor = persistStore(store);
@@ -17,7 +19,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<ReactQueryDevtools initialIsOpen={false} />
 			<Provider store={store}>
 				<PersistGate persistor={persistor}>
-					<App />
+					<BrowserRouter>
+						<SessionBootstrap />
+						<App />
+					</BrowserRouter>
 				</PersistGate>
 			</Provider>
 		</QueryClientProvider>

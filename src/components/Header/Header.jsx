@@ -18,10 +18,10 @@ import { DropdownMenuCartItem } from './DropdownMenuCartItem';
 import { TotalPriceCart } from './TotalPriceCart';
 import { CartDropdownMenuSmallScreen } from './CartDropdownMenuSmallScreen';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser, setGuestHash } from '../../redux/slices/userSlice';
-import Cookies from 'js-cookie';
+import { setGuestHash } from '../../redux/slices/userSlice';
 import { Alert } from '../Alert/Alert';
 import { useGetCart } from '../../query/hooks/useCart';
+import { useSignOut } from '../../query/hooks/useUser';
 
 const Header = ({
 	setOpenNav,
@@ -40,29 +40,14 @@ const Header = ({
 	const { guestHash } = useSelector((state) => state.user);
 	const { data: cartData } = useGetCart(guestHash);
 	const dispatch = useDispatch();
+	const performSignOut = useSignOut();
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleOutsideClick);
 
-		const token = Cookies.get('token');
-		const existingUserHash = Cookies.get('userHash');
-
-		if (!token) {
-			dispatch(logoutUser());
-
-			if (!existingUserHash) {
-				const hash = uuidv4();
-				Cookies.set('userHash', hash, {
-					expires: 365,
-					path: '/',
-					sameSite: 'Lax',
-				});
-				dispatch(setGuestHash(hash));
-				console.log('set new hash');
-			} else {
-				dispatch(setGuestHash(existingUserHash));
-				console.log('existing hash');
-			}
+		if (!guestHash) {
+			const hash = uuidv4();
+			dispatch(setGuestHash(hash));
 		}
 
 		return () => {
@@ -83,10 +68,9 @@ const Header = ({
 		}
 	}
 
-	function handleSignOut() {
-		dispatch(logoutUser());
-		Cookies.remove('token');
+	async function handleSignOut() {
 		setOpenAlert(true);
+		await performSignOut('/');
 	}
 
 	return (
