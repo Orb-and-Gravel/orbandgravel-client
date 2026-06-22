@@ -11,6 +11,7 @@ import {
 	signIn,
 	signUp,
 	updateProfile,
+	changePassword,
 	refresh,
 	signOut,
 } from '../api/user';
@@ -62,6 +63,19 @@ export function useUpdateProfile() {
 	return useMutation({
 		mutationKey: ['updateProfile'],
 		mutationFn: (values) => updateProfile(values),
+		onSuccess: ({ data }) => {
+			if (data.user) dispatch(setSignedInUser(data.user));
+			if (data.accessToken) dispatch(setAccessToken(data.accessToken));
+		},
+	});
+}
+
+export function useChangePassword() {
+	const dispatch = useDispatch();
+
+	return useMutation({
+		mutationKey: ['changePassword'],
+		mutationFn: (values) => changePassword(values),
 		onSuccess: ({ data }) => {
 			if (data.user) dispatch(setSignedInUser(data.user));
 			if (data.accessToken) dispatch(setAccessToken(data.accessToken));

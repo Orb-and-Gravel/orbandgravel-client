@@ -25,3 +25,10 @@ export async function signOut() {
 export async function me() {
 	return axiosbase.get('/user/me');
 }
+
+export async function changePassword({ currentPassword, newPassword }) {
+	return axiosbase.post('/user/change-password', {
+		currentPassword,
+		newPassword,
+	});
+}
